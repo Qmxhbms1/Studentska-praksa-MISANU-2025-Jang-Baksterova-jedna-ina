@@ -60,7 +60,7 @@
 \end{definition}
 
 \begin{definition}[Linearna zavisnost i nezavisnost]
-  Konačan skup vektora $\{\upsilon_i\}$ je \textit{linearn zavisan} ako postoji odgovarajući skup skalara $\{\alpha_i\}$, ne svih nula, tako da
+  Konačan skup vektora $\{\upsilon_i\}$ je \textit{linearno zavisan} ako postoji odgovarajući skup skalara $\{\alpha_i\}$, ne svih nula, tako da
   \[\sum_{i} \alpha_i \upsilon_i = 0.\]
   S druge strane, ako iz $\sum_{i} \alpha_i \upsilon_i = 0$ sledi da je $\alpha_i = 0$ za svako $i$, onda se kaže da je skup $\{\upsilon_i\}$ \textit{linearno nezavisan}.
   
@@ -128,11 +128,57 @@
 
 \begin{proof}
   Daćemo samo skicu dokaza ovde.
+
   Dokaz ove teoreme se zasniva na Zornovoj lemi koja je ekvivalentna aksiomi izbora i glasi da ako svaki lanac (totalno uredjeni podskup) u parcijalno uredjenom skupu ima majorantu onda to uredjenje ima maksimalni element.
   Za dati vektorski prostor postmatramo skup svih linearno nezavisnih podskupova i parcijalo uredjenje definisano inkluzijom.
   Odatle dokazujem da svaki totalno uredjeni podskup našeg skupa ima majorantu u formi unije svih elemenata podskupa.
   Dakle, prema Zornovoj lemi znamo da naš skup ima maksimalni element, koji lako dokazujemo da je zapravo baza našeg vektorskog prostora.
 \end{proof}
 
+\begin{theorem}
+  Broj elemenata bilo koje baze u konačno dimenzionom vektorskom prostoru je isti kao i kod bilo koje druge baze.
+\end{theorem}
+
+\begin{proof}
+  Prvo ćemo dokazati da ako imamo bazu sa $n$ elemenata, onda je svaki skup od $m \ge n$ vektora linearno zavisan.
+  
+  Neka je $\{\upsilon_1, \ldots, \upsilon_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
+  Kako baza generiše vektorski prostor znamo da se svaki vektor $x_j \in \mathcal{S}$ može napisati kao
+  \[\sum_{i = 1}^{n} \alpha_{ij} \upsilon_i, \text{for some} \alpha_i \in \mathbb{F}.\]
+  Sada imamo
+  \[\sum_{j = 1}^{m} \beta_j x_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} \upsilon_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{n} (\alpha_{ij} \beta_j)) \upsilon_i.\]
+  Na kraju imamo homogeni linearni sistem sa $p > n$ nepoznatih, koji ima beskonačno mnogo rešenja.
+  Dakle, $\mathcal{S}$ je linearno zavisan.
+
+  Odatle ako imamo dve baze sa $n$ i $m$ elemenata očigledno sledi da je $m \ge n$ i $n \ge m$, pa imamo $n = m$.
+\end{proof}
+
+\begin{theorem}
+  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka je $\{\upsilon_1, \upsilon_2, \ldots, \upsilon_n\}$ baza $\mathcal{V}$.
+  Svaki vektor $x \in \mathcal{V}$ može da se na jedinstven način predstavi kao linearna kombinacija baznih vektora.
+\end{theorem}
+
+\begin{proof}
+  Očigledno da svaki vektor može da se predstavi kao linearna kombinacija jer baza generiše vektorski prostor.
+
+  Ostaje nam samo jedinstvenost da dokažemo.
+  Neka su $x = \alpha_1 \upsilon_1 + \ldots \alpha_n \upsilon_n$ i $x = \beta_1 \upsilon_1 + \ldots + \beta_n \upsilon_n$ dve representacije vektora $x$ preko baznih vektora.
+  Kada bi oduzeli ove jednu od druge imali bi $0 = (\alpha_1 - \beta_1) \upsilon_1 + \ldots + (\alpha_n - \beta_n) \upsilon_n$.
+  Kako je baza linearno nezavisna, svi koeficijenti $\alpha_1 - \beta_1, \ldots, \alpha_n - \beta_n$ moraju biti jednaki nuli.
+  Dakle ove representacije su jednake.
+\end{proof}
+
+\begin{example}
+  \begin{enumerate}
+    \item Posmatrajmo prvo realan vektorski prostor $\R^2$ sa kanonskom bazom i vektor $(4, 2)$.
+      Trivijalno ovaj vektor možemo da razložimo na $(4, 2) = 4 \cdot (1, 0) + 2 \cdot (0, 1)$.
+    \item Posmatrajmo isti vektor i vektorski prostor samo ovoga puta sa bazom $\{(2, -1), (-4, 3)\}$.
+      Sada imamo $(4, 2) = \alpha_1 (2, -1) + \alpha_2 (-4, 3)$.
+      Odavde lako dobijamo $(4, 2) = (2 \alpha_1 - 4 \alpha_2, -\alpha_1 + 3 \alpha_2)$.
+      Dakle imamo sistem $4 = 2 \alpha_1 - 4 \alpha_2$ i $2 = -\alpha_1 + 3 \alpha_2$.
+      Rešavanjen sistema, na primer eliminacijom, dobijamo $(4, 2) = 10 \cdot (2, -1) + 4 \cdot (-4, 3)$.
+    \item U generalnom slučaju može da pratimo istu proceduru rešavanja sistema kao u primeru (2), zato što je svaki n-dimenzioni vektorski prostor nad $\mathbb{F}$ isomorfan sa $\mathbb{F}^n$.
+  \end{enumerate}
+\end{example}
 
 \end{document}
