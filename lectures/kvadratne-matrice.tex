@@ -14,4 +14,125 @@
 
 \section{Sistemi linearno zavisnih i nezavisnih vektora}
 
+\begin{definition}[Vektorski prostor]
+  \textit{Vektorski prostor nad poljem $\mathbb{F}$ (elementi $\mathbb{F}$ zovu se skalari)} je skup $\mathcal{V}$ (elementi $\mathcal{V}$ zovu se vektori) sa binarnom operacijom vektorskog sabiranja i binarnom funkcijom skalarnog množenja.
+
+  Vektorsko sabiranje je binarna operacija $+ : \mathcal{V} \times \mathcal{V} \to \mathcal{V}$ koja svakom paru vektora $x, y \in \mathcal{V}$ dodeljuje vektor $x + y \in \mathcal{V}$ tako da
+  \begin{enumerate}
+    \item Sabiranje je komutativno, $x + y = y + x$;
+    \item Sabiranje je asocijativno, $x + (y + z) = (x + y) + z$;
+    \item Postoji jedinstven vektor $0 \in \mathcal{V}$ tako da $x + 0 = x$ za svaki vektor $x$;
+    \item Za svaki vektor $x \in \mathcal{V}$ postoji odgovarajući vektor $-x$ tako da $x + (-x) = 0$.
+  \end{enumerate}
+  
+  Skalarno množenje je binarna funkcija $\cdot : \mathbb{F} \times \mathcal{V} \to \mathcal{V}$ koja svakom paru $\alpha \in \mathbb{F}$ i $x \in \mathcal{V}$ dodeljuje vektor $\alpha x \in \mathcal{V}$ tako da
+  \begin{enumerate}
+    \item Skalarno množenje je asocijativno, $\alpha (\beta x) = (\alpha \beta) x$;
+    \item $1 \cdot x = x$ za svaki vektor $x$;
+    \item Skalarno množenje je distributivno prema vektorskom sabiranju, $\alpha (x + y) = \alpha x + \alpha y$;
+    \item Skalarno množenje je distributivno prema sabiranju skalara, $(\alpha + \beta) x = \alpha x + \beta x$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Vektorski potprostor]
+  \textit{Potprostor} $\mathcal{W}$ je podskup vektorskog prostora $\mathcal{V}$ koji je i sam vektorski prostor nad poljem $\mathbb{F}$ sa istim operacijama kao i $\mathcal{V}$
+\end{definition}
+
+\begin{theorem}
+  Neprazan skup $\mathcal{W} \subset \mathcal{V}$ je potprostor vektorskog prostora $\mathcal{V}$ nad poljem $\mathbb{F}$ ako i samo ako za svaki $w_1, w_2 \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha w_1 + \beta w_2 \in \mathcal{W}$.
+\end{theorem}
+
+\begin{proof}
+  Neka je $\mathcal{W}$ neprazan podskup $\mathcal{V}$ tako da važi da za svaki $w_1, w_2 \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha w_1 + \beta w_2 \in \mathcal{W}$.
+  Za bilo koji vektor $x \in \mathcal{W}$ važi $(-1) x + x = 0$, odakle $0 \in \mathcal{W}$.
+  Ako je $x \in \mathcal{V}$ i $\alpha \in \mathbb{F}$ onda znamo da je $\alpha x + 0 = \alpha x$, dakle $\alpha x \in \mathcal{W}$.
+  Specifično, $(-1) x = -x$ je u $\mathcal{W}$.
+  Konačno, ako su $x, y \in \mathcal{W}$ onda je $(1) x + (1) y = x + y$ isto u $\mathcal{W}$.
+  Asocijativnosti i komutativnost sabiranja se nasledjuje iz $\mathcal{V}$, kao i asocijativnost i distributivnost skalarnog množenja.
+  Dakle, $\mathcal{W}$ je vektorski potprostor.
+
+  Obrnuto, ako je $\mathcal{W}$ vektorski potprostor onda očigledno važi iz definicija vektorskog sabiranja i skalarnog množenja da je $\alpha x + \beta y \in \mathcal{W}$.
+\end{proof}
+
+\begin{definition}[Linearna kombinancija]
+  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka su $\upsilon_1, \upsilon_2, \ldots, \upsilon_n \in \mathcal{V}$, $\alpha_1, \alpha_2, \ldots, \alpha_n \in \mathbb{F}$.
+  Tada se suma $\alpha_1 \upsilon_1 + \alpha_2 \upsilon_2 + \ldots + \alpha_n \upsilon_n$ naziva \textit{linearnom kombinacijom} vektora $\upsilon_1, \upsilon_2, \ldots, \upsilon_n \in \mathcal{V}$.
+\end{definition}
+
+\begin{definition}[Linearna zavisnost i nezavisnost]
+  Konačan skup vektora $\{\upsilon_i\}$ je \textit{linearn zavisan} ako postoji odgovarajući skup skalara $\{\alpha_i\}$, ne svih nula, tako da
+  \[\sum_{i} \alpha_i \upsilon_i = 0.\]
+  S druge strane, ako iz $\sum_{i} \alpha_i \upsilon_i = 0$ sledi da je $\alpha_i = 0$ za svako $i$, onda se kaže da je skup $\{\upsilon_i\}$ \textit{linearno nezavisan}.
+  
+  Za beskonačne skupove vektora kažemo da su linearno nezavisni ako su im svi konačni podskupovi linearno nezavisni.
+  U suprotnom kažemo da su linearno zavisni.
+\end{definition}
+
+\begin{corollary}
+  \begin{enumerate}
+    \item Svaki skup koji sadrži linearno zavisan skup je linearno zavisan (za sve ostale element stavimo $\alpha_i = 0$).
+    \item Svaki podskup linearno nezavisnog skupa je linearno nezavisan (kontrapositiv prve posledice).
+    \item Bilo koji skup koji sadrži $0$ vektor je linearno zavisan.
+  \end{enumerate}
+\end{corollary}
+
+\begin{example}
+  \begin{enumerate}
+    \item U realnom vektorskom prostor $\R^2$ kao primere uzmimo sledeće vektore
+      \begin{itemize}
+        \item Nezavisni: $\{(1, 0), (0, 1)\}$, $\{(2, 2)\}$
+        \item Zavisni: $\{(1, 2), (2, 4)\}$, $\{(1, 0), (0, 1), (1, 1)\}$
+      \end{itemize}
+    \item Slično, za realni vektorski prostor $\R^3$ uzmimo vektore
+      \begin{itemize}
+        \item Nezavisni: $\{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$, $\{(1, 0, 1), (1, 1, 0), (0, 1, 1)\}$
+        \item Zavisni: $\{(0, 0, 0), (1, 0, 0), (0, 1, 0)\}$, $\{(1, 0, 0), (1, 1, 0), (0, 1, 0)\}$
+      \end{itemize}
+    \item Postmarajući skup $\C^2$ kao vektorski prostor nad poljem $\C$ imamo
+      \begin{itemize}
+        \item Nezavisni: $\{(1, 0), (0, 1)\}$, $\{(i, 1), (1, i)\}$
+        \item Zavisni: $\{(1, 1), (i, i)\}$, $\{(1, 2), (2, 4)\}$
+      \end{itemize}
+    \item Konačno, razmatrajući skup $\C^3$ kao kompleksan vektorski prostor imamo
+      \begin{itemize}
+        \item Nezavisni: $\{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$, $\{(5, 0, 0), (1, i, 0), (1, 2, 3)\}$
+        \item Zavisni: $\{(1, 1, 1), (2, 2, 2), (0, 1, 1)\}$, $\{(0, 1, i), (i, 0, 1), (i, 1, 1 + i)\}$
+      \end{itemize}
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Skup nenula vektora $\upsilon_1, \ldots, \upsilon_n$ je linearno zavisan ako i samo ako je neki vektor $\upsilon_i$, $2 \le i \le n$, linearna kombinacija prethodnih.
+\end{theorem}
+
+\begin{proof}
+  Prvo pretpostavimo da su vektori $\upsilon_1 , \ldots, \upsilon_n$ linearno zavisni.
+  Neka je $k$ najmanji prirodni broj takav da je $\upsilon_1 , \ldots, \upsilon_k$ linearno zavisan skup.
+  Onda imam 
+  \[\alpha_1 \upsilon_1 + \ldots + \alpha_k \upsilon_k = 0\]
+  za odgovarajući skup ne svih nula $\alpha_i$.
+  Po definiciji $k$ očigledno je $\alpha_k \neq 0$.
+  Dakle, imamo
+  \[\upsilon_k = \frac{-\alpha_1}{\alpha_k} \upsilon_1 + \ldots + \frac{\alpha_{k - 1}}{\alpha_k} \upsilon_k.\]
+
+  Obrnuto važi direktno iz činjenice da svaki skup koji sadrži linearno zavisan skup je i sam linearno zavisan.
+\end{proof}
+
+\begin{definition}[Baza]
+  Skup linearno nezavisnih vektora koji generišu ceo vektorski prostor nazivamo \textit{bazom}.
+\end{definition}
+
+\begin{theorem}
+  Svaki vektorski prostor ima bazu.
+\end{theorem}
+
+\begin{proof}
+  Daćemo samo skicu dokaza ovde.
+  Dokaz ove teoreme se zasniva na Zornovoj lemi koja je ekvivalentna aksiomi izbora i glasi da ako svaki lanac (totalno uredjeni podskup) u parcijalno uredjenom skupu ima majorantu onda to uredjenje ima maksimalni element.
+  Za dati vektorski prostor postmatramo skup svih linearno nezavisnih podskupova i parcijalo uredjenje definisano inkluzijom.
+  Odatle dokazujem da svaki totalno uredjeni podskup našeg skupa ima majorantu u formi unije svih elemenata podskupa.
+  Dakle, prema Zornovoj lemi znamo da naš skup ima maksimalni element, koji lako dokazujemo da je zapravo baza našeg vektorskog prostora.
+\end{proof}
+
+
 \end{document}

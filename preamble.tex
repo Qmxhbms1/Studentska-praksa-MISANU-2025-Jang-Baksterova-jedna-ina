@@ -63,33 +63,18 @@
 % definitions, theorems, etc.
 
 \theoremstyle{definition} % Use a style that is less flashy than the default "plain" style
-\newtheorem{problem}{Problem}[section] % Number problems as Problem X.Y (where X is the section number)
-\newtheorem{theorem}[problem]{Theorem}     % Share the same counter as 'problem'
-\newtheorem{lemma}[problem]{Lemma}
-\newtheorem{corollary}[problem]{Corollary}
-\newtheorem{definition}[problem]{Definition}
-\newtheorem{example}[problem]{Example}
-\newtheorem{remark}[problem]{Remark}
+\newtheorem{definition}{Definicija}[section] % Number problems as Problem X.Y (where X is the section number)
+\newtheorem{example}[definition]{Primer}
 
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Teorema}     % Share the same counter as 'problem'
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{corollary}[definition]{Posledica}
 
-% -------------------------------------------------------------------
-% CUSTOM SOLUTION ENVIRONMENT
-% -------------------------------------------------------------------
-% We create a new "solution" environment that looks clean and
-% automatically adds a QED symbol at the end.
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Primetiti}
 
-\newenvironment{solution}
-  {
-   % Begin environment
-   \renewcommand\qedsymbol{$\blacksquare$} % Change the default QED symbol to a black square
-   \begin{proof}[Solution] % Base it on the 'proof' environment but change the title
-  }
-  {
-   % End environment
-   \end{proof}
-  }
-
-
+\renewcommand{\proofname}{Dokaz}
 % -------------------------------------------------------------------
 % CUSTOM MATH COMMANDS (MACROS)
 % -------------------------------------------------------------------
