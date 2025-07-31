@@ -307,7 +307,11 @@ U algebri dve izomorfne strukture se često smatraju "istim", dakle vidimo da su
   Gde je $S_n$ permutaciona grupa sa $n$ elemenata, $\sigma$ permutacije iz $S_n$ i $sgn$ funkcija koja daje rezlutate $+1$ i $-1$ za parne i neparne permutacije, respektivno.
 \end{definition}
 
+Geometrijski (u $\R^2$), determinanta predstavlja faktor sa kojim se menja površina svih figura.
+Kao što ćemo videti, ako je determinanta jednaka $0$ to znači da sve površina postaju $0$, dakle gubimo dimenziju.
+
 Direktna posledica alternativnosti je da menjanje dve kolone rezultira u menjanju znaka determinante.
+
 Sledeće su neke od najbitnijih osobina determinante.
 
 \begin{theorem}
@@ -384,5 +388,87 @@ Dakle imamo sledeću teoremu.
     \item $Ker(A) = \{0\}$.
   \end{enumerate}
 \end{theorem}
+
+\section{Sopstvene vrednosti i karakteristični polinom}
+
+\begin{definition}[Sopstveni vektori i sopstvene vrednosti]
+  \textit{Sopstveni vektor} matrice $A$ je nenula vektor $x$ koji ne menja pravac pod delovanjem matrice, tj., $Ax = \lambda x$, za neki skalar $\lambda$ koji nazivamo \textit{sopstvenom vrednosti}.
+\end{definition}
+
+Sopstvene vektore i sopstvene vrednosti dobijamo posmatrajući karakterističnu matricu $(A - \lambda I)$ koju lako dobijamo iz definicije.
+Da bi postojala netrivijalna rešenja potrebno je da ta matrica singularna.
+
+\begin{definition}[Karakteristični polinom]
+  \textit{Karakteristični polinom} matrice $A$ je $p(x) = det(A - x I)$.
+  Nule karakterističnog polinoma su sve sopstvene vrednosti matrice $A$.
+\end{definition}
+
+Odavde vidimo da za $n \times n$ matricu $A$ na algebarski zatvorenom polju $\mathbb{F}$ imamo tačno $n$ sopstvenih vrednosti uključujući višestrukosti.
+
+\begin{definition}[Spektar]
+  Skup svih sopstvenih vrednosti matrice $A$ naziva se \textit{spektar} matrice.
+\end{definition}
+
+\begin{definition}[Algebarska višestrukost]
+  Neka je $\lambda$ sopstvena vrednost matrice $A$.
+  \textit{Algebarska višestrukost} od $\lambda$ je broj ponavljanja $\lambda$ kao korena karakterističnog polinoma.
+  Preciznije ako je $p(x) = (x - \lambda_1)^{\alpha_1} \cdot \ldots \cdot (x - \lambda_n)^{\alpha_n}$ onda je algebarska višestrukost od $\lambda_1$ zapravo skalar $\alpha_1$.
+\end{definition}
+
+\begin{definition}[Geometrijska višestrukost]
+  \textit{Geometrijska višestrukost} je definisana kao dimenzija sopstvenog prostora.
+  Sopstveni prostor definišemo kao jezgro matrice $A - \lambda I$.
+\end{definition}
+
+Geometrijski ova definicija predstavlja broj pravaca koji se samo izdužuju (ili skupljaju).
+
+\begin{theorem}
+  Geometrijska višestrukost je uvek manja ili jednaka algebarskoj višestrukosti.
+\end{theorem}
+
+\begin{theorem}
+  Zbir svih sopstvenih vrednosti jednak je tragu (zbir glavne dijagonale) matrice $A$.
+  Proizvod sopstvenih vrednosti jednak je determinanti $A$.
+\end{theorem}
+
+\begin{proof}
+  Posmatrajmo karakteristični polinom $p(x) = det(A - x I)$.
+  Iz vietovih formula znamo da je $\sum \lambda_i = -\frac{c_{n - 1}}{c_n}$ i $\prod \lambda_i = (-1)^n \cdot \frac{c_0}{c_n}$, gde su $c_i$ koeficijenti ispred člana $x^i$.
+
+  Primetimo da kako bi dobili $x^n$ potrebno je da pomnožimo dijagonalu $A - x I$, tj., imamo $c_n x^n = \prod (\alpha_{ii} - x)$.
+  Odatle je očigledno $c_n = (-1)^n$.
+
+  Kako bi dobili $c_{n - 1}$ potrebno je da zamenimo jedno $x$ sa $\alpha_{ii}$ u našem proizvodu.
+  To možemo uraditi na $n$ načina i dobijamo $c_{n - 1} x^{n - 1} = \sum_{i = 1}^{n} \alpha_{ii} (-x^{n - 1}) = x^{n - 1} \sum_{i = 1}^{n} (-1)^{n - 1} \alpha_{ii} = Tr(A) (-1)^{n - 1} x^{n - 1}$ gde je $Tr(A)$ trag od $A$.
+  Dakle, $c_{n - 1} = Tr(A) (-1)^{n - 1}$.
+
+  Konačno, da bismo našli $c_0$ potrebno je samo da pogledamo $p(0) = det(A - 0 \cdot I) = det(A)$.
+
+  Kada ubacimo ove vrednosti u vietove formule dobijamo
+  \[\sum \lambda_i = -\frac{Tr(A) (-1)^{n - 1}}{(-1)^n} = Tr(A).\]
+  \[\prod \lambda = (-1)^n \frac{det(A)}{(-1)^n} = det(A).\]
+\end{proof}
+
+\begin{theorem}
+  Matrica $A$ i transponovana matrica $A^T$ imaju iste sopstvene vrednosti sa istim algebarskim višestrukostima.
+\end{theorem}
+
+\begin{proof}
+  Dokaz trivijalno sledi iz osobina transponovanja, specifično $det(A) = det(A^T)$, $(k \cdot A + B)^T = k \cdot A^T + B^T$ i $I = I^T$.
+\end{proof}
+
+\begin{definition}
+  Sopstvene vektore matrice $A$ takodje nazivamo desnim sosptvenim vektorima, dok su sosptvenim vektori matrice $A^T$ levi sosptveni vektori.
+\end{definition}
+
+\begin{theorem}[Diagonalna matrica]
+  Matrica $A$ je slična dijagonalnoj matrici ako i samo ako su algebarska i geometrijska višestrukost jednake za sve sosptvene vrednosti.
+\end{theorem}
+
+\begin{corollary}
+  Ako $n \times n$ matrica $A$ ima $n$ sosptvenih vrednosti onda je slična dijagonalnoj matrici.
+\end{corollary}
+
+Dijagonalne matrice su generalno matrice koje se veoma lepo ponašaju i uprošćavaju mnoge stvari.
 
 \end{document}
