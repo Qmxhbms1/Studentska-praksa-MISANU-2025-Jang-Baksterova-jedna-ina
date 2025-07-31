@@ -55,14 +55,14 @@
 \end{proof}
 
 \begin{definition}[Linearna kombinancija]
-  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka su $\upsilon_1, \upsilon_2, \ldots, \upsilon_n \in \mathcal{V}$, $\alpha_1, \alpha_2, \ldots, \alpha_n \in \mathbb{F}$.
-  Tada se suma $\alpha_1 \upsilon_1 + \alpha_2 \upsilon_2 + \ldots + \alpha_n \upsilon_n$ naziva \textit{linearnom kombinacijom} vektora $\upsilon_1, \upsilon_2, \ldots, \upsilon_n \in \mathcal{V}$.
+  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka su $x_1, x_2, \ldots, x_n \in \mathcal{V}$, $\alpha_1, \alpha_2, \ldots, \alpha_n \in \mathbb{F}$.
+  Tada se suma $\alpha_1 x_1 + \alpha_2 x_2 + \ldots + \alpha_n x_n$ naziva \textit{linearnom kombinacijom} vektora $x_1, x_2, \ldots, x_n \in \mathcal{V}$.
 \end{definition}
 
 \begin{definition}[Linearna zavisnost i nezavisnost]
-  Konačan skup vektora $\{\upsilon_i\}$ je \textit{linearno zavisan} ako postoji odgovarajući skup skalara $\{\alpha_i\}$, ne svih nula, tako da
-  \[\sum_{i} \alpha_i \upsilon_i = 0.\]
-  S druge strane, ako iz $\sum_{i} \alpha_i \upsilon_i = 0$ sledi da je $\alpha_i = 0$ za svako $i$, onda se kaže da je skup $\{\upsilon_i\}$ \textit{linearno nezavisan}.
+  Konačan skup vektora $\{x_i\}$ je \textit{linearno zavisan} ako postoji odgovarajući skup skalara $\{\alpha_i\}$, ne svih nula, tako da
+  \[\sum_{i} \alpha_i x_i = 0.\]
+  S druge strane, ako iz $\sum_{i} \alpha_i x_i = 0$ sledi da je $\alpha_i = 0$ za svako $i$, onda se kaže da je skup $\{x_i\}$ \textit{linearno nezavisan}.
   
   Za beskonačne skupove vektora kažemo da su linearno nezavisni ako su im svi konačni podskupovi linearno nezavisni.
   U suprotnom kažemo da su linearno zavisni.
@@ -102,18 +102,18 @@
 \end{example}
 
 \begin{theorem}
-  Skup nenula vektora $\upsilon_1, \ldots, \upsilon_n$ je linearno zavisan ako i samo ako je neki vektor $\upsilon_i$, $2 \le i \le n$, linearna kombinacija prethodnih.
+  Skup nenula vektora $x_1, \ldots, x_n$ je linearno zavisan ako i samo ako je neki vektor $x_i$, $2 \le i \le n$, linearna kombinacija prethodnih.
 \end{theorem}
 
 \begin{proof}
-  Prvo pretpostavimo da su vektori $\upsilon_1 , \ldots, \upsilon_n$ linearno zavisni.
-  Neka je $k$ najmanji prirodni broj takav da je $\upsilon_1 , \ldots, \upsilon_k$ linearno zavisan skup.
+  Prvo pretpostavimo da su vektori $x_1 , \ldots, x_n$ linearno zavisni.
+  Neka je $k$ najmanji prirodni broj takav da je $x_1 , \ldots, x_k$ linearno zavisan skup.
   Onda imam 
-  \[\alpha_1 \upsilon_1 + \ldots + \alpha_k \upsilon_k = 0\]
+  \[\alpha_1 x_1 + \ldots + \alpha_k x_k = 0\]
   za odgovarajući skup ne svih nula $\alpha_i$.
   Po definiciji $k$ očigledno je $\alpha_k \neq 0$.
   Dakle, imamo
-  \[\upsilon_k = \frac{-\alpha_1}{\alpha_k} \upsilon_1 + \ldots + \frac{\alpha_{k - 1}}{\alpha_k} \upsilon_k.\]
+  \[x_k = \frac{-\alpha_1}{\alpha_k} x_1 + \ldots + \frac{\alpha_{k - 1}}{\alpha_k} x_k.\]
 
   Obrnuto važi direktno iz činjenice da svaki skup koji sadrži linearno zavisan skup je i sam linearno zavisan.
 \end{proof}
@@ -142,11 +142,11 @@
 \begin{proof}
   Prvo ćemo dokazati da ako imamo bazu sa $n$ elemenata, onda je svaki skup od $m \ge n$ vektora linearno zavisan.
   
-  Neka je $\{\upsilon_1, \ldots, \upsilon_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
-  Kako baza generiše vektorski prostor znamo da se svaki vektor $x_j \in \mathcal{S}$ može napisati kao
-  \[\sum_{i = 1}^{n} \alpha_{ij} \upsilon_i, \text{for some} \alpha_i \in \mathbb{F}.\]
+  Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
+  Kako baza generiše vektorski prostor znamo da se svaki vektor $v_j \in \mathcal{S}$ može napisati kao
+  \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \text{for some} \alpha_i \in \mathbb{F}.\]
   Sada imamo
-  \[\sum_{j = 1}^{m} \beta_j x_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} \upsilon_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{n} (\alpha_{ij} \beta_j)) \upsilon_i.\]
+  \[\sum_{j = 1}^{m} \beta_j v_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} x_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{n} (\alpha_{ij} \beta_j)) x_i.\]
   Na kraju imamo homogeni linearni sistem sa $p > n$ nepoznatih, koji ima beskonačno mnogo rešenja.
   Dakle, $\mathcal{S}$ je linearno zavisan.
 
@@ -154,7 +154,7 @@
 \end{proof}
 
 \begin{theorem}
-  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka je $\{\upsilon_1, \upsilon_2, \ldots, \upsilon_n\}$ baza $\mathcal{V}$.
+  Neka je $\mathcal{V}$ vektorski prostor nad poljem $\mathbb{F}$ i neka je $\{x_1, x_2, \ldots, x_n\}$ baza $\mathcal{V}$.
   Svaki vektor $x \in \mathcal{V}$ može da se na jedinstven način predstavi kao linearna kombinacija baznih vektora.
 \end{theorem}
 
@@ -162,8 +162,8 @@
   Očigledno da svaki vektor može da se predstavi kao linearna kombinacija jer baza generiše vektorski prostor.
 
   Ostaje nam samo jedinstvenost da dokažemo.
-  Neka su $x = \alpha_1 \upsilon_1 + \ldots \alpha_n \upsilon_n$ i $x = \beta_1 \upsilon_1 + \ldots + \beta_n \upsilon_n$ dve representacije vektora $x$ preko baznih vektora.
-  Kada bi oduzeli ove jednu od druge imali bi $0 = (\alpha_1 - \beta_1) \upsilon_1 + \ldots + (\alpha_n - \beta_n) \upsilon_n$.
+  Neka su $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $x$ preko baznih vektora.
+  Kada bi oduzeli ove jednu od druge imali bi $0 = (\alpha_1 - \beta_1) x_1 + \ldots + (\alpha_n - \beta_n) x_n$.
   Kako je baza linearno nezavisna, svi koeficijenti $\alpha_1 - \beta_1, \ldots, \alpha_n - \beta_n$ moraju biti jednaki nuli.
   Dakle ove representacije su jednake.
 \end{proof}
@@ -180,5 +180,104 @@
     \item U generalnom slučaju može da pratimo istu proceduru rešavanja sistema kao u primeru (2), zato što je svaki n-dimenzioni vektorski prostor nad $\mathbb{F}$ isomorfan sa $\mathbb{F}^n$.
   \end{enumerate}
 \end{example}
+
+\section{Kvadratne matrice kao Linearna preslikavanja}
+
+\begin{theorem}
+  Svaka kvadratna matrica može da se sagleda kao linearno preslikavanje nad datim vektorskim prostorom tako što bazne vektore pomnožimo datom matricom i dobijemo nove bazne vektore.
+\end{theorem}
+
+Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
+
+\begin{theorem}
+  Linearno preslikavanja $L$ salje linearno nezavisne vektore u linearno nezavisne ako i samo ako je $L$ injektivna.
+\end{theorem}
+
+\begin{proof}
+  Neka je $L$ injektivna linearna transformacija i neka je $S$ linearno nezavisan podskup sa $n$ elemenata vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$
+  Definišimo skup $S' = \{L(s) | s \in S\}$.
+  Ako bi imali neke skalare $\alpha_1, \ldots,\alpha_n$ tako da
+  \[\alpha_1 L(s_1) + \ldots + \alpha_n L(s_n) = 0.\]
+  Onda zbog linearnost $L$ imamo
+  \[L(\alpha_1 s_1 + \ldots + \alpha_n s_n) = 0.\]
+  Kako je $L$ injektivno i $L(0) = 0$ vidimo da je i $\alpha_1 s_1 + \ldots + \alpha_n s_n = 0$.
+  Odakle imamo $\alpha_1 = \alpha_2 = \ldots = \alpha_n = 0$.
+  Dakle $S'$ je linearno nezavisan skup.
+  Ovde takodje vidimo da je $Ker(L) = \{0\}$, što ćemo posle pokazati da implicira $dim(Im(L)) = m$, gde je m dimenzija vektorskog prostora $\mathcal{V}$.
+
+
+  Za kontradikciju, pretpostavimo da $L$ nije injektivna i da salje linearno nezavisne vektore u linearno nezavisne vektore.
+  Onda bi za neke $x_1 \neq x_2$ imali $L(x_1) = L(x_2)$.
+  Odatle sledi $L(x_1 - x_2) = 0$.
+  Medjutim, $\{x_1, x_2\}$ je linearno nezavisan skup čija je slika, $0$, linearno zavisna, kontradikcija.
+  Dakle $L$ mora biti injektivna.
+\end{proof}
+
+\begin{definition}[Slika]
+  \textit{Slika} linearne transformacije iz $\mathcal{V}$ u $\mathcal{W}$ je skup svih izlaznih vektora preslikavanja, ili prostor generisan kolonama matrice koja odgovara linearnom preslikavanju.
+  Precizno, 
+  \[Im(L) = \{y \in \mathcal{W} | y = L(X), x \in \mathcal{V}\}.\]
+  Dimenzija slike se zove \textit{rang} matrice.
+\end{definition}
+
+\begin{definition}[Jezgro]
+  \textit{Jezgro} ili nul-prostor linearne transformacije iz $\mathcal{V}$ u $\mathcal{W}$ je skup svih vektora koji se preslikavanju u $0$ vektor.
+  Precizno, 
+  \[Ker(L) = \{x \in \mathcal{V} | L(x) = 0\}.\]
+  Dimenzija jezgra zove se \textit{defekt} matrice.
+\end{definition}
+
+\begin{theorem}
+  Neka su $\mathcal{V}$ i $\mathcal{W}$ vektorski prostor nad $\mathbb{F}$ i neka je $L$ linearna transformacija iz $\mathcal{V}$ u $\mathcal{W}$.
+  Ako je $\mathcal{V}$ konačno-dimenziona onda
+  \[dim(Im(L)) + dim(Ker(L)) = dim(\mathcal{V}).\]
+\end{theorem}
+
+\begin{proof}
+  Glavna ideja dokaza je da ako imamo bazu jezgra $\{x_1, \ldots, x_k\}$, onda postoji baza $\mathcal{V}$ $\{x_1, \ldots, x_n\}$ takva da je $\{L(x_{k + 1}), \ldots, L(x_n)\}$ baza slike.
+
+  Koristimo činjenicu da od svakog linearno nezavisnog skupa možemo da formiramo bazu, kako bi od baze jezgra formirali bazu celog vektorskog prostora.
+  Očigledno je da $\{L(x_1), \ldots, L(x_n)\}$ generiše sliku, a kako imamo da $L(x_1) = \ldots = L(x_k) = 0$, vidimo da $\{L(x_{k + 1}, \ldots, x_n)\}$ isto generiše sliku.
+
+  Kako bi videli da su linearno nezavisni uzimimo $\sum_{i = k + 1}^{n} \alpha_i (L(x_i)) = 0$.
+  Zbog linearnosti $L$ imamo $L(\sum_{i = k + 1}^{n} \alpha_i x_i) = 0$, odakle vidimo vektor $v = \sum_{i = k + 1}^{n} \alpha_i x_i$ u jezgru.
+  Dakle možemo ga sapisati kao $v = \sum_{i = 1}^{k} \beta_i x_i$.
+  Odatle imamo $\sum_{i = 1}^{k} \beta_i x_i - \sum_{i = k + 1}^{n} \alpha_i x_i = 0$.
+  Kako su $x_1, \ldots, x_n$ linearno nezavisni imamo $\beta_1 = \ldots = \beta_k = \alpha_{k + 1} = \ldots = \alpha_n = 0$.
+  Dakle $L(x_{k + 1}), \ldots, L(x_n)$ su linearno nezavisni, i formiraju bazu slike.
+\end{proof}
+
+\begin{theorem}
+  Neka su $\mathcal{V}$ i $\mathcal{W}$ n-dimenzioni i m-dimenzioni vektorski prostori nad poljem $\mathbb{F}$.
+  Neka su $\mathcal{B} = \{x_1, \ldots, x_n\}$ i $\mathcal{B}' = \{y_1, \ldots, y_m\}$ baze tih vektorskih prostora.
+  Onda postoji isomorfizam iz prostora svih linearnih preslikavanja $L$ ($L(\mathcal{V}, \mathcal{W})$) u skup svih $m \times n$ matrica $A$ sa unosima iz $\mathbb{F}$ ($M_{m \times n}(\mathbb{F})$).
+\end{theorem}
+
+\begin{proof}
+  Za dato linearno preslikavanja $L \in L(\mathcal{V}, \mathcal{W})$ formiraćemo njegovu matričnu representaciju na sledeći način.
+  Neka se $j$-ta kolona matrice $A$ sastoji od koordinata vektora $L(x_j)$ u bazi $\mathcal{B}'$, ili ti elemetni $A$ su tačno $\alpha_{ij}$ iz $L(x_j) = \sum_{i = 1}^{m} \alpha_{ij} y_i$
+  Nazovimo ovu funkciju $f : L(\mathcal{V}, \mathcal{W}) \to M_{m \times n} (\mathbb{F})$.
+
+  Da bi pokazali da je ova funkcija isomorfizam potrebno je da pokažemo da je linearno preslikavanja i da je bijekcija.
+  
+  Prvo ćemo dokazati da je $f$ linearno preslikavanje.
+  Cilj nam je da pokažemo da je $f(k \cdot L_1 + L_2) = k \cdot f(L_1) + f(L_2)$.
+  Neka su $A$ i $B$ matrice koje odgovaraju $L_1$ i $L_2$ redom.
+  S obzirom da je linearno preslikavanja jedinstveno odredjeno time gde šalje bazne vektore, posmatraćemo kako linearno preslikavanja utiče na neki bazni vektor.
+  Dakle interesuje nas $(k \cdot L_1 + L_2)(x_j) = Cx$, gde je $C$ $m \times n$ matrica.
+  Koristeći osobine linearnog preslikavanja kao linearnog prostora imamo
+  \[(k \dot L_1 + L_2)(x_j) = k \cdot L_1(x_j) + L_2(x_j) = k \cdot \sum_{i = 1}^{m} \alpha_{ij} y_i + \sum_{i = 1}^{m} \beta_{ij} y_i = \sum_{i = 1}^{m} (k \cdot \alpha_{ij} + \beta_{ij}) y_i.\]
+  Ovo je tačno sabiranje i množenje skalarom matrica, $C = k \cdot A + B$.
+  
+
+  Kako bi videli da je $f$ bijekcija, pokazaćemo da je injekcija i surjekcija.
+
+  Poprilično je očigledno da jezgro preslikavanja $f$ sadrži samo nula transformaciju, jer bi $f(L) = 0$ značilo da se svaki bazni vektor salje u $0$ vektor, odakle se svi vektor salju u $0$ vektor.
+  Dakle vidimo da je $f$ injektivna.
+
+  Sa obzirom da je linearna transformacija definisana time gde salje bazne vektore, za svaku $m \times n$ matricu možemo uzeti kolone kao koordinate gde padaju bazni vektori i imamo linearnu transformaciju.
+
+  Dakle naša funkcija $f$ je isomorfizam.
+\end{proof}
 
 \end{document}
