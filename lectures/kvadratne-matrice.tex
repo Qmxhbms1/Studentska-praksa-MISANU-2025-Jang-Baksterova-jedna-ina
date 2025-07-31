@@ -34,6 +34,8 @@
   \end{enumerate}
 \end{definition}
 
+Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu linearnosti (linearnih kombinacija).
+
 \begin{definition}[Vektorski potprostor]
   \textit{Potprostor} $\mathcal{W}$ je podskup vektorskog prostora $\mathcal{V}$ koji je i sam vektorski prostor nad poljem $\mathbb{F}$ sa istim operacijama kao i $\mathcal{V}$
 \end{definition}
@@ -43,9 +45,9 @@
 \end{theorem}
 
 \begin{proof}
-  Neka je $\mathcal{W}$ neprazan podskup $\mathcal{V}$ tako da važi da za svaki $w_1, w_2 \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha w_1 + \beta w_2 \in \mathcal{W}$.
+  Neka je $\mathcal{W}$ neprazan podskup $\mathcal{V}$ tako da važi da za svaki $x, y \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha x + \beta y \in \mathcal{W}$.
   Za bilo koji vektor $x \in \mathcal{W}$ važi $(-1) x + x = 0$, odakle $0 \in \mathcal{W}$.
-  Ako je $x \in \mathcal{V}$ i $\alpha \in \mathbb{F}$ onda znamo da je $\alpha x + 0 = \alpha x$, dakle $\alpha x \in \mathcal{W}$.
+  Ako je $x \in \mathcal{W}$ i $\alpha \in \mathbb{F}$ onda znamo da je $\alpha x + 0 = \alpha x$, dakle $\alpha x \in \mathcal{W}$.
   Specifično, $(-1) x = -x$ je u $\mathcal{W}$.
   Konačno, ako su $x, y \in \mathcal{W}$ onda je $(1) x + (1) y = x + y$ isto u $\mathcal{W}$.
   Asocijativnosti i komutativnost sabiranja se nasledjuje iz $\mathcal{V}$, kao i asocijativnost i distributivnost skalarnog množenja.
@@ -142,9 +144,9 @@
 \begin{proof}
   Prvo ćemo dokazati da ako imamo bazu sa $n$ elemenata, onda je svaki skup od $m \ge n$ vektora linearno zavisan.
   
-  Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
+  Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
   Kako baza generiše vektorski prostor znamo da se svaki vektor $v_j \in \mathcal{S}$ može napisati kao
-  \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \text{for some} \alpha_i \in \mathbb{F}.\]
+  \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \alpha_i \in \mathbb{F}.\]
   Sada imamo
   \[\sum_{j = 1}^{m} \beta_j v_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} x_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{n} (\alpha_{ij} \beta_j)) x_i.\]
   Na kraju imamo homogeni linearni sistem sa $p > n$ nepoznatih, koji ima beskonačno mnogo rešenja.
@@ -162,11 +164,13 @@
   Očigledno da svaki vektor može da se predstavi kao linearna kombinacija jer baza generiše vektorski prostor.
 
   Ostaje nam samo jedinstvenost da dokažemo.
-  Neka su $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $x$ preko baznih vektora.
+  Neka je $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $x$ preko baznih vektora.
   Kada bi oduzeli ove jednu od druge imali bi $0 = (\alpha_1 - \beta_1) x_1 + \ldots + (\alpha_n - \beta_n) x_n$.
   Kako je baza linearno nezavisna, svi koeficijenti $\alpha_1 - \beta_1, \ldots, \alpha_n - \beta_n$ moraju biti jednaki nuli.
   Dakle ove representacije su jednake.
 \end{proof}
+
+Jedinstvene skalare koji nam daju representaciju vektora preko odredjene baze nazivamo koordinatama vektora.
 
 \begin{example}
   \begin{enumerate}
@@ -279,6 +283,8 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
 
   Dakle naša funkcija $f$ je isomorfizam.
 \end{proof}
+
+U algebri dve izomorfne strukture se često smatraju "istim", dakle vidimo da su linearne transformacije i matrice zapravo iste.
 
 \section{Invertabilnost i Singularnost matrica}
 
