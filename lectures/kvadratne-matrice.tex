@@ -280,4 +280,103 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
   Dakle naša funkcija $f$ je isomorfizam.
 \end{proof}
 
+\section{Invertabilnost i Singularnost matrica}
+
+\begin{definition}[Invertabilnost]
+  Matrica $A$ je \textit{invertabilna} ako postoji matrica $A^{-1}$ tako da $AA^{-1} = A^{-1}A = I$.
+  Matrica koja nema inverznu matricu nazivamo \textit{singularna}.
+\end{definition}
+
+\begin{definition}[Determinanta]
+  Neka je $\mathbb{F}$ polje.
+  Determinanta je funkcija $det : M_{n \times n} (\mathbb{F}) \to \mathbb{F}$ sa sledećim osobinama
+  \begin{enumerate}
+    \item Multilinearna je, ako fiksiramo sve sem jedne kolone (ili reda) funkcija je zapravo linearno preslikavanje.
+    \item Alternira, ako matrica $A$ imamo dve iste kolone onda $det(A) = 0$.
+    \item Slika identitet u $1$, $det(I) = 1$.
+  \end{enumerate}
+
+  Moguće je dokazati da je ovakva funkcija jedinstven tako što od ovih svojstava izvedemo sledeću formulu, ponznatu kao Lajbnicova formula.
+  \[det(A) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i = 1}^{n} A_{i, \sigma(i)}.\]
+  Gde je $S_n$ permutaciona grupa sa $n$ elemenata, $\sigma$ permutacije iz $S_n$ i $sgn$ funkcija koja daje rezlutate $+1$ i $-1$ za parne i neparne permutacije, respektivno.
+\end{definition}
+
+Direktna posledica alternativnosti je da menjanje dve kolone rezultira u menjanju znaka determinante.
+Sledeće su neke od najbitnijih osobina determinante.
+
+\begin{theorem}
+  Ako su kolone matrice $A$ linearno zavisne onda je $det(A) = 0$.
+\end{theorem}
+
+\begin{proof}
+  Ako su kolone matrice $A$ linearno zavisne onda jednu kolonu možemo napisati kao linearnu kombinaciju drugih kolona.
+  Fiksirajmo sve ostale kolone $A = \begin{bmatrix} A_1 & \ldots & A_{n - 1} & \sum_{i = 1}^{n - 1} \alpha_i A_i \end{bmatrix}$.
+  Zbog multilinearnosti determinante ovo je jednako $\sum_{i = 1}^{n - 1} \begin{bmatrix} A_1 & \ldots & A_{n - 1} & A_i \end{bmatrix}$.
+  Kako svaka matrica u ovom zbiru ima dve iste kolone sve determinante moraju biti jednake nuli, pa je i njihov zbir 0.
+\end{proof}
+
+\begin{theorem}
+  Za bilo koje dve $n \times n$ matrice $A$ i $B$, $det(AB) = det(A)det(B)$.
+\end{theorem}
+
+\begin{proof}
+  Daćemo samo skicu dokaza
+
+  Fiksirajmo matricu $A$ i posmatrajmo funkciju $D(B) = det(AB)$.
+  Dokazujemo da je ova funkcija multilinearna i alternativna.
+  Odatle znamo da je naša funkcija zapravo forme $D(B) = \alpha \cdot det(B)$, za neki skalar $\alpha$.
+  Stavljajući $B = I$ imamo $\alpha = det(A)$.
+\end{proof}
+
+\begin{theorem}
+  Matrica $A$ je invertabilna ako i samo ako je $det(A) \neq 0$.
+\end{theorem}
+
+\begin{proof}
+  Pretpostavimo da je $A$ invertabilna.
+  Onda postoji matrica $A^{-1}$ takva da je $AA^{-1} = I$.
+  Koristeći prethodnu teoremu imamo $1 = det(I) = det(AA^{-1}) = det(A)det(A^{-1})$.
+  Odavde očigledno sledi $det(A) \neq 0$.
+
+
+  Uzmimo sad da je $det(A) \neq 0$.
+  Odavde direktno vidimo da su kolone $A$ linearno nezavisne.
+  Dakle, kolone $A$ formiraju bazu, i $A$ predstavlja linearnu transformaciju koja slika bazu u bazu.
+  To znači da postoji inverzna linearna transformacija, čiji je matrični prikaz zapravo $A^{-1}$.
+\end{proof}
+
+Odavde možemo da vidimo da ako je $AB$ invertabilna, direktno sledi da su i $A$ i $B$ invertabilne, jer u suprotnom bi imali da $x = 0 \cdot y$, gde $x \neq 0$.
+Takodje imamo $det(AB) = det(A)det(B) = det(B)det(A) = det(BA)$, tako da je i matrica $BA$ invertabilna.
+
+Za poslednju osobinu nam prvo treba definicija transponovanja matrice.
+
+\begin{definition}[Transponovanje matrice]
+  Neka je $A$ $m \times n$ matrica, onda dobijamo \textit{transponovanu matricu} $A^T$ kada zamenimo mesta redovima i kolonama matrice $A$.
+\end{definition}
+
+\begin{theorem}
+  Za bilo koju matricu $A$ imamo $det(A) = det(A^T)$.
+\end{theorem}
+
+\begin{proof}
+  Ove se dokazuje sa analizom Lajbnicove formule.
+\end{proof}
+
+Već smo pokazali da je linearno preslikavanja iz $\mathcal{V}$ u $\mathcal{W}$ injektivno ako i samo ako je $Ker(L) = \{0\}$.
+Linearno preslikavanje je surjektivno kada je $Im(L) = dim(\mathcal{W})$.
+Bilo koja funkcija je bijektivna ako je injektivna i surjektivna.
+
+Primetimo da za linearno preslikavanja sa kvadratnom matricom su sve tri osobine ekvivalentne zbog teoreme of rangu i defektu.
+Dakle imamo sledeću teoremu.
+
+\begin{theorem}
+  Za kvadratnu $n \times n$ matricu $A$ sledeće je ekvivalentno
+  \begin{enumerate}
+    \item Matrica $A$ je bijektivna;
+    \item $det(A) \neq 0$;
+    \item $rang(A) = n$;
+    \item $Ker(A) = \{0\}$.
+  \end{enumerate}
+\end{theorem}
+
 \end{document}
