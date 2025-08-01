@@ -41,7 +41,7 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
 \end{definition}
 
 \begin{theorem}
-  Neprazan skup $\mathcal{W} \subset \mathcal{V}$ je potprostor vektorskog prostora $\mathcal{V}$ nad poljem $\mathbb{F}$ ako i samo ako za svaki $w_1, w_2 \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha w_1 + \beta w_2 \in \mathcal{W}$.
+  Neprazan skup $\mathcal{W} \subset \mathcal{V}$ je potprostor vektorskog prostora $\mathcal{V}$ nad poljem $\mathbb{F}$ ako i samo ako za svaki $x, y \in \mathcal{W}$ i $\alpha, \beta \in \mathbb{F}$, sledi da je $\alpha x + \beta y \in \mathcal{W}$.
 \end{theorem}
 
 \begin{proof}
@@ -115,7 +115,7 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
   za odgovarajući skup ne svih nula $\alpha_i$.
   Po definiciji $k$ očigledno je $\alpha_k \neq 0$.
   Dakle, imamo
-  \[x_k = \frac{-\alpha_1}{\alpha_k} x_1 + \ldots + \frac{\alpha_{k - 1}}{\alpha_k} x_k.\]
+  \[x_k = \frac{-\alpha_1}{\alpha_k} x_1 + \ldots + \frac{-\alpha_{k - 1}}{\alpha_k} x_k.\]
 
   Obrnuto važi direktno iz činjenice da svaki skup koji sadrži linearno zavisan skup je i sam linearno zavisan.
 \end{proof}
@@ -142,9 +142,9 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
 \end{theorem}
 
 \begin{proof}
-  Prvo ćemo dokazati da ako imamo bazu sa $n$ elemenata, onda je svaki skup od $m \ge n$ vektora linearno zavisan.
+  Prvo ćemo dokazati da ako imamo bazu sa $n$ elemenata, onda je svaki skup od $m > n$ vektora linearno zavisan.
   
-  Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m \ge n$ vektora.
+  Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m > n$ vektora.
   Kako baza generiše vektorski prostor znamo da se svaki vektor $v_j \in \mathcal{S}$ može napisati kao
   \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \alpha_i \in \mathbb{F}.\]
   Sada imamo
@@ -165,7 +165,7 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
 
   Ostaje nam samo jedinstvenost da dokažemo.
   Neka je $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $x$ preko baznih vektora.
-  Kada bi oduzeli ove jednu od druge imali bi $0 = (\alpha_1 - \beta_1) x_1 + \ldots + (\alpha_n - \beta_n) x_n$.
+  Kada bi oduzeli jednu od druge imali bi $0 = (\alpha_1 - \beta_1) x_1 + \ldots + (\alpha_n - \beta_n) x_n$.
   Kako je baza linearno nezavisna, svi koeficijenti $\alpha_1 - \beta_1, \ldots, \alpha_n - \beta_n$ moraju biti jednaki nuli.
   Dakle ove representacije su jednake.
 \end{proof}
@@ -185,7 +185,7 @@ Jedinstvene skalare koji nam daju representaciju vektora preko odredjene baze na
   \end{enumerate}
 \end{example}
 
-\section{Kvadratne matrice kao Linearna preslikavanja}
+\section{Kvadratne matrice kao linearna preslikavanja}
 
 \begin{theorem}
   Svaka kvadratna matrica može da se sagleda kao linearno preslikavanje nad datim vektorskim prostorom tako što bazne vektore pomnožimo datom matricom i dobijemo nove bazne vektore.
@@ -198,7 +198,7 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
 \end{theorem}
 
 \begin{proof}
-  Neka je $L$ injektivna linearna transformacija i neka je $S$ linearno nezavisan podskup sa $n$ elemenata vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$
+  Neka je $L$ injektivna linearna transformacija i neka je $S$ linearno nezavisan podskup sa $n$ elemenata vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$.
   Definišimo skup $S' = \{L(s) | s \in S\}$.
   Ako bi imali neke skalare $\alpha_1, \ldots,\alpha_n$ tako da
   \[\alpha_1 L(s_1) + \ldots + \alpha_n L(s_n) = 0.\]
@@ -213,14 +213,14 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
   Za kontradikciju, pretpostavimo da $L$ nije injektivna i da salje linearno nezavisne vektore u linearno nezavisne vektore.
   Onda bi za neke $x_1 \neq x_2$ imali $L(x_1) = L(x_2)$.
   Odatle sledi $L(x_1 - x_2) = 0$.
-  Ako linearno preslikavanje slika bilo koji nenula vektor, kao $x_1 - x_2$ u $0$, onda slika linearno nezavisan vektor u linearno zavisan, kontradikcija.
+  Kako je $x_1 - x_2$ linearno nezavisno a $0$ linearno zavisan vektor, imamo kontradikciju.
   Dakle $L$ mora biti injektivna.
 \end{proof}
 
 \begin{definition}[Slika]
   \textit{Slika} linearne transformacije iz $\mathcal{V}$ u $\mathcal{W}$ je skup svih izlaznih vektora preslikavanja, ili prostor generisan kolonama matrice koja odgovara linearnom preslikavanju.
   Precizno, 
-  \[Im(L) = \{y \in \mathcal{W} | y = L(X), x \in \mathcal{V}\}.\]
+  \[Im(L) = \{y \in \mathcal{W} | \exists x \in \mathcal{V}, y = L(x)\}.\]
   Dimenzija slike se zove \textit{rang} matrice.
 \end{definition}
 
@@ -240,7 +240,7 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
 \begin{proof}
   Glavna ideja dokaza je da ako imamo bazu jezgra $\{x_1, \ldots, x_k\}$, onda postoji baza $\mathcal{V}$ $\{x_1, \ldots, x_n\}$ takva da je $\{L(x_{k + 1}), \ldots, L(x_n)\}$ baza slike.
 
-  Koristimo činjenicu da od svakog linearno nezavisnog skupa možemo da formiramo bazu, kako bi od baze jezgra formirali bazu celog vektorskog prostora.
+  Koristimo činjenicu da od svakog linearno nezavisnog skupa možemo da formiramo bazu, kako bi od baze jezgra formirali bazu celog vektorskog prostora $\{x_1, \ldots, x_n\}$.
   Očigledno je da $\{L(x_1), \ldots, L(x_n)\}$ generiše sliku, a kako imamo da $L(x_1) = \ldots = L(x_k) = 0$, vidimo da $\{L(x_{k + 1}, \ldots, x_n)\}$ isto generiše sliku.
 
   Kako bi videli da su linearno nezavisni uzimimo $\sum_{i = k + 1}^{n} \alpha_i (L(x_i)) = 0$.
@@ -286,11 +286,11 @@ Ovo je posledica generalnije ideje koju ćemo dokazati kasnije.
 
 U algebri dve izomorfne strukture se često smatraju "istim", dakle vidimo da su linearne transformacije i matrice zapravo iste.
 
-\section{Invertabilnost i Singularnost matrica}
+\section{Invertibilnost i singularnost matrica}
 
-\begin{definition}[Invertabilnost]
-  Matrica $A$ je \textit{invertabilna} ako postoji matrica $A^{-1}$ tako da $AA^{-1} = A^{-1}A = I$.
-  Matrica koja nema inverznu matricu nazivamo \textit{singularna}.
+\begin{definition}[Invertibilnost]
+  Matrica $A$ je \textit{invertibilna} ako postoji matrica $A^{-1}$ tako da $AA^{-1} = A^{-1}A = I$.
+  Matricu koja nema inverznu matricu nazivamo \textit{singularna}.
 \end{definition}
 
 \begin{definition}[Determinanta]
@@ -303,8 +303,8 @@ U algebri dve izomorfne strukture se često smatraju "istim", dakle vidimo da su
   \end{enumerate}
 
   Moguće je dokazati da je ovakva funkcija jedinstven tako što od ovih svojstava izvedemo sledeću formulu, ponznatu kao Lajbnicova formula.
-  \[det(A) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i = 1}^{n} A_{i, \sigma(i)}.\]
-  Gde je $S_n$ permutaciona grupa sa $n$ elemenata, $\sigma$ permutacije iz $S_n$ i $sgn$ funkcija koja daje rezlutate $+1$ i $-1$ za parne i neparne permutacije, respektivno.
+  \[det(A) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i = 1}^{n} a_{\sigma(i), i}.\]
+  Gde je $S_n$ simetrična grupa sa $n$ elemenata, $\sigma$ permutacije iz $S_n$ i $sgn$ funkcija koja daje rezlutate $+1$ i $-1$ za parne i neparne permutacije, respektivno.
 \end{definition}
 
 Geometrijski (u $\R^2$), determinanta predstavlja faktor sa kojim se menja površina svih figura.
@@ -339,11 +339,11 @@ Sledeće su neke od najbitnijih osobina determinante.
 \end{proof}
 
 \begin{theorem}
-  Matrica $A$ je invertabilna ako i samo ako je $det(A) \neq 0$.
+  Matrica $A$ je invertibilna ako i samo ako je $det(A) \neq 0$.
 \end{theorem}
 
 \begin{proof}
-  Pretpostavimo da je $A$ invertabilna.
+  Pretpostavimo da je $A$ invertibilna.
   Onda postoji matrica $A^{-1}$ takva da je $AA^{-1} = I$.
   Koristeći prethodnu teoremu imamo $1 = det(I) = det(AA^{-1}) = det(A)det(A^{-1})$.
   Odavde očigledno sledi $det(A) \neq 0$.
@@ -355,8 +355,8 @@ Sledeće su neke od najbitnijih osobina determinante.
   To znači da postoji inverzna linearna transformacija, čiji je matrični prikaz zapravo $A^{-1}$.
 \end{proof}
 
-Odavde možemo da vidimo da ako je $AB$ invertabilna, direktno sledi da su i $A$ i $B$ invertabilne, jer u suprotnom bi imali da $x = 0 \cdot y$, gde $x \neq 0$.
-Takodje imamo $det(AB) = det(A)det(B) = det(B)det(A) = det(BA)$, tako da je i matrica $BA$ invertabilna.
+Odavde možemo da vidimo da ako je $AB$ invertibilna, direktno sledi da su i $A$ i $B$ invertibilne, jer u suprotnom bi imali da $x = 0 \cdot y$, gde $x \neq 0$.
+Takodje imamo $det(AB) = det(A)det(B) = det(B)det(A) = det(BA)$, tako da je i matrica $BA$ invertibilna.
 
 Za poslednju osobinu nam prvo treba definicija transponovanja matrice.
 
@@ -403,7 +403,7 @@ Da bi postojala netrivijalna rešenja potrebno je da ta matrica singularna.
   Nule karakterističnog polinoma su sve sopstvene vrednosti matrice $A$.
 \end{definition}
 
-Odavde vidimo da za $n \times n$ matricu $A$ na algebarski zatvorenom polju $\mathbb{F}$ imamo tačno $n$ sopstvenih vrednosti uključujući višestrukosti.
+Odavde vidimo da za $n \times n$ matricu $A$ nad algebarski zatvorenom polju $\mathbb{F}$ imamo tačno $n$ sopstvenih vrednosti uključujući višestrukosti.
 
 \begin{definition}[Spektar]
   Skup svih sopstvenih vrednosti matrice $A$ naziva se \textit{spektar} matrice.
@@ -412,7 +412,7 @@ Odavde vidimo da za $n \times n$ matricu $A$ na algebarski zatvorenom polju $\ma
 \begin{definition}[Algebarska višestrukost]
   Neka je $\lambda$ sopstvena vrednost matrice $A$.
   \textit{Algebarska višestrukost} od $\lambda$ je broj ponavljanja $\lambda$ kao korena karakterističnog polinoma.
-  Preciznije ako je $p(x) = (x - \lambda_1)^{\alpha_1} \cdot \ldots \cdot (x - \lambda_n)^{\alpha_n}$ onda je algebarska višestrukost od $\lambda_1$ zapravo skalar $\alpha_1$.
+  Na primer, ako je $p(x) = (x - \lambda_1)^{\alpha_1} \cdot \ldots \cdot (x - \lambda_n)^{\alpha_n}$ onda je algebarska višestrukost od $\lambda_1$ zapravo skalar $\alpha_1$.
 \end{definition}
 
 \begin{definition}[Geometrijska višestrukost]
@@ -458,7 +458,7 @@ Geometrijski ova definicija predstavlja broj pravaca koji se samo izdužuju (ili
 \end{proof}
 
 \begin{definition}
-  Sopstvene vektore matrice $A$ takodje nazivamo desnim sosptvenim vektorima, dok su sosptvenim vektori matrice $A^T$ levi sosptveni vektori.
+  Sopstvene vektore matrice $A$ takodje nazivamo desnim sosptvenim vektorima, dok su sosptveni vektori matrice $A^T$ levi sosptveni vektori.
 \end{definition}
 
 \begin{theorem}[Diagonalna matrica]
