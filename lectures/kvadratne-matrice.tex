@@ -15,26 +15,26 @@
 \section{Sistemi linearno zavisnih i nezavisnih vektora}
 
 \begin{definition}[Vektorski prostor]
-  \textit{Vektorski prostor nad poljem $\mathbb{F}$ (elementi $\mathbb{F}$ zovu se skalari)} je skup $\mathcal{V}$ (elementi $\mathcal{V}$ zovu se vektori) sa binarnom operacijom vektorskog sabiranja i binarnom funkcijom skalarnog množenja.
+  \textit{Vektorski prostor nad poljem $\mathbb{F}$} (elementi $\mathbb{F}$ zovu se skalari) je skup $\mathcal{V}$ (elementi $\mathcal{V}$ zovu se vektori) sa binarnom operacijom vektorskog sabiranja i binarnom funkcijom skalarnog množenja.
 
   Vektorsko sabiranje je binarna operacija $+ : \mathcal{V} \times \mathcal{V} \to \mathcal{V}$ koja svakom paru vektora $x, y \in \mathcal{V}$ dodeljuje vektor $x + y \in \mathcal{V}$ tako da
   \begin{enumerate}
     \item Sabiranje je komutativno, $x + y = y + x$;
     \item Sabiranje je asocijativno, $x + (y + z) = (x + y) + z$;
     \item Postoji jedinstven vektor $0 \in \mathcal{V}$ tako da $x + 0 = x$ za svaki vektor $x$;
-    \item Za svaki vektor $x \in \mathcal{V}$ postoji odgovarajući vektor $-x$ tako da $x + (-x) = 0$.
+    \item Za svaki vektor $x \in \mathcal{V}$ postoji odgovarajući vektor $-x \in \mathcal{V}$ tako da $x + (-x) = 0$.
   \end{enumerate}
   
   Skalarno množenje je binarna funkcija $\cdot : \mathbb{F} \times \mathcal{V} \to \mathcal{V}$ koja svakom paru $\alpha \in \mathbb{F}$ i $x \in \mathcal{V}$ dodeljuje vektor $\alpha x \in \mathcal{V}$ tako da
   \begin{enumerate}
     \item Skalarno množenje je asocijativno, $\alpha (\beta x) = (\alpha \beta) x$;
-    \item $1 \cdot x = x$ za svaki vektor $x$;
+    \item $1 \cdot x = x$ za svaki vektor $x \in \mathcal{V}$;
     \item Skalarno množenje je distributivno prema vektorskom sabiranju, $\alpha (x + y) = \alpha x + \alpha y$;
     \item Skalarno množenje je distributivno prema sabiranju skalara, $(\alpha + \beta) x = \alpha x + \beta x$.
   \end{enumerate}
 \end{definition}
 
-Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu linearnosti (linearnih kombinacija).
+Intuitivno možemo da posmatramo vektorski prostor kao algebrasku strukturu linearnosti (linearnih kombinacija).
 
 \begin{definition}[Vektorski potprostor]
   \textit{Potprostor} $\mathcal{W}$ je podskup vektorskog prostora $\mathcal{V}$ koji je i sam vektorski prostor nad poljem $\mathbb{F}$ sa istim operacijama kao i $\mathcal{V}$
@@ -75,6 +75,7 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
     \item Svaki skup koji sadrži linearno zavisan skup je linearno zavisan (za sve ostale element stavimo $\alpha_i = 0$).
     \item Svaki podskup linearno nezavisnog skupa je linearno nezavisan (kontrapositiv prve posledice).
     \item Bilo koji skup koji sadrži $0$ vektor je linearno zavisan.
+    \item Svaki skup sa samo jednim nenula vektorom je linearno nezavisan.
   \end{enumerate}
 \end{corollary}
 
@@ -146,9 +147,9 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
   
   Neka je $\{x_1, \ldots, x_n\}$ baza vektorskog prostora $\mathcal{V}$ nad $\mathbb{F}$ i neka je $\mathcal{S} \subset \mathcal{V}$ podskup sa $m > n$ vektora.
   Kako baza generiše vektorski prostor znamo da se svaki vektor $v_j \in \mathcal{S}$ može napisati kao
-  \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \alpha_i \in \mathbb{F}.\]
+  \[\sum_{i = 1}^{n} \alpha_{ij} x_i, \text{ za neke } \alpha_i \in \mathbb{F}.\]
   Sada imamo
-  \[\sum_{j = 1}^{m} \beta_j v_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} x_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{n} (\alpha_{ij} \beta_j)) x_i.\]
+  \[\sum_{j = 1}^{m} \beta_j v_j = \sum_{j = 1}^{m} \beta_j \sum_{i = 1}^{n} \alpha_{ij} x_i = \sum_{i = 1}^{n} (\sum_{j = 1}^{m} (\alpha_{ij} \beta_j)) x_i.\]
   Na kraju imamo homogeni linearni sistem sa $p > n$ nepoznatih, koji ima beskonačno mnogo rešenja.
   Dakle, $\mathcal{S}$ je linearno zavisan.
 
@@ -164,7 +165,7 @@ Intuitivno, možemo da posmatramo vektorski prostor kao algebrasku strukturu lin
   Očigledno da svaki vektor može da se predstavi kao linearna kombinacija jer baza generiše vektorski prostor.
 
   Ostaje nam samo jedinstvenost da dokažemo.
-  Neka je $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $x$ preko baznih vektora.
+  Neka je $v = \alpha_1 x_1 + \ldots \alpha_n x_n$ i $ v = \beta_1 x_1 + \ldots + \beta_n x_n$ dve representacije vektora $v$ preko baznih vektora.
   Kada bi oduzeli jednu od druge imali bi $0 = (\alpha_1 - \beta_1) x_1 + \ldots + (\alpha_n - \beta_n) x_n$.
   Kako je baza linearno nezavisna, svi koeficijenti $\alpha_1 - \beta_1, \ldots, \alpha_n - \beta_n$ moraju biti jednaki nuli.
   Dakle ove representacije su jednake.
@@ -307,7 +308,7 @@ U algebri dve izomorfne strukture se često smatraju "istim", dakle vidimo da su
   Gde je $S_n$ simetrična grupa sa $n$ elemenata, $\sigma$ permutacije iz $S_n$ i $sgn$ funkcija koja daje rezlutate $+1$ i $-1$ za parne i neparne permutacije, respektivno.
 \end{definition}
 
-Geometrijski (u $\R^2$), determinanta predstavlja faktor sa kojim se menja površina svih figura.
+Geometrijski (u $\R^n$), determinanta predstavlja faktor sa kojim se menja n-dimenziona zapremina svih figura.
 Kao što ćemo videti, ako je determinanta jednaka $0$ to znači da sve površina postaju $0$, dakle gubimo dimenziju.
 
 Direktna posledica alternativnosti je da menjanje dve kolone rezultira u menjanju znaka determinante.
@@ -412,7 +413,7 @@ Odavde vidimo da za $n \times n$ matricu $A$ nad algebarski zatvorenom polju $\m
 \begin{definition}[Algebarska višestrukost]
   Neka je $\lambda$ sopstvena vrednost matrice $A$.
   \textit{Algebarska višestrukost} od $\lambda$ je broj ponavljanja $\lambda$ kao korena karakterističnog polinoma.
-  Na primer, ako je $p(x) = (x - \lambda_1)^{\alpha_1} \cdot \ldots \cdot (x - \lambda_n)^{\alpha_n}$ onda je algebarska višestrukost od $\lambda_1$ zapravo skalar $\alpha_1$.
+  Na primer, ako je $p(x) = (x - \lambda_1)^{\alpha_1} \cdot \ldots \cdot (x - \lambda_n)^{\alpha_n}$ onda je algebarska višestrukost od $\lambda_i$ zapravo skalar $\alpha_i$.
 \end{definition}
 
 \begin{definition}[Geometrijska višestrukost]
