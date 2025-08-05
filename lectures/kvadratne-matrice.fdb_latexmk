@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1754238506.06624 "kvadratne-matrice.tex" "kvadratne-matrice.pdf" "kvadratne-matrice" 1754238507.14091 0
+["pdflatex"] 1754299782.72992 "kvadratne-matrice.tex" "kvadratne-matrice.pdf" "kvadratne-matrice" 1754299783.75262 0
   "../preamble.tex" 1754048673.92392 4614 dd842b04ec6cb2c3bed49ab829b677ae ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1742685315 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1742685315 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -118,10 +118,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1753015188 5309334 cd5b34edbc1e1e42b4786ed8d99ed5fd ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1753015263 2088910 f138904fc6acb33ffc75dc9c78ca9ffa ""
-  "kvadratne-matrice.aux" 1754238507.01273 723 15dbea2bd2d135b2efcd5a7fc96980e1 "pdflatex"
-  "kvadratne-matrice.out" 1754238507.01573 1083 2dfb41552e277d2578d81933a0a1205c "pdflatex"
-  "kvadratne-matrice.tex" 1754238501.38348 25634 13b408c43663d3d8b19852ea1007b418 ""
-  "kvadratne-matrice.toc" 1754238507.01974 397 d8277a99c3bc34ee3a58b9f14ac03d53 "pdflatex"
+  "kvadratne-matrice.aux" 1754299783.62138 723 15dbea2bd2d135b2efcd5a7fc96980e1 "pdflatex"
+  "kvadratne-matrice.out" 1754299783.62996 1083 2dfb41552e277d2578d81933a0a1205c "pdflatex"
+  "kvadratne-matrice.tex" 1754299777.03313 25634 999dd0f0425e4baf3f7d2b8b49da2119 ""
+  "kvadratne-matrice.toc" 1754299783.63646 397 d8277a99c3bc34ee3a58b9f14ac03d53 "pdflatex"
   (generated)
   "kvadratne-matrice.aux"
   "kvadratne-matrice.log"

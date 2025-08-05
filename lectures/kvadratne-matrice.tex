@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\input{../preamble.tex}
+\input{lectures-preamble.tex}
 
 \title{Kvadratne matrice kao linearna preslikavanja na vektorskom prostoru}
 \author{Mihailo Đurić}
@@ -434,7 +434,7 @@ Geometrijski ova definicija predstavlja broj pravaca koji se samo izdužuju (ili
 
 \begin{proof}
   Posmatrajmo karakteristični polinom $p(x) = det(A - x I)$.
-  Iz vietovih formula znamo da je $\sum \lambda_i = -\frac{c_{n - 1}}{c_n}$ i $\prod \lambda_i = (-1)^n \cdot \frac{c_0}{c_n}$, gde su $c_i$ koeficijenti ispred člana $x^i$.
+  Iz Vietovih formula znamo da je $\sum \lambda_i = -\frac{c_{n - 1}}{c_n}$ i $\prod \lambda_i = (-1)^n \cdot \frac{c_0}{c_n}$, gde su $c_i$ koeficijenti ispred člana $x^i$.
 
   Primetimo da kako bi dobili $x^n$ potrebno je da pomnožimo dijagonalu $A - x I$, tj., imamo $c_n x^n = \prod (\alpha_{ii} - x)$.
   Odatle je očigledno $c_n = (-1)^n$.
@@ -445,7 +445,7 @@ Geometrijski ova definicija predstavlja broj pravaca koji se samo izdužuju (ili
 
   Konačno, da bismo našli $c_0$ potrebno je samo da pogledamo $p(0) = det(A - 0 \cdot I) = det(A)$.
 
-  Kada ubacimo ove vrednosti u vietove formule dobijamo
+  Kada ubacimo ove vrednosti u Vietove formule dobijamo
   \[\sum \lambda_i = -\frac{Tr(A) (-1)^{n - 1}}{(-1)^n} = Tr(A).\]
   \[\prod \lambda = (-1)^n \frac{det(A)}{(-1)^n} = det(A).\]
 \end{proof}

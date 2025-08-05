@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\input{homework-preamble.tex}
+
+\title{Linear Operators}
+\author{Mihailo Đurić}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{problem}
+  Let $A = \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix}, n \in N, B = \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix}$.
+  
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that $AB \neq BA$.
+    \item Show that $A^n = I$.
+    \item Show that $A^nB = BA^n$.
+  \end{enumerate}
+
+  What does this demonstrate?
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}[label=(\alph*)]
+    \item First we have
+        \[AB = \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} = \begin{bmatrix} \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) + \sqrt{2} \sin(\frac{2 \pi}{n}) & -\pi \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
+        On the other hand we have
+        \[BA = \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} - \pi \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) - \sqrt{2} \sin(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) & \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
+        We can clearly see that these matrices are not equal for every $n \in N$ as clearly $\sin(2 \pi) \neq \pi \sin(2 \pi)$ for $n = 1$.
+    \item We will show by induction that $A^k = \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}$ for some $k \in \N$.
+        The base case for $k = 1$ holds trivially.
+        Assume now that $A^{k - 1} = \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix}$.
+        Now consider
+        \[\begin{aligned}
+          A^k = AA^{k - 1} &= \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix}\\
+          &= \begin{bmatrix} \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) \end{bmatrix}\\
+          &= \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}.
+        \end{aligned}\]
+        Hence, if we put $k = n$ we will have
+        \[A^n = \begin{bmatrix} \cos(n \cdot \frac{2 \pi}{n}) & -\sin(n \cdot \frac{2 \pi}{n})\\ \sin(n \cdot \frac{2 \pi}{n}) & \cos(n \cdot \frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} \cos(2 \pi) & - \sin(2 \pi)\\ \sin(2 \pi) & \cos(2 \pi) \end{bmatrix} = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix} = I.\]
+    \item By the definition of $I$ and (b) we have the following
+      \[A^nB = IB = BI = BA^n.\]
+  \end{enumerate}
+
+  We have demonstrated that $AB = BA$ and $A^nB = BA^n$ are not equivalent.
+  While the first implies the second, the converse does not hold as we have shown.
+\end{solution}
+
+\begin{problem}
+  If some $M \in L(V)$ commutes with $L$, then $(\forall n \in \N_0)$ $M$ commutes with $L^n$.
+  Then, for every choice $(\alpha_0, \alpha_1, \ldots, \alpha_n \in \mathbb{K})$, the operator polynomial
+  \[p_n(L) := \alpha_0 I + \alpha_1 L + \alpha_2 L^2 + \ldots + \alpha_n L^n = \sum_{k = 0}^{n} \alpha_k L^k\]
+  commutes with $M$.
+\end{problem}
+
+\begin{solution}
+  Let us consider $M p_n(L) = M \sum_{k = 0}^{n} \alpha_k L^k$.
+  Because of the linearity of $M$ we have
+  \[M \sum_{k = 0}^{n} \alpha_k L^k = M \cdot \alpha_0 I + M \cdot \alpha_1 L + \ldots + M \cdot \alpha_n L^n.\]
+  Since scalar multiplication is associative we know
+  \[M \cdot \alpha_0 I + M \cdot \alpha_1 L + \ldots + M \cdot \alpha_n L^n = \alpha_0 M I + \alpha_1 M L + \ldots + \alpha_n M L^n.\]
+  As we know that $M$ commutes with any power of $n$ we have
+  \[\alpha_0 M I + \alpha_1 M L + \ldots + \alpha_n M L^n = \alpha_0 I M + \alpha_1 L M + \ldots + \alpha_n L^n M.\]
+  Finally, from the linearity of $M$ again we have
+  \[\alpha_0 I M + \alpha_1 L M + \ldots + \alpha_n L^n M = (\sum_{k = 0}^{n} \alpha_k L^K) \cdot M = p_n(L) M.\]
+\end{solution}
+
+\begin{problem}
+  If $\lambda_1, \ldots, \lambda_n$ are different eigenvalues for $L$ then the corresponding eigenspaces (nullspaces of $L - \lambda_i I$) are linearly independent.
+\end{problem}
+
+\begin{solution}
+  Let $u_1, \ldots, u_n$ be eigenvectors such that $Lu_i = \lambda_i u_i$.
+  Assume the contrary, let this set of vectors be linearly dependent.
+  Let $u_k$ be the least $k \in N$ such that $u_1, \ldots, u_k$ is linearly dependent.
+  Then we have
+  \[u_k = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i, \text{ such that $\alpha_k \neq 0$.}\]
+  First if we apply $L$ to the left side we get $Lu_k = \lambda_k u_k$.
+  From this we get $Lu_k = \lambda_k (- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i) = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_k u_i$.
+  Now applying it to the right side of the equality we get
+  \[L(- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i) = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_i u_i.\]
+  Combining this and out above equation we get
+  \[- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_k u_i = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_i u_i.\]
+  Simplifying this a little bit we get
+  \[\sum_{i = 0}^{k - 1} \alpha_i (\lambda_k - \lambda_i) u_i = 0.\]
+  Since the vectors $u_1, \ldots, u_{k - 1}$ are linearly independent by the choice of $k$ we know that $\alpha_i (\lambda_k - \lambda_i) = 0$ for every $i$.
+  From our assumption that $\lambda_1, \ldots, \lambda_n$ are different eigenvalues we know that $\lambda_k \neq \lambda_i$ for any $i$.
+  Thus we need $\alpha_i = 0$ for every $i$ to hold.
+  However, in that case notice that $u_k = 0$, contradicting that eigenvectors are non-zero vectors.
+  From here we see that our set of vectors $u_i$ must be linearly independent.
+\end{solution}
+
+\end{document}
