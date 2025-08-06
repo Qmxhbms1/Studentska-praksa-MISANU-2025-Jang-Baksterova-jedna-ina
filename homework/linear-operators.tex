@@ -26,21 +26,21 @@
 \begin{solution}
   \begin{enumerate}[label=(\alph*)]
     \item First we have
-        \[AB = \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} = \begin{bmatrix} \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) + \sqrt{2} \sin(\frac{2 \pi}{n}) & -\pi \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
-        On the other hand we have
-        \[BA = \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} - \pi \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) - \sqrt{2} \sin(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) & \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
-        We can clearly see that these matrices are not equal for every $n \in N$ as clearly $\sin(2 \pi) \neq \pi \sin(2 \pi)$ for $n = 1$.
+      \[AB = \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} = \begin{bmatrix} - \pi \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) - \sqrt{2} \sin(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) & \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
+      On the other hand we have
+      \[BA = \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) + \sqrt{2} \sin(\frac{2 \pi}{n}) & - \pi \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
+        We can clearly see that these matrices are not equal for every $n \in N \setminus \{1\}$ as clearly $\sin(\frac{\pi}) = 1 \neq \pi = \pi \sin(\pi)$ for $n = 2$.
     \item We will show by induction that $A^k = \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}$ for some $k \in \N$.
-        The base case for $k = 1$ holds trivially.
-        Assume now that $A^{k - 1} = \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix}$.
-        Now consider
-        \[\begin{aligned}
-          A^k = AA^{k - 1} &= \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix}\\
-          &= \begin{bmatrix} \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) \end{bmatrix}\\
-          &= \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}.
-        \end{aligned}\]
-        Hence, if we put $k = n$ we will have
-        \[A^n = \begin{bmatrix} \cos(n \cdot \frac{2 \pi}{n}) & -\sin(n \cdot \frac{2 \pi}{n})\\ \sin(n \cdot \frac{2 \pi}{n}) & \cos(n \cdot \frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} \cos(2 \pi) & - \sin(2 \pi)\\ \sin(2 \pi) & \cos(2 \pi) \end{bmatrix} = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix} = I.\]
+      The base case for $k = 1$ holds trivially.
+      Assume now that $A^{k - 1} = \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix}$.
+      Now consider
+      \[\begin{aligned}
+        A^k = AA^{k - 1} &= \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix}\\
+        &= \begin{bmatrix} \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) & - \sin(\frac{2 \pi}{n}) \sin((k - 1) \frac{2 \pi}{n}) + \cos(\frac{2 \pi}{n}) \cos((k - 1) \frac{2 \pi}{n}) \end{bmatrix}\\
+        &= \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}.
+      \end{aligned}\]
+      Hence, if we put $k = n$ we will have
+      \[A^n = \begin{bmatrix} \cos(n \cdot \frac{2 \pi}{n}) & -\sin(n \cdot \frac{2 \pi}{n})\\ \sin(n \cdot \frac{2 \pi}{n}) & \cos(n \cdot \frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} \cos(2 \pi) & - \sin(2 \pi)\\ \sin(2 \pi) & \cos(2 \pi) \end{bmatrix} = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix} = I.\]
     \item By the definition of $I$ and (b) we have the following
       \[A^nB = IB = BI = BA^n.\]
   \end{enumerate}
@@ -62,7 +62,7 @@
   \[M \sum_{k = 0}^{n} \alpha_k L^k = M \cdot \alpha_0 I + M \cdot \alpha_1 L + \ldots + M \cdot \alpha_n L^n.\]
   Since scalar multiplication is associative we know
   \[M \cdot \alpha_0 I + M \cdot \alpha_1 L + \ldots + M \cdot \alpha_n L^n = \alpha_0 M I + \alpha_1 M L + \ldots + \alpha_n M L^n.\]
-  As we know that $M$ commutes with any power of $n$ we have
+  As we know that $M$ commutes with any power of $L$ we have
   \[\alpha_0 M I + \alpha_1 M L + \ldots + \alpha_n M L^n = \alpha_0 I M + \alpha_1 L M + \ldots + \alpha_n L^n M.\]
   Finally, from the linearity of $M$ again we have
   \[\alpha_0 I M + \alpha_1 L M + \ldots + \alpha_n L^n M = (\sum_{k = 0}^{n} \alpha_k L^K) \cdot M = p_n(L) M.\]
@@ -78,11 +78,12 @@
   Let $u_k$ be the least $k \in N$ such that $u_1, \ldots, u_k$ is linearly dependent.
   Then we have
   \[u_k = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i, \text{ such that $\alpha_k \neq 0$.}\]
-  First if we apply $L$ to the left side we get $Lu_k = \lambda_k u_k$.
-  From this we get $Lu_k = \lambda_k (- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i) = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_k u_i$.
+  First, if we apply $L$ to the left side we get $Lu_k = \lambda_k u_k$.
+  From this we get
+  \[Lu_k = \lambda_k (- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i) = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_k u_i.\]
   Now applying it to the right side of the equality we get
   \[L(- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} u_i) = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_i u_i.\]
-  Combining this and out above equation we get
+  Combining this and our above equation we get
   \[- \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_k u_i = - \sum_{i = 0}^{k - 1} \frac{\alpha_i}{\alpha_k} \lambda_i u_i.\]
   Simplifying this a little bit we get
   \[\sum_{i = 0}^{k - 1} \alpha_i (\lambda_k - \lambda_i) u_i = 0.\]
@@ -91,6 +92,113 @@
   Thus we need $\alpha_i = 0$ for every $i$ to hold.
   However, in that case notice that $u_k = 0$, contradicting that eigenvectors are non-zero vectors.
   From here we see that our set of vectors $u_i$ must be linearly independent.
+\end{solution}
+
+\begin{problem}
+  Show that, if $dim \mathcal{V} = n < \infty$, then:
+  \begin{itemize}
+    \item There exist $p, q \in \N$, such that
+      \[\begin{aligned}
+        (\forall k \in \N), N(A^{p + k}) &= N(A^p)\\
+        R(A^{q + k}) &= R(A^q).
+      \end{aligned}\]
+      Does this imply that $N(A^p) = N^{\infty}(A), R(A^q) = R^{\infty}(A)$?
+    \item Prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_v\}$, and that $R^{\infty}(A) + N^{\infty}(A) = V$.
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  We already know that for any $m \in \N$, $N(A^m) \subset N(A^{m + 1})$.
+  This implies that $dim(N(A^m)) \le dim(N(A^{m + 1}))$.
+  Also notice that for any $m$, $N(A^m) \subset \mathcal{V}$, hence $dim(N(A^m)) \le n$.
+  This directly implies that some $m$, such that $0 \le m \le n$, repeats an infinite number of times.
+  Otherwise the amount of powers would be finite, just take the amount each $i \le n$ repeats and add them together, resulting in a finite sum.
+  This obviously contradicts the fact that there are infinitely many natural numbers that can be powers of $A$.
+  Let $p = m$, then we have $N(A^p) = N(A^{p + k})$ for every $k \in \N$.
+
+  We can make a similar argument for $R(A^q)$.
+  This time consider that $dim(R(A^m)) \ge dim(R(A^{m + 1}))$ and that $dim(R(A^m)) \ge 0$.
+  By the same logic as above, we have that some $0 \le m \le n$ repeats an infinite amount of times.
+  Setting $q = m$ we have $R(A^q) = R(A^{q + k})$ for any $k \in \N$.
+
+
+  We already know that $N(A^p) \subset N^{\infty}(A)$.
+  Take some $v \in N^{\infty}(A)$.
+  By definition, we must have some $i \in \N$ such that $v \in N(A^i)$.
+  Either $i < p$ or $i \ge p$.
+  In the first case we have $N(A^i) \subset N(A^p)$, so $v \in N(A^p)$.
+  in the second case we have show that $N(A^i) = N(A^p)$, thus again $v \in N(A^p)$.
+  Since our choice of $v$ was arbitrary, we have $N^{\infty}(A) \subset N(A^p)$, and $N^{\infty}(A) = N(A^p)$.
+
+  To show that $R(A^q) = R^{\infty}(A)$, note that $R^{\infty}(A) \subset R(A^q)$.
+  Take some $v \in R(A^q)$.
+  Since we know that $R(A^q) = R(A^{q + k})$, it follows that $v \in R(A^{q + k})$ for every $k \in \N$.
+  As we know that $R(A^q) \subset R(A^i)$, for any $i \le q$, it follows that $v \in R(A^i)$ for every $i$.
+  Thus for any natural number $m$ we have that $v \in R(A^m)$, thus $v \in R^{\infty}(A)$.
+  Finally we have $R(A^q) \subset R^{\infty}(A)$ and $R(A^q) = R^{\infty}(A)$.
+
+
+  To prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_V\}$, we can just show that $R(A^l) \cap N(A^l) = \{0_V\}$, where $l = max(p, q)$.
+  Note that we know $R(A^l) = R(A^{2 l})$ and similarly $N(A^l) = N(A^{2 l})$.
+  Pick some $x \in R(A^l) \cap N(A^l)$.
+  Then there is some $y$ such that $A^l y = x$ and $A^l x = 0$.
+  From there we have $A^{2 l} y = A^l(A^l x) = A^l 0 = 0$ 
+  Since we know that $N(A^l) = N(A^{2 l})$, we see that $A^{2 l} y = 0$ implies that $A^l y = 0$.
+  Thus we have $x = A^l y = 0$.
+
+  Finally, we wish to show that $R^{\infty}(A) + N^{\infty}(A) = V$.
+  It is trivially clear that $R^{\infty}(A) + N^{\infty}(A) \subset V$, since both the hyper-range and hyper-nullspace are subsets of $V$.
+  Define $l = max(p, q)$ the same as above.
+  Consider any $v \in \mathcal{V}$.
+  Clearly we have $A^l v \in R(A^l)$, hence we also have $A^l v \in R(A^{2 l})$.
+  So there is some vector $w$ such that $A^{2 l} w = A^l v$.
+  Consider $A^{2 l} w - A^l v = 0$, or by linearity, $A^l (A^l w - v) = 0$.
+  Thus we have $A^l w - v \in N(A^l)$.
+  Since $A^l w \in R(A^l)$, we have
+  \[v = A^l w + (v - A^l w) \in R(A^i) + N(A^i) = R^{\infty}(A) + N^{\infty}(A).\]
+  From there clearly $V \subset R^{\infty}(A) + N^{\infty}(A)$ and finally $V = R^{\infty}(A) + N^{\infty}(A)$.
+\end{solution}
+
+\begin{problem}
+  For the following matrices find $N(A), R(A), N^{\infty}(A), R^{\infty}(A)$.
+  \begin{itemize}
+    \item $A = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0 \end{bmatrix};$
+    \item $A = \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix};$
+    \item $A = \begin{bmatrix} 0 & 1\\ 0 & 0 \end{bmatrix}.$
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item The range of $A$ is 
+      \[A v = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix} = \begin{bmatrix} y\\ 0\\ 0. \end{bmatrix}\]
+      Notice that any vector whose coordinates are of the form 
+      \[v = \begin{bmatrix} x\\ 0\\ z \end{bmatrix}\]
+      is in the nullspace.
+      From here we also see that $A^2$ is the zero transformation, hence the hyper-range is trivial, $R^{\infty}(A) = \{0\}$ and the hyper-nullspaces is the whole vectors space, $N^{\infty}(A) = V$.
+    \item The range of $A$ is 
+      \[A v = \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix} = \begin{bmatrix} x\\ y\\ 0 \end{bmatrix}.\]
+      From there the nullspace is equal to the vectors of the form 
+      \[v = \begin{bmatrix} 0\\ 0\\ z \end{bmatrix}.\]
+      Since we see that $A^2 = A$, it follows that any $A^p = A$, thus the hyper-range is equal to the range of $A$ and the hyper-nullspace is equal to the nullspace of $A$.
+    \item The range of $A$ is 
+      \[A v = \begin{bmatrix} 0 & 1\\ 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y \end{bmatrix} = \begin{bmatrix} y\\ 0 \end{bmatrix}.\]
+      Thus the nullspace consists of all the vectors whose coordinates are of the form 
+      \[v = \begin{bmatrix} x\\ 0 \end{bmatrix}.\]
+      We again have that $A^2$ is the zero transformation, so the hyper-range is trivial and the hyper-nullspace is the entire vector space.
+  \end{itemize}
+\end{solution}
+
+\begin{problem}
+  Prove that the spectral mapping theorem does not hold for $\mathbb{K} = \R$: find a matrix $A$, such tah $A^3$ has the spectrum $\{1\}$, but such that $\{1\}$ is not an eigenvalue of $A$ (use complex conjugates).
+\end{problem}
+
+\begin{solution}
+  Consider the rotation matrix $A = \begin{bmatrix} \cos(\frac{2 \pi}{3}) & - \sin(\frac{2 \pi}{3})\\ \sin(\frac{2 \pi}{3}) & \cos(\frac{2 \pi}{3}) \end{bmatrix}$.
+  In problem 1 we had proven that $A^3 = I$, hence it has the spectrum $\{1\}$.
+  Since this is a rotation matrix it is clear that there are no eigenvectors nor eigenvalues, as the only vector that maps to a scalar multiple of itself is the zero vector.
+  This is clear to see if we consider the polar coordinates of the plane.
+  We can also consider the determinant of $A - \lambda I$ which will give us the polynomial $p(\lambda) = \lambda^2 + \lambda + 1$, which has no roots in $\R$.
 \end{solution}
 
 \end{document}
