@@ -29,7 +29,7 @@
       \[AB = \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} \cdot \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} = \begin{bmatrix} - \pi \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) - \sqrt{2} \sin(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) & \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
       On the other hand we have
       \[BA = \begin{bmatrix} 0 & 1\\ \pi & \sqrt{2} \end{bmatrix} \cdot \begin{bmatrix} \cos(\frac{2 \pi}{n}) & -\sin(\frac{2 \pi}{n})\\ \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n}) \end{bmatrix} = \begin{bmatrix} \sin(\frac{2 \pi}{n}) & \cos(\frac{2 \pi}{n})\\ \pi \cos(\frac{2 \pi}{n}) + \sqrt{2} \sin(\frac{2 \pi}{n}) & - \pi \sin(\frac{2 \pi}{n}) + \sqrt{2} \cos(\frac{2 \pi}{n}) \end{bmatrix}.\]
-        We can clearly see that these matrices are not equal for every $n \in N \setminus \{1\}$ as clearly $\sin(\frac{\pi}) = 1 \neq \pi = \pi \sin(\pi)$ for $n = 2$.
+      We can clearly see that these matrices are not equal for every $n \in N \setminus \{1\}$ as clearly $\sin(\pi) = 1 \neq \pi = \pi \sin(\pi)$ for $n = 2$.
     \item We will show by induction that $A^k = \begin{bmatrix} \cos(k \cdot \frac{2 \pi}{n}) & -\sin(k \cdot \frac{2 \pi}{n})\\ \sin(k \cdot \frac{2 \pi}{n}) & \cos(k \cdot \frac{2 \pi}{n}) \end{bmatrix}$ for some $k \in \N$.
       The base case for $k = 1$ holds trivially.
       Assume now that $A^{k - 1} = \begin{bmatrix} \cos((k - 1) \cdot \frac{2 \pi}{n}) & -\sin((k - 1) \cdot \frac{2 \pi}{n})\\ \sin((k - 1) \cdot \frac{2 \pi}{n}) & \cos((k - 1) \cdot \frac{2 \pi}{n}) \end{bmatrix}$.
@@ -50,7 +50,7 @@
 \end{solution}
 
 \begin{problem}
-  If some $M \in L(V)$ commutes with $L$, then $(\forall n \in \N_0)$ $M$ commutes with $L^n$.
+  If some $M \in L(\mathcal{V})$ commutes with $L$, then $(\forall n \in \N_0)$ $M$ commutes with $L^n$.
   Then, for every choice $(\alpha_0, \alpha_1, \ldots, \alpha_n \in \mathbb{K})$, the operator polynomial
   \[p_n(L) := \alpha_0 I + \alpha_1 L + \alpha_2 L^2 + \ldots + \alpha_n L^n = \sum_{k = 0}^{n} \alpha_k L^k\]
   commutes with $M$.
@@ -103,7 +103,7 @@
         R(A^{q + k}) &= R(A^q).
       \end{aligned}\]
       Does this imply that $N(A^p) = N^{\infty}(A), R(A^q) = R^{\infty}(A)$?
-    \item Prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_v\}$, and that $R^{\infty}(A) + N^{\infty}(A) = V$.
+    \item Prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_v\}$, and that $R^{\infty}(A) + N^{\infty}(A) = \mathcal{V}$.
   \end{itemize}
 \end{problem}
 
@@ -127,18 +127,18 @@
   By definition, we must have some $i \in \N$ such that $v \in N(A^i)$.
   Either $i < p$ or $i \ge p$.
   In the first case we have $N(A^i) \subset N(A^p)$, so $v \in N(A^p)$.
-  in the second case we have show that $N(A^i) = N(A^p)$, thus again $v \in N(A^p)$.
+  in the second case we have shown that $N(A^i) = N(A^p)$, thus again $v \in N(A^p)$.
   Since our choice of $v$ was arbitrary, we have $N^{\infty}(A) \subset N(A^p)$, and $N^{\infty}(A) = N(A^p)$.
 
   To show that $R(A^q) = R^{\infty}(A)$, note that $R^{\infty}(A) \subset R(A^q)$.
   Take some $v \in R(A^q)$.
   Since we know that $R(A^q) = R(A^{q + k})$, it follows that $v \in R(A^{q + k})$ for every $k \in \N$.
   As we know that $R(A^q) \subset R(A^i)$, for any $i \le q$, it follows that $v \in R(A^i)$ for every $i$.
-  Thus for any natural number $m$ we have that $v \in R(A^m)$, thus $v \in R^{\infty}(A)$.
+  Thus for any natural number $m$ we have that $v \in R(A^m)$, and $v \in R^{\infty}(A)$.
   Finally we have $R(A^q) \subset R^{\infty}(A)$ and $R(A^q) = R^{\infty}(A)$.
 
 
-  To prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_V\}$, we can just show that $R(A^l) \cap N(A^l) = \{0_V\}$, where $l = max(p, q)$.
+  To prove that $R^{\infty}(A) \cap N^{\infty}(A) = \{0_\mathcal{V}\}$, we can just show that $R(A^l) \cap N(A^l) = \{0_\mathcal{V}\}$, where $l = max(p, q)$.
   Note that we know $R(A^l) = R(A^{2 l})$ and similarly $N(A^l) = N(A^{2 l})$.
   Pick some $x \in R(A^l) \cap N(A^l)$.
   Then there is some $y$ such that $A^l y = x$ and $A^l x = 0$.
@@ -146,8 +146,8 @@
   Since we know that $N(A^l) = N(A^{2 l})$, we see that $A^{2 l} y = 0$ implies that $A^l y = 0$.
   Thus we have $x = A^l y = 0$.
 
-  Finally, we wish to show that $R^{\infty}(A) + N^{\infty}(A) = V$.
-  It is trivially clear that $R^{\infty}(A) + N^{\infty}(A) \subset V$, since both the hyper-range and hyper-nullspace are subsets of $V$.
+  Finally, we wish to show that $R^{\infty}(A) + N^{\infty}(A) = \mathcal{V}$.
+  It is trivially clear that $R^{\infty}(A) + N^{\infty}(A) \subset \mathcal{V}$, since both the hyper-range and hyper-nullspace are subsets of $\mathcal{V}$.
   Define $l = max(p, q)$ the same as above.
   Consider any $v \in \mathcal{V}$.
   Clearly we have $A^l v \in R(A^l)$, hence we also have $A^l v \in R(A^{2 l})$.
@@ -156,7 +156,7 @@
   Thus we have $A^l w - v \in N(A^l)$.
   Since $A^l w \in R(A^l)$, we have
   \[v = A^l w + (v - A^l w) \in R(A^i) + N(A^i) = R^{\infty}(A) + N^{\infty}(A).\]
-  From there clearly $V \subset R^{\infty}(A) + N^{\infty}(A)$ and finally $V = R^{\infty}(A) + N^{\infty}(A)$.
+  From there clearly $\mathcal{V} \subset R^{\infty}(A) + N^{\infty}(A)$ and finally $\mathcal{V} = R^{\infty}(A) + N^{\infty}(A)$.
 \end{solution}
 
 \begin{problem}
@@ -175,7 +175,7 @@
       Notice that any vector whose coordinates are of the form 
       \[v = \begin{bmatrix} x\\ 0\\ z \end{bmatrix}\]
       is in the nullspace.
-      From here we also see that $A^2$ is the zero transformation, hence the hyper-range is trivial, $R^{\infty}(A) = \{0\}$ and the hyper-nullspaces is the whole vectors space, $N^{\infty}(A) = V$.
+      From here we also see that $A^2$ is the zero transformation, hence the hyper-range is trivial, $R^{\infty}(A) = \{0\}$ and the hyper-nullspaces is the whole vectors space, $N^{\infty}(A) = \mathcal{V}$.
     \item The range of $A$ is 
       \[A v = \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix} = \begin{bmatrix} x\\ y\\ 0 \end{bmatrix}.\]
       From there the nullspace is equal to the vectors of the form 
