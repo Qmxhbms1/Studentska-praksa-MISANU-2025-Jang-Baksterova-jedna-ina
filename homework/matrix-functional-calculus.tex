@@ -1,0 +1,226 @@
+\documentclass{article}
+
+\input{homework-preamble.tex}
+
+\title{Matrix Functional Calculus}
+\author{Mihailo Đurić}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{problem}
+  Fill in the gaps in Example 5.5 on the pages 12-13 (find $v_1, v_2, v_3$, the matrix $P$, and show that indeed $P^{-1} A P = J$).
+\end{problem}
+
+\begin{solution}
+  Let $A = \begin{bmatrix} 5 & 4 & 2\\ 0 & 5 & 1\\ 0 & 0 & 5 \end{bmatrix}$.
+  We define $v_1$ as the eigenvector satisfying $(A - 5 I) v_1 = 0$, and similarly $v_2, v_3$ as vectors satisfying $(A - 5 I) v_2 = v_1$ and $(A - 5 I) v_3 = v_2$, respectively.
+  We know that
+  \[A - 5 I = \begin{bmatrix} 0 & 4 & 2\\ 0 & 0 & 1\\ 0 & 0 & 0 \end{bmatrix}.\]
+  Thus we have the following equation
+  \[(A - 5 I) v_1 = \begin{bmatrix} 0 & 4 & 2\\ 0 & 0 & 1\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix}\\ = \begin{bmatrix} 4y + 2z\\ z\\ 0 \end{bmatrix} = 0\]
+  Thus we clearly have $z = 0, y = 0$ and $x$ being any scalar, so we simply pick the vector with $x = 1$ for simplicity.
+  Similarly to before we have
+  \[(A - 5 I) v_2 = \begin{bmatrix} 4y + 2z\\ z\\ 0 \end{bmatrix} = \begin{bmatrix} 1\\ 0\\ 0 \end{bmatrix}.\]
+  From here we clearly have $z = 0$ and $y = \frac{1}{4}$.
+  Again, we are free in our choice of $x$, we choose $x = 0$ for simplicity, since $v_2$ isn't the zero vector anyways.
+  Finally for $v_3$ we have
+  \[(A - 5 I) v_3 = \begin{bmatrix} 4y + 2z\\ z\\ 0 \end{bmatrix} = \begin{bmatrix} 0\\ \frac{1}{4}\\ 0 \end{bmatrix}.\]
+  Thus we have $z = \frac{1}{4}$, $y = - \frac{1}{8}$ and we again choose $x = 0$.
+
+  We define the matrix $P$ as
+  \[P = \begin{bmatrix} v_1 & v_2 & v_3 \end{bmatrix} = \begin{bmatrix} 1 & 0 & 0\\ 0 & \frac{1}{4} & - \frac{1}{8}\\ 0 & 0 & \frac{1}{4} \end{bmatrix}.\]
+  To find the inverse of $P$, we use the Gauss-Jordan elimination method on the augmented matrix $[P  |  I]$.
+  First we set up the augmented matrix:
+  \[[P  |  I] = \left[\begin{array}{ccc|ccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & \frac{1}{4} & -\frac{1}{8} & 0 & 1 & 0 \\ 0 & 0 & \frac{1}{4} & 0 & 0 & 1 \end{array} \right]\]
+  We just need to mutiply the second and third rows by 4, and then add the third row times $\frac{1}{2}$ to the second to get
+  \[[I | P^{-1}] = \left[\begin{array}{ccc|ccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 0 & 4 & 2 \\ 0 & 0 & 1 & 0 & 0 & 4 \end{array} \right].\]
+  Finally, we calculate $P^{-1} A P$.
+  First we have
+  \[A P = \begin{bmatrix} 5 & 4 & 2\\ 0 & 5 & 1\\ 0 & 0 & 5 \end{bmatrix} \cdot \begin{bmatrix} 1 & 0 & 0\\ 0 & \frac{1}{4} & - \frac{1}{8}\\ 0 & 0 & \frac{1}{4} \end{bmatrix} = \begin{bmatrix} 5 & 1 & 0\\ 0 & \frac{5}{4} & - \frac{3}{8}\\ 0 & 0 & \frac{5}{4} \end{bmatrix}\]
+  From there we get
+  \[P^{-1} (A P) = \begin{bmatrix} 1 & 0 & 0\\ 0 & 4 & 2\\ 0 & 0 & 4 \end{bmatrix} \cdot \begin{bmatrix}  5 & 1 & 0\\ 0 & \frac{5}{4} & - \frac{3}{8}\\ 0 & 0 & \frac{5}{4} \end{bmatrix} = \begin{bmatrix} 5 & 1 & 0\\ 0 & 5 & 1\\ 0 & 0 & 5 \end{bmatrix} = J.\]
+\end{solution}
+
+\begin{problem}
+  Solve the matrix equation
+  \[X^2 = \begin{bmatrix} 4 & 1\\ 0 & 4 \end{bmatrix}.\]
+\end{problem}
+
+\begin{solution}
+  Since our matrix is already in Jordan normal form, consisting of $p = 1$ Jordan block, and we see that the number of distinct eigenvalues is $s = 1 = p$, we know that there are $2^1 = 2$ primary roots and no non primary roots.
+  To find those primary roots we just apply the square root function to the matrix, choosing the same branch every time.
+  Thus we have
+  \[X_1 = \begin{bmatrix} \sqrt{4} & \frac{1}{2 \sqrt{4}}\\ 0 & \sqrt{4} \end{bmatrix} = \begin{bmatrix} 2 & \frac{1}{4}\\ 0 & 2 \end{bmatrix}.\]
+  Now we choose the negative branches to get
+  \[X_2 = \begin{bmatrix} -2 & - \frac{1}{4}\\ 0 & -2 \end{bmatrix}.\]
+\end{solution}
+
+\begin{problem}
+  Find the sign function of the matrix
+  \[\begin{bmatrix} 2 & 0\\ 0 & -3 \end{bmatrix}.\]
+\end{problem}
+
+\begin{solution}
+  This matrix is already in Jordan normal form sorted by the real part of eigenvalues, consisting of two $1 \times 1$ Jordan blocks.
+  Thus the sign function returns
+  \[sgn A = \begin{bmatrix} 1 & 0\\ 0 & -1 \end{bmatrix}.\]
+\end{solution}
+
+\begin{problem}
+  Find the exponential function, $e^N$, of a nilpotent matrix
+  \[N = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+\end{problem}
+
+\begin{solution}
+  Notice that we have $N^2 = 0$.
+  Hence, for any $p \ge 2$ we have $N^p = 0$.
+  Thus, using the Taylor expansion of the exponential function we have
+  \[e^N = I + N + \frac{N^2}{2!} + \ldots = I + N + 0 + 0 + \ldots = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}.\]
+\end{solution}
+
+\begin{problem}
+  Do the following matrices have a square root?
+  \[A = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix},\quad B = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix}, \quad C = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix}, \quad D = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+\end{problem}
+
+\begin{solution}
+  First we consider
+  \[A = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}\].
+  We will show by induction that
+  \[A^n = \begin{bmatrix} 1 & n & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}.\]
+  The base case, $n = 1$, holds trivially.
+  Now assume that we have
+  \[A^{n - 1} = \begin{bmatrix} 1 & n - 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}\]
+  Multiplying by $A$ we get
+  \[A^n = AA^{n - 1} = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 & n - 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & n - 1 + 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}.\]
+  Thus we see that the null space of any power of $A$ is trivial, hence there are no repeating odd numbers in the differences of their dimensions.
+  Hence, the square root exists by theorem 3.1.
+
+  Next, take the matrix
+  \[B = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix}.\]
+  First we find the null space as
+  \[\begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix} = \begin{bmatrix} y\\ 0\\ z \end{bmatrix}.\]
+  Thus we have $\dim(N(B)) = 1$, as we need $y = 0$ and $z = 0$.
+  We now find $B^2$.
+  \[B^2 = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ 0 & 0 & 1 \end{bmatrix}.\]
+  We see that the null space of this matrix is clearly 2-dimensional, with fixed $z = 0$.
+  Since we know $B^0 = I$ has a 0-dimensional null space, it is clear that the odd number $d_i = 1$ repeates in the sequence $d_i = \dim(N(B^i)) - \dim(N(B^{i - 1}))$.
+  Hence by theorem 3.1 we know that no square root exists.
+
+  Let us now consider the matrix
+  \[C = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+  We have
+  \[\begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x\\ y\\ z \end{bmatrix} = \begin{bmatrix} x + y\\ y\\ z \end{bmatrix}.\]
+  Thus we have $y = 0$ and $x = 0$ for a vector to be in the null space.
+  Hence $\dim(N(C)) = 1$.
+  Similarly to $A$ we will show that the powers of this matrix are equal
+  \[C^n = \begin{bmatrix} 1 & n & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+  Again the base case holds trivially and we assume that $n - 1$ case holds.
+  We then have
+  \[C^n = CC^{n - 1} = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} 1 & n - 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & n & 0\\ 0 & 1 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+  Thus for every $n$ we have that the null space is 1-dimensional, and there are no repeating odd numbers in the sequence.
+  By the theorem 3.1 we know that there exists a square root.
+
+  Finally we consider
+  \[D = \begin{bmatrix} 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0 \end{bmatrix}.\]
+  The null space of this matrix is clearly 2-dimensional.
+  Notice now that we have $D^2 = 0$, hence the null space is 3-dimensional, as is the null space of every subsequent power of $D$.
+  Thus the only differences in our sequence are $d_1 = 2$, $d_2 = 1$ and $d_3 = 0$.
+  Since no odd number repeats, by theorem 3.1 we know that the square root exists.
+\end{solution}
+
+\begin{problem}
+  If $A = [a] (a \in \C)$, solve the matrix equation $A X A = X A X$ for $X$.
+\end{problem}
+
+\begin{solution}
+  Since $A$ is a $1 \times 1$ matrix and we need $A X A$ to exist, it is clear that $X$ is also a $1 \times 1$ matrix.
+  Let $X = [x]$ for some $x \in \C$.
+  Now the matrix equation $A X A = X A X$ boils down to the scalar equation $a^2 x = a x^2$.
+  Cleaning this up a bit we get $a x (a - x) = 0$.
+  Thus if $A$ is the zero matrix, can have $X = [x]$ for any $x \in \C$.
+  Otherwise, we have two solutions, $x = 0$ and $x = a$.
+\end{solution}
+
+\begin{problem}
+  Using the Cauchy-Binet theorem for determinants, what can be said for the determinants of square complex matrices $A$ and $X$ related by the matrix equation $A X A = X A X$?
+\end{problem}
+
+\begin{solution}
+  By the Cauchy-Binet theorem we know that $det(A X A) = det(A)^2 det(X)$.
+  Similarly to above, from the Yang-Baxter-like equation we get $det(A) det(X) (det(A) - det(X)) = 0$.
+  Thus either $A$ is a singular matrix, in which case the determinant of $X$ can be anything, or if $A$ is invertible we have either $det(X) = 0$ or $det(X) = det(A)$.
+\end{solution}
+
+\begin{problem}
+  Solve the matrix equation $A X A = X A X$ for $X$, if
+  \[A = \begin{bmatrix} 1 & 1\\ 0 & 1 \end{bmatrix}.\]
+\end{problem}
+
+\begin{solution}
+  We put
+  \[X = \begin{bmatrix} x & y\\ z & w \end{bmatrix}.\]
+  First we will find $X A$:
+  \[X A =  \begin{bmatrix} x & y\\ z & w \end{bmatrix} \cdot  \begin{bmatrix} 1 & 1\\ 0 & 1 \end{bmatrix} =  \begin{bmatrix} x & x + y\\ z & z + w \end{bmatrix}.\]
+  Then we find the left side of our equation:
+  \[A X A =  \begin{bmatrix} 1 & 1\\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} x & x + y\\ z & z + w \end{bmatrix} = \begin{bmatrix} x + z & x + y + z + w\\ z & z + w \end{bmatrix}.\]
+  Similarly, we find the right side:
+  \[X A X = \begin{bmatrix} x & x + y\\ z & z + w \end{bmatrix} \cdot \begin{bmatrix} x & y\\ z & w \end{bmatrix} = \begin{bmatrix} x^2 + z (x + y) & x y + w (x + y)\\ xz + z (z + w) & yz + w (z + w) \end{bmatrix}.\]
+  By their equality we have the following system of equations:
+  \[\begin{cases} x + z = x^2 + z(x + y)\\ x + y + z + w = xy + w(x + y)\\ z = xz + z(z + w)\\ z + w = yz + w(z + w) \end{cases}\]
+  Looking at the third equation, we split our solutions into two cases, if $z = 0$ and if $z \neq 0$.
+  First if $z = 0$, our equation simplify to
+  \[\begin{cases} x = x^2\\x + y + z = xy + w(x + y)\\ 0 = 0\\ w = w^2 \end{cases}\]
+  From the first and fourth equation it follow that $x = \{0, 1\}$ and $w = \{0, 1\}$.
+  We consider all four possible combination
+  \begin{enumerate}
+    \item If $x = 0$ and $w = 0$ then from the second equation we get $y = 0$.
+      Thus one solution is $X = 0$.
+    \item If $x = 0$ and $w = 1$ the second equation becomes $y + 1 = y$, hence there are no solutions in $\C$.
+    \item If $x = 1$ and $w = 0$ then we have $1 + y = y$, which again leads us to no solution.
+    \item If $x = 1$ and $w = 1$ we have $2 + y = 2y + 1$, yielding $y = 1$.
+      Thus we get $X = A$ as a solution.
+  \end{enumerate}
+  Now, if we had $z \neq 0$ then from the third equation we get $x + z + w = 1$, or $1 - x = z + w$.
+  Factoring the fourth equation we have $(z + w)(1 - w) = yz$, and substituting $z + w$ we get $(1 - x)(1 - w) = yz$.
+  From the first equation we get $(x + z)(1 - x) = zy$, the same as the fourth equation.
+  Now we consider the second equation from which we have $x + y + 1 - x = xy + w(x + y)$, or $1 = y(x - 1) + w(x + y)$.
+  Substituting $w = 1 - x - z$ into that we get, with some algebra, $x^2 - x + 1 = -z(x + y)$.
+  So our system of equations now looks like this
+  \[\begin{cases} (1 - x)(x + z) = yz\\ x^2 - x + 1 = -z(x + y) \end{cases}\]
+  From the first equation we find $y = \frac{x + z - x^2 -xz}{z}$.
+  Putting this into the right side of the seconds equation yields us
+  \[z(x + y) = xz + x + z - x^2 - xz = x + z - x^2.\]
+  Thus we have $x + z - x^2 = -x^2 + x - 1$, which simplifies to $z = -1$.
+  Plugging this into our first equation gives us $y = (x - 1)^2$.
+  We also know $w = 1 - x - (- 1)$, thus $w = 2 - x$.
+  Thus we have an infinite famility of solutions given by
+  \[X = \begin{bmatrix} x & (x - 1)^2\\ - 1 & 2 - x \end{bmatrix}.\]
+
+  In total, our solution set consists of $X = 0$, $X = A$ and $X = \begin{bmatrix} x & (x - 1)^2\\ - 1 & 2 - x \end{bmatrix}$.
+\end{solution}
+
+\begin{problem}
+  Does the Jordan block $J_m(0)$ have a $p$-th root for every $p \ge 2$.
+\end{problem}
+
+\begin{solution}
+  We assume $m > 1$ since $m = 1$ trivial has square roots for any $p$.
+  First we note that the null space of $J_m (0)$ is 1-dimensional, if we have a vector $X = \begin{bmatrix} x_1\\ x_2\\ \vdots \end{bmatrix}$ then for it to be in the null space we have to fix $x_i = 0$ for every $i \ge 2$.
+  Now notice the effect of multiplying basis vectors by $J_m (0)$.
+  We have $J_m (0) \cdot \begin{bmatrix} 1\\ 0\\ \vdots \end{bmatrix} = 0$.
+  Also for any other basis vector $e_i$ we have the following $J_m (0) \cdot e_i = e_{i - 1}$.
+  Thus we have the following equality $J_m (0)^2 = \begin{bmatrix} 0 & J_{m - 1} (0)\\ 0 & 0 \end{bmatrix}$.
+  This matrix clearly has a 2-dimensional null space.
+  The pattern continues, any power $k$ of $J_m (0)$ gives us $k$ zero vectors and $m - k$ basis vectors.
+  Hence the null space in general is going to be $k$-dimensional.
+  
+  If we now consider the statement of theorem 4.3 and pick $v = 0$, we are interested in the interval $(0, p)$.
+  We have shown that $d_i = 1$ appears $m$ many times, and $1 \in (0, p)$ for any $p \ge 2$.
+  Thus the Jordan block $J_m (0)$ does not have a $p$-th root for any $p \ge 2$ if $m > 1$.
+\end{solution}
+\end{document}
