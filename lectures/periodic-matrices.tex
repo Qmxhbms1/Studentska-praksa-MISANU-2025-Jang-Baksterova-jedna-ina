@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\input{lectures-preamble.tex}
+
+\title{Solutions to the Yang-Baxter-like matrix equations for the case $A^3 = -A$}
+\author{Mihailo Đurić}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Preliminary results}
+
+\begin{theorem} \label{diagonalizable}
+  A linear operator $A$ on a vector space $V$ of dimension $n$ over the field $\C$ is diagonalizable if and only if the minimal polynomial of $A$ has no repeated roots.
+\end{theorem}
+
+\begin{theorem} \label{minimalpoly}
+  Every annihilating polynomial is the multiple of the minimal polynomial of an operator $A$.
+\end{theorem}
+
+\begin{theorem} \label{solutions}
+  Suppose that $A$ is an $n \times n$ complex diagonalizable matrix with three distinct eigenvalues $0, \lambda$ and $\mu$ with $\lambda \mu \neq 0$ and $\lambda^2 - \lambda \mu + \mu^2 \neq 0$.
+  Then all solutions of the Yang-Baxter-like matrix equation $A X A = X A X$ have the form
+  \[X = S \begin{bmatrix} P & 0 & 0\\ 0 & Q & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} \widehat{\lambda} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & \lambda I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k - r - v} & 0 & 0 & 0 & C_3 \\ \hline G & 0 & 0 & \widehat{\mu} & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & \mu I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m - k - r - t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 & 0\\ 0 & Q^{-1} & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} S^{-1},\]
+  in which, $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, $0 \le r \le \min \{k, m - k\}, 0 \le v \l k - r, 0 \le t \le m - k - r, \widehat{\lambda} = \frac{\mu^2}{\mu - \lambda}, \widehat{\mu} = \frac{\lambda^2}{\lambda - \mu}$, $F$ is an arbitrary $r \times r$ invertible matrix, $G = \frac{- \lambda \mu (\lambda^2 - \lambda \mu + \mu^2)}{(\lambda - \mu)^2} F^{-1}$, $C_3 \in \C^{(k - r - v) \times (n - m)}$, $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, $D_3 \in \C^{(n - m) \times (k - r - v)}$, $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, $\lambda D_3 C_3 = - \mu D_6 C_6$, and $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
+\end{theorem}
+
+\section{All solutions for $A^3 = -A$}
+
+\begin{theorem} \label{periodic-diagonal}
+  For any $n \in \N$ and $t \in \C$, the matrix satisfying $A^n = t A$ is diagonalizable.
+\end{theorem}
+
+\begin{proof}
+  Consider the polynomial $p(x) = x^n - t x$.
+  It is clear that any $A$ such that $A^n = t A$ annihilates this polynomial, thus by theorem \ref{minimalpoly}, it is a multiple of the minimal polynomial.
+  Our polynomial has $n$ distinct roots, $x = 0$ and $x^{n - 1} = t$.
+  Thus the roots of the minimal polynomial must also be distinct, i.e., have multiplicity 1.
+  Applying theorem \ref{diagonalizable} we get that $A$ is diagonalizable.
+\end{proof}
+
+\begin{theorem}
+  If $A^3 = -A$, assume that the rank of $A$ is $m$ and the multiplicity of eigenvalue $i$ is $k$.
+  Then all solutions of the Yang-Baxter-like matrix equation $A X A = X A X$ have the form
+  \[X = S \begin{bmatrix} P & 0 & 0\\ 0 & Q & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} - \frac{i}{2} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & i I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k - r - v} & 0 & 0 & 0 & C_3 \\ \hline - \frac{3}{4} F^{-1} & 0 & 0 & \frac{i}{2} & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & - i I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m - k - r - t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 & 0\\ 0 & Q^{-1} & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} S^{-1},\]
+  in which, $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, $0 \le r \le \min \{k, m - k\}, 0 \le v \l k - r, 0 \le t \le m - k - r$, $F$ is an arbitrary $r \times r$ invertible matrix, $C_3 \in \C^{(k - r - v) \times (n - m)}$, $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, $D_3 \in \C^{(n - m) \times (k - r - v)}$, $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, $i D_3 C_3 = i D_6 C_6$, and $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
+\end{theorem}
+
+\begin{proof}
+  By theorem \ref{periodic-diagonal} we know that $A$ is diagonalizable and that its eigenvalues are in the set $\{0, i, - i\}$.
+  We easily check that $i^2 - i (- i) + (- i)^2 = -3 \neq 0$.
+  Applying theorem \ref{solutions} we get our result.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\input{homework-preamble.tex}
+
+\title{Yang-Baxter-like matrix equation}
+\author{Mihailo Đurić}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{problem}
+  Let
+  \[A = \begin{bmatrix} 0 & 1 & 0\\ 1 & 1 & 0\\ 1 & 0 & 0 \end{bmatrix}.\]
+  \begin{itemize}
+    \item Find $P$ and $Q$ such that $PA = AQ = 0$.
+    \item Find some inner inverse of $A$.
+    \item Find one solution to YBME for this particular $A$.
+      Try to generate some new classes of solutions with it.
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  We are looking for a matrix $P = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33} \end{bmatrix}$ such that
+  \[PA = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33} \end{bmatrix} \cdot \begin{bmatrix} 0 & 1 & 0\\ 1 & 1 & 0\\ 1 & 0 & 0 \end{bmatrix} = \begin{bmatrix} a_{12} + a_{13} & a_{11} + a_{12} & 0\\ a_{22} + a_{23} & a_{21} + a_{22} & 0\\ a_{32} + a_{33} & a_{31} + a_{32} & 0 \end{bmatrix} = 0.\]
+  Thus we have $a_{i1} = - a_{i2} = a_{i3}$ for $i \in \{1, 2, 3\}$.
+  Choosing $a_{i1} = 1$ we get
+  \[P = \begin{bmatrix} 1 & -1 & 1\\ 1 & -1 & 1\\ 1 & -1 & 1 \end{bmatrix}.\]
+  Similarly we get that $Q$ is of the form
+  \[\begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ a_{31} & a_{32} & a_{33} \end{bmatrix},\]
+  for any $a_{3i} \in \C$.
+  Thus we can simply choose
+  \[Q = \begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 1 & 1 \end{bmatrix}.\]
+  Thus we have have $PA = QA = 0$.
+
+  We put
+  \[B = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33} \end{bmatrix}.\]
+  Then we have
+  \[ABA = \begin{bmatrix} a_{22} + a_{23} & a_{21} + a_{22} & 0\\ a_{12} + a_{13} + a_{22} + a_{23} & a_{11} + a_{12} + a_{21} + a_{22} & 0\\ a_{12} + a_{13} & a_{11} + a_{12} & 0 \end{bmatrix} = A.\]
+  Thus we have $a_{22} = - a_{23} = 1 - a_{21}$, $a_{12} = 1 - a_{13} = - a_{11}$.
+  Picking $a_{22} = a_{12} = 1$ and $a_{3j} = 0$ we have
+  \[B = \begin{bmatrix} -1 & 1 & 0\\ 0 & 1 & -1\\ 0 & 0 & 0 \end{bmatrix},\]
+  and $B$ is an inner inverse of $A$.
+
+  We already know that $P$ and $Q$ are solutions to YBME, thus from the Lemma on page 6 we know that any powers of $P$ and $Q$ are also solutions.
+  Further more, we know that any matrix $Q^n P^m$ is a solution for any $n, m \in \N$.
+  We can also insert $B$ anywhere in that solution by the theorem on page 7, so we have $Q^{n - i} B Q^i P^m$ and $Q^n P^j B P^{m - j}$ as families of solutions.
+  We can continue inserting $B$, either raising its power or inserting it in a different place now to generate new solutions.
+  We can also easily generate new matrices $P$, $Q$ and $B$ and repeat the process, or mix the solutions.
+\end{solution}
+
+\begin{problem}
+  A square matrix $L$ is nilpotent if and only if $\sigma(L) = \{0\}$.
+\end{problem}
+
+\begin{solution}
+  First we assume that $L$ is nilpotent, i.e., that there exists some $n \in \N$ such that $L^n = 0$.
+  We consider the polynomial $p(A) = A^n$.
+  We clearly see that $p(L) = 0$, thus $\sigma(p(L)) = 0$.
+  By the spectral mapping theorem we have $p(\sigma(L)) = 0$, so for any eigenvalue $\lambda$ of $L$ we know that $\lambda^n = 0$.
+  From here we clearly have $\lambda = 0$.
+  
+  Conversely, assume that $\sigma(L) = \{0\}$.
+\end{solution}
+
+\end{document}
