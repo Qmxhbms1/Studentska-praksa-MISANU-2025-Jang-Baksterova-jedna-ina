@@ -65,4 +65,57 @@
   Conversely, assume that $\sigma(L) = \{0\}$.
 \end{solution}
 
+\begin{problem}
+  Let $A \neq 0$ be a nilpotent matrix with its nilpotency index equal to $k > 1$, and let $X_0$ be a solution to YBME.
+  Then, for any $\alpha \in \C$ the matrix $X_0 + \alpha A^{k - 1}$ is also a solution.
+\end{problem}
+
+\begin{solution}
+  Let $A^k = 0$ and $A X_0 A = X_0 A X_0$.
+  Now we consider
+  \[A (X_0 + \alpha A^{k - 1}) A = A X_0 A + \alpha A A^{k - 1} A = X_0 A X_0 \alpha A \cdots 0 = X_0 A X_0.\]
+  Similarly we have
+  \[(X_0 + \alpha A^{K - 1}) A (X_0 + \alpha A^{K - 1}) = (X_0 A + \alpha A^k) (X_0 + \alpha A^{K - 1}) = X_0 A (X_0 + \alpha A^{K - 1}) = X_0 A X_0 + \alpha X A^k = X_0 A X_0.\]
+  Thus we see that $(X_0 + \alpha A^{K - 1})$ is also a solution.
+\end{solution}
+
+\begin{problem}
+  If $A$ is a regular matrix, what can be said about the core-nilpotent decomposition of $A$?
+\end{problem}
+
+\begin{solution}
+  Since $A$ is regular it is clear that its null-space is trivial and its range is the whole space.
+  We also know that every power of $A$ is invertible, if $A^{-1}$ is an inverse of $A$ then it is easy to see that $(A^{-1})^k$ is the inverse of $A^k$, for any $k$.
+  Thus every power of $A$ also has a trivial null-space and range.
+  Thus $p = 0$ is the smallest integer such that $N(A^{p + 1}) = N(A^p)$ and $R(A^{p + 1}) = R(A^p)$.
+  Since $A^0 = I$ for any matrix, it is clear that no matrix with a nilpotency index $0$ can exist.
+  Thus we require $A = A_2$.
+  So a regular matrix decomposes into itself.
+\end{solution}
+
+\begin{problem}
+  If $A$ is a nilpotent matrix, with the nilpotency index equal to $m$, what can be said about the core-nilpotent decomposition of $A$?
+\end{problem}
+
+\begin{solution}
+  By the definition of the nilpotency index, it is clear that the index of $A$ is $m$.
+  Thus we have $A_2 \in R(A^m)$ is invertible, or $A_2 = 0$ since $R(A^m)$ is trivial.
+  However since $0$ is not invertible, we cannot have any block $A_2$, hence $A = A_1$.
+  We see that if $A$ is nilpotent, then its core-nilpotent decomposition is simply $A$.
+\end{solution}
+
+\begin{problem}
+  Let $A = A_1 \bigoplus A_2$ be the core-nilpotent decomposition of $A$ with respect to the notation and assumptions from (2).
+  Prove that $A_1^n = 0$ if and only if $n \ge p$, where $p$ is the smallest integer such that $N(A^p) \bigoplus R(A^p) = \C^n$.
+  On the other hand, show that the spectrum of $A_2$ consists precisely out of the nonzero eigenvalues of $A$.
+  What about the corresponding eigenspaces?
+\end{problem}
+
+\begin{solution}
+  If we have $A_1^n = 0$, then clearly $n \ge p$, otherwise $p > n$ contradicts the minimality of the index $p$.
+
+  Conversely, if $A_1^p = 0$ and $n \ge p$, then $A_1^n = A_1^{p} A_1^{n - p} = 0 A_1^{n - p} = 0$.
+
+\end{solution}
+
 \end{document}
