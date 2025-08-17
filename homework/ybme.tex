@@ -105,8 +105,8 @@
 \end{solution}
 
 \begin{problem}
-  Let $A = A_1 \bigoplus A_2$ be the core-nilpotent decomposition of $A$ with respect to the notation and assumptions from (2).
-  Prove that $A_1^n = 0$ if and only if $n \ge p$, where $p$ is the smallest integer such that $N(A^p) \bigoplus R(A^p) = \C^n$.
+  Let $A = A_1 \oplus A_2$ be the core-nilpotent decomposition of $A$ with respect to the notation and assumptions from (2).
+  Prove that $A_1^n = 0$ if and only if $n \ge p$, where $p$ is the smallest integer such that $N(A^p) \oplus R(A^p) = \C^n$.
   On the other hand, show that the spectrum of $A_2$ consists precisely out of the nonzero eigenvalues of $A$.
   What about the corresponding eigenspaces?
 \end{problem}
@@ -116,6 +116,35 @@
 
   Conversely, if $A_1^p = 0$ and $n \ge p$, then $A_1^n = A_1^{p} A_1^{n - p} = 0 A_1^{n - p} = 0$.
 
+  First we convert $A$ to its Jordan Normal Form, so we have
+  \[J_A = S A S^{- 1} = S \begin{bmatrix} A_1 & 0\\ 0 & A_2 \end{bmatrix} S^{- 1}.\]
+  Next we transform $A_1$ and $A_2$ to their Jordan Normal Forms, let $J_{A_1} = Q A_1 Q^{- 1}$ and $J_{A_2} = T A_2 T^{- 1}$.
+  We can then easily verify that
+  \[J_A = S \begin{bmatrix} A_1 & 0\\ 0 & A_2 \end{bmatrix} S^{- 1} = S \begin{bmatrix} Q & 0\\ 0 & T \end{bmatrix} \begin{bmatrix} J_{A_1} & 0\\ 0 & J_{A_2} \end{bmatrix} \begin{bmatrix} Q^{- 1} & 0\\ 0 & T^{- 1} \end{bmatrix} S^{- 1}.\]
+  It is also clear to see that
+  \[\begin{bmatrix} Q & 0\\ 0 & T \end{bmatrix} \begin{bmatrix} Q^{- 1} & 0\\ 0 & T^{- 1} \end{bmatrix} = I.\]
+  We know that the diagonal of $J_A$ is comprised of the eigenvalues of $A$, and that $diag(J_A) = diag(J_{A_1}) \cup diag(J_{A_2})$.
+  Since $A_1$ is a nilpotent matrix, we know that all of its eigenvalues are 0.
+  Thus $J_{A_2}$ must contain all the nonzero eigenvalues, and it cannot have any zero eigenvalues as it is invertible.
+  Since we know that $\sigma{A_2} = \sigma{J_{A_2}}$, we are done.
+
+  Let $A_1$ be a $k \times k$ matrix and $A_2$ a $(n - k) \times (n - k)$ matrix.
+  Assume that $v$ is any eigenvector of $A$.
+  Then we have
+  \[\begin{bmatrix} A_1 & 0\\ 0 & A_2 \end{bmatrix} v = \lambda v,\]
+  for some eigenvalue $\lambda$.
+  First, assume that $\lambda \neq 0$.
+  We can write $v$ in a block form as $v = \begin{bmatrix} v_1\\ v_2 \end{bmatrix}$.
+  Then we have
+  \[\begin{bmatrix} A_1 & 0\\ 0 & A_2 \end{bmatrix} \begin{bmatrix} v_1\\ v_2 \end{bmatrix} = \begin{bmatrix} A_1 v_1\\ A_2 v_2 \end{bmatrix} =  \begin{bmatrix} \lambda v_1\\ \lambda v_2 \end{bmatrix}.\]
+  Thus we have a system of equations
+  \[\begin{cases} A_1 v_1 = \lambda v_1,\\ A_2 v_2 = \lambda v_2 \end{cases}.\]
+  Since $A_1$ is nilpotent its only eigenvalue is $0$, and since $\lambda \neq 0$, we have $v_1 = 0$.
+  We can see that $v_2$ is the eigenvector corresponding to the eigenvalue $\lambda$ of $A_2$.
+  In this case, we see that eigenspace for $\lambda$ of $A_2$ is isomorphic to the eigenspace of $A$, by the function $f(v) = \begin{bmatrix} 0\\ v \end{bmatrix}$, where $0$ represents an $k \times 1$ block matrix consisting of zeros.
+  
+  Now, if our $\lambda = 0$, then $v_2 = 0$ and $A_1 v_1 = 0$.
+  Thus the eigenspace for $0$ of $A$ is isomorphic with the null-space of $A_1$.
 \end{solution}
 
 \end{document}
