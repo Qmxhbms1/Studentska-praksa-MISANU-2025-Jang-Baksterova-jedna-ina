@@ -33,7 +33,7 @@
   for any $a_{3i} \in \C$.
   Thus we can simply choose
   \[Q = \begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 1 & 1 \end{bmatrix}.\]
-  Thus we have have $PA = QA = 0$.
+  Thus we have have $PA = AQ = 0$.
 
   We put
   \[B = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33} \end{bmatrix}.\]
@@ -63,6 +63,9 @@
   From here we clearly have $\lambda = 0$.
   
   Conversely, assume that $\sigma(L) = \{0\}$.
+  We have that the characteristic polynomial of $L$ is $p(\lambda) = \lambda^k$, where $k$ is the dimension of $L$.
+  By the Cayley-Hamilton theorem, we know that $p(L) = 0$, thus we have $L^k = 0$.
+  Hence, $L$ is nilpotent.
 \end{solution}
 
 \begin{problem}
@@ -75,8 +78,8 @@
   Now we consider
   \[A (X_0 + \alpha A^{k - 1}) A = A X_0 A + \alpha A A^{k - 1} A = X_0 A X_0 \alpha A \cdots 0 = X_0 A X_0.\]
   Similarly we have
-  \[(X_0 + \alpha A^{K - 1}) A (X_0 + \alpha A^{K - 1}) = (X_0 A + \alpha A^k) (X_0 + \alpha A^{K - 1}) = X_0 A (X_0 + \alpha A^{K - 1}) = X_0 A X_0 + \alpha X A^k = X_0 A X_0.\]
-  Thus we see that $(X_0 + \alpha A^{K - 1})$ is also a solution.
+  \[(X_0 + \alpha A^{k - 1}) A (X_0 + \alpha A^{k - 1}) = (X_0 A + \alpha A^k) (X_0 + \alpha A^{k - 1}) = X_0 A (X_0 + \alpha A^{k - 1}) = X_0 A X_0 + \alpha X A^k = X_0 A X_0.\]
+  Thus we see that $(X_0 + \alpha A^{k - 1})$ is also a solution.
 \end{solution}
 
 \begin{problem}
