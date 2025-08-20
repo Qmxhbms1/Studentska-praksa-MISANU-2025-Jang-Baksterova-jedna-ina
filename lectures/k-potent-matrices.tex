@@ -66,6 +66,62 @@
   \end{alertblock}
 \end{frame}
 
+\section{Theoretical Foundations}
+
+\begin{frame}{The Starting Point: Annihilating Polynomials}
+  Our entire strategy begins with finding a polynomial that a matrix satisfies.
+  \begin{definition}
+    An \textbf{annihilating polynomial} for a matrix $A$ is any non-zero polynomial $p(x)$ such that $p(A) = 0$.
+  \end{definition}
+  \vfill
+  A fundamental result guarantees that such a polynomial always exists.
+  \begin{theorem}[Cayley-Hamilton Theorem]
+    Every square matrix satisfies its own characteristic equation. That is, if $p_A(x) = \det(xI - A)$ is the characteristic polynomial of $A$, then $p_A(A) = 0$.
+  \end{theorem}
+  \vfill
+  So, the characteristic polynomial is always an annihilating polynomial.
+\end{frame}
+
+\begin{frame}{The Superior Tool: The Minimal Polynomial}
+  The characteristic polynomial is useful, but it is not always the most efficient tool. We want the annihilating polynomial of the \textit{lowest possible degree}.
+  \begin{definition}
+    The \textbf{minimal polynomial} $m_A(x)$ of a matrix $A$ is the unique monic polynomial of lowest degree that annihilates $A$.
+  \end{definition}
+  \vfill
+  It is the true "genetic code" of the matrix, and it has a crucial relationship with all other annihilating polynomials.
+  \begin{theorem}
+    The minimal polynomial $m_A(x)$ divides every annihilating polynomial of $A$ (including the characteristic polynomial).
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{The Goal: Diagonalizability}
+  The key structural property we want to establish is diagonalizability, as it simplifies the YBME immensely.
+  \begin{definition}
+    A matrix $A$ is \textbf{diagonalizable} if it is similar to a diagonal matrix, i.e., there exists an invertible matrix $P$ such that $A = PDP^{-1}$.
+  \end{definition}
+  \vfill
+  The minimal polynomial provides a direct and powerful criterion for determining this.
+  \begin{theorem}[The Main Criterion]
+    A matrix is diagonalizable if and only if its minimal polynomial has no repeated roots (i.e., its roots are distinct).
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Our Strategy Synthesized}
+  These theorems provide a clear, step-by-step strategy to analyze the structure of $A$ from the condition $A^k=tA$.
+  \begin{alertblock}{The Strategic Framework}
+    \begin{enumerate}
+        \item \textbf{Find Annihilator:} The condition $A^k=tA$ means $A$ is annihilated by the polynomial $p(x) = x^k - tx$.
+        \pause
+        \item \textbf{Check Roots:} Factor $p(x)$ and check if its roots are distinct.
+        \pause
+        \item \textbf{Constrain Minimal Poly:} Since $m_A(x)$ must divide $p(x)$, if $p(x)$ has distinct roots, then $m_A(x)$ must also have distinct roots.
+        \pause
+        \item \textbf{Conclude Diagonalizability:} By the main criterion, if $m_A(x)$ has distinct roots, then the matrix $A$ must be diagonalizable.
+    \end{enumerate}
+  \end{alertblock}
+  This logical chain is the engine that drives the first half of our analysis.
+\end{frame}
+
 \section{The Foundational Case: $A^3 = -A$}
 
 \begin{frame}{The Foundational Case: $A^3 = -A$}
@@ -103,31 +159,83 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{A Concrete Example: $A^3 = -A$}
-  Let's make the theory concrete. We know the spectrum of $A$ must be a subset of $\{0, i, -i\}$.
-  \vfill
-  \begin{block}{An Example Matrix}
-  Consider a simple 2x2 matrix $A$ with eigenvalues $\{i, -i\}$. We can construct it from its diagonal form:
-  \[ A = P D P^{-1} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} \frac{1}{-2} \begin{pmatrix} -1 & -1 \\ -1 & 1 \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \]
-  \end{block}
-  \vfill
-  \pause % This will reveal the check on the next click
-  \textbf{Let's check the condition:}
+\begin{frame}{Applying this to the YBME}
+  Now we can solve our original problem for $A^3 = -A$.
   \begin{itemize}
-    \item $A^2 = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I$
-    \vfill
-    \item $A^3 = A^2 A = (-I)A = -A$
+    \item We proved $A$ is diagonalizable with spectrum $\subseteq \{0, i, -i\}$.
+    \item A known theorem provides all YBME solutions for matrices with a spectrum $\{0, \lambda, \mu\}$, provided a condition holds. \cite{tripotent}
+    \pause
+    \item \textbf{The Condition:} $\lambda^2 - \lambda\mu + \mu^2 \neq 0$.
+    \pause
+    \item \textbf{Our Check:}
+    \[ (i)^2 - (i)(-i) + (-i)^2 = -1 - 1 - 1 = -3 \neq 0 \]
+    \item The condition holds. Therefore, we can substitute $\lambda=i, \mu=-i$ into the known general solution to get our answer.
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Explicit Solution for $A^3 = -A$}
+  By substituting $\lambda=i, \mu=-i$ into the general form, we get all solutions $X$:
+  \begin{block}{The General Form of $X$}
+  % We use \footnotesize to ensure this complex matrix fits on the slide.
+  \footnotesize
+  \[X = S \begin{bmatrix} P & 0 \\ 0 & Q \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} - \frac{i}{2} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & i I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k-r-v} & 0 & 0 & 0 & C_3 \\ \hline - \frac{3}{4} F^{-1} & 0 & 0 & \frac{i}{2} I_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & -i I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m-k-r-t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 \\ 0 & Q^{-1} \end{bmatrix} S^{-1}\]
+  where $i D_3 C_3 = i D_6 C_6$, and other parameters ($S, P, Q, F, \dots$) are defined as in the theorem.
+  \end{block}
+  \normalsize % Return to normal font size
   \vfill
-  The matrix satisfies the condition, and its minimal polynomial is $m_A(x) = x^2+1$, which correctly divides $p(x) = x^3+x$.
+  \textbf{Key takeaway:} The structure is complex but completely characterized. The off-diagonal blocks $F$ and its inverse are responsible for the non-commuting solutions.
+\end{frame}
+
+\begin{frame}{A Concrete 3x3 Example: Setup}
+  Let's make the abstract solution concrete. We will build the simplest non-trivial, non-commuting solution.
+  \vfill
+  \textbf{1. Construct A:} We need a 3x3 matrix with eigenvalues from $\{i, -i, 0\}$. The simplest is:
+  \[ A = \begin{pmatrix} i & 0 & 0 \\ 0 & -i & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+  \vfill
+  \textbf{2. Choose Parameters for X:}
+  \begin{itemize}
+    \item To make it non-commuting, we need the parameter $r > 0$. Let's choose the simplest case: $\mathbf{r=1}$.
+    \item This means the block $F$ is a 1x1 invertible matrix. Let's choose $\mathbf{F = [1]}$.
+    \item The formula dictates $G = -\frac{3}{4}F^{-1} = [-\frac{3}{4}]$.
+    \item For simplicity, we set all other free parameters to zero ($v=0, t=0, C_i=0, D_i=0, W=0$).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A Concrete 3x3 Example: The Result}
+  Plugging our simple parameters into the general formula yields a clean, concrete solution for $X$.
+  \begin{block}{The Resulting Solution X}
+  \[ X = \begin{pmatrix} -i/2 & 1 & 0 \\ -3/4 & i/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+  \end{block}
+  This matrix is constructed to be a solution. Now, let's explicitly verify the key properties.
+\end{frame}
+
+\begin{frame}{A Concrete 3x3 Example: Verification}
+  \textbf{1. Is it non-commuting?} Let's check the products $AX$ and $XA$:
+    \[ AX = \begin{pmatrix} 1/2 & i & 0 \\ 3i/4 & 1/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \quad \neq \quad XA = \begin{pmatrix} 1/2 & -i & 0 \\ -3i/4 & 1/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+    They do not commute, so this is a non-trivial solution.
+    \vfill
+  \textbf{2. Does it satisfy the YBME?}
+    A quick calculation confirms that:
+    \[ AXA = \begin{pmatrix} 1/2 & i & 0 \\ 3i/4 & 1/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} A = \begin{pmatrix} i/2 & 1 & 0 \\ -3/4 & -i/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+    \[ XAX = X \begin{pmatrix} 1/2 & -i & 0 \\ -3i/4 & 1/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} i/2 & 1 & 0 \\ -3/4 & -i/2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+    The equation $AXA=XAX$ holds.
 \end{frame}
 
 \section{Generalization and Application}
 
-\begin{frame}{Generalizing the Structure: $A^k = tA$}
+\begin{frame}{Generalizing the Structure: $A^3 = tA$}
   This successful method can be generalized. Consider the annihilating polynomial:
-  \[ p(x) = x^k - tx = x(x^{k-1} - t) \]
-  We have two distinct scenarios.
+  \[ p(x) = x^3 - tx = x(x - \sqrt{t})(x + \sqrt{t}) \]
+  As long as we know that $t \neq 0$ it is easy to see that:
+  \[ \lambda^2 - \lambda\mu + \mu^2 = 3t \neq 0 \]
+  Hence we can construct all solutions as above.
+\end{frame}
+
+\begin{frame}{Further Generalization}
+  The logical next step is to consider higher powers of $A$.
+  We can consider the following annihilating polynomial:
+  \[ p(x) = x^k - xt = x(x^{k - 1} - t) \]
+  This gives us the following two cases.
 \end{frame}
 
 \begin{frame}{Generalization: Case 1 ($t \neq 0$)}
@@ -156,34 +264,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Applying this to the YBME}
-  Now we can solve our original problem for $A^3 = -A$.
-  \begin{itemize}
-    \item We proved $A$ is diagonalizable with spectrum $\subseteq \{0, i, -i\}$.
-    \item Let $\lambda=i$ and $\mu=-i$.
-    \item A known theorem provides all YBME solutions for matrices with a spectrum $\{0, \lambda, \mu\}$, provided a condition holds. \cite{tripotent}
-    \pause
-    \item \textbf{The Condition:} $\lambda^2 - \lambda\mu + \mu^2 \neq 0$.
-    \pause
-    \item \textbf{Our Check:}
-    \[ (i)^2 - (i)(-i) + (-i)^2 = -1 - 1 - 1 = -3 \neq 0 \]
-    \item The condition holds. Therefore, we can substitute $\lambda=i, \mu=-i$ into the known general solution to get our answer.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Explicit Solution for $A^3 = -A$}
-  By substituting $\lambda=i, \mu=-i$ into the general form, we get all solutions $X$:
-  \begin{block}{The General Form of $X$}
-  % We use \footnotesize to ensure this complex matrix fits on the slide.
-  \footnotesize
-  \[X = S \begin{bmatrix} P & 0 \\ 0 & Q \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} - \frac{i}{2} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & i I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k-r-v} & 0 & 0 & 0 & C_3 \\ \hline - \frac{3}{4} F^{-1} & 0 & 0 & \frac{i}{2} I_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & -i I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m-k-r-t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 \\ 0 & Q^{-1} \end{bmatrix} S^{-1}\]
-  where $i D_3 C_3 = i D_6 C_6$, and other parameters ($S, P, Q, F, \dots$) are defined as in the theorem.
-  \end{block}
-  \normalsize % Return to normal font size
-  \vfill
-  \textbf{Key takeaway:} The structure is complex but completely characterized. The off-diagonal blocks $F$ and its inverse are responsible for the non-commuting solutions.
-\end{frame}
-
 \section{Future Research}
 
 \begin{frame}{The Research Frontier: Non-Commuting Solutions}
@@ -196,60 +276,60 @@
   \textbf{New Strategy:} Instead of generalizing the proof, let's generalize the \textit{problem setup} using our structural theorem.
 \end{frame}
 
-% \begin{frame}{My Research Proposal}
-%   \begin{enumerate}
-%     \item \textbf{Inspiration:} A known paper partially solves the $A^4=A$ case by analyzing matrices with spectra which are subsets of $\{0, 1, - \frac{1 + i \sqrt{3}}{2}, - \frac{1 - i \sqrt{3}}{2}\}$. \cite{quadrapotent}
-%     \pause
-%     \item \textbf{My Idea:} Systematically analyze the YBME for matrices with simple spectra drawn from the roots of unity. My structural theorem shows this is a natural family of matrices to study.
-%     \pause
-%     \item \textbf{Example Goal:} Find non-commuting solutions for $A^5=A$ where $A$ has a minimal set of eigenvalues, like $\{0, 1, e^{2\pi i / 4}\}$.
-%     \pause
-%   \item \textbf{The Toolbox:} Once a non-commuting solution is found, we can generate an entire family of solutions. \cite{intrinsic-structure}
-%   \end{enumerate}
-% \end{frame}
-
-\begin{frame}{The Research Frontier: A Classification Program}
-  The literature suggests a clear path forward: classify YBME solutions based on the \textbf{minimal polynomial} of $A$.
+\begin{frame}{The Research Landscape (1/2): A Proven Method}
+  The literature provides a clear path forward: classify solutions based on the minimal polynomial of $A$.
   \begin{itemize}
-    \item For example, a recent paper on quadrapotent matrices ($A^4=A$) successfully classified solutions for simple minimal polynomials like $x(x-1)$ or $x(x-1)(x+1)$ \cite{quadrapotent}.
-    \pause
-    \item However, the most complex cases, involving three or four distinct non-zero eigenvalues, were left as open problems.
-    \pause
-    \item This reveals a clear gap: our methods are strong for simple spectra, but break down as the complexity (number of distinct eigenvalues) increases.
+    \item A successful paper on quadrapotent matrices ($A^4=A$) used a powerful block-matrix method \cite{quadrapotent}.
+    \item \textbf{The Method:} Treat $X$ as a $2 \times 2$ block matrix and solve the resulting system of four coupled matrix equations.
+  \end{itemize}
+  \begin{block}{Strength of this Approach}
+    This method is exhaustive. When it can be carried out, it yields a \textit{complete} classification of all solutions for a given minimal polynomial.
+  \end{block}
+\end{frame}
+
+\begin{frame}{The Research Landscape (2/2): The Limitation}
+  While powerful, the block-matrix method has a critical bottleneck.
+  \begin{alertblock}{The Challenge: Exploding Complexity}
+  The complexity of the coupled equation system explodes as the number of distinct eigenvalues in the minimal polynomial increases.
+  \end{alertblock}
+  \begin{itemize}
+    \item This is precisely why the most complex cases in the $A^4=A$ paper—those with three or four distinct non-zero eigenvalues—were left as open problems.
+    \item This reveals the frontier of the current research: our methods are strong for simple spectra, but break down as the algebraic complexity grows.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{My Research Proposal: Tackling Novel Structures}
-  My work on the structure of $A^k=A$ provides a map of all possible minimal polynomials to investigate.
-  \begin{enumerate}
-    \item \textbf{Observation:} The problem is defined not by $k$, but by the minimal polynomial. Solutions for $A^3=A$ are a subset of solutions for $A^5=A$.
-    \pause
-    \item \textbf{Hypothesis:} The first truly novel, unsolved cases appear when $k-1$ is a prime number. This is because the roots of unity $e^{2\pi i / (k-1)}$ do not belong to any simpler sub-field.
-    \pause
-    \item \textbf{My Concrete Plan:}
-    \begin{itemize}
-        \item The case $k=4$ ($k-1=3$) is the next frontier after my $A^3=-A$ work.
-        \item The next prime case is $k=6$ ($k-1=5$).
-        \item \textbf{Immediate Goal:} Tackle the first unsolved minimal polynomial for the $A^6=A$ case: a matrix $A$ with minimal polynomial $m_A(x) = x(x^5-1)$. This involves 5th roots of unity and is a genuinely new challenge.
-    \end{itemize}
-  \end{enumerate}
+\begin{frame}{My Research Proposal (1/3): The Core Insight}
+  My work on the structure of $A^k=A$ provides a map of these minimal polynomials. The first step is to identify the genuinely new problems.
+  \vfill
+  \textbf{Observation:} The core difficulty is the structure of the minimal polynomial, not just the power $k$.
+  \begin{itemize}
+      \item For example, if a matrix $A$ satisfies $A^3=A$, it automatically satisfies $A^5=A$, since:
+      \[A^5 = A^3 \cdot A^2 = A \cdot A^2 = A^3 = A\]
+      \item This means that simply increasing $k$ can lead to redundant cases we already understand.
+  \end{itemize}
 \end{frame}
 
-% \begin{frame}{My Toolbox: Generating Solution Families}
-%   We have a powerful technique for generating new solutions from a known one.
-%   \begin{theorem}[\citeauthor{intrinsic-structure}, \citeyear{intrinsic-structure}]
-%     If $X$ is a solution to the YBME and $f$ is a sufficiently differentiable function, then
-%     \[ X' = f(X) \, X \, f(X)^{-1} \]
-%     is also a solution to the YBME.
-%   \end{theorem}
-%   \begin{itemize}
-%     \item In the commuting case, this simplifies to $X' = X$ and gives nothing new.
-%     \pause
-%     \item For a \textbf{non-commuting} solution, this generates an entire family of new solutions.
-%     \pause
-%     \item These solutions are \textbf{path-connected}, forming a continuous manifold in the space of matrices.
-%   \end{itemize}
-% \end{frame}
+\begin{frame}{My Research Proposal (2/3): The Guiding Hypothesis}
+  To find novel structures, we must isolate cases that cannot be reduced to simpler ones.
+  \vfill
+  \textbf{Hypothesis:} The first truly novel, unsolved cases appear when $k-1$ is a prime number.
+  \begin{itemize}
+      \item This is because the new eigenvalues—the primitive $(k-1)$-th roots of unity—introduce a new, irreducible algebraic structure.
+      \item When $k-1$ is prime, these new roots cannot be expressed in terms of roots from lower-order cases. This avoids the "contamination" from problems we have already solved.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{My Research Proposal (3/3): The Concrete Plan}
+  My plan is to apply the proven block-matrix method to the first of these truly novel cases.
+  \vfill
+  \begin{itemize}
+      \item The case $k=4$ ($k-1=3$) is the next frontier after my $A^3=-A$ work.
+      \item The next genuinely new prime case is $k=6$ ($k-1=5$).
+  \end{itemize}
+  \begin{block}{Immediate Goal}
+  Tackle some minimal polynomials dividing $p(x) = x(x^5-1)$. From here I am interested in seeing if I could solve a case for a general family of minimal polynomials, resulting in some non-commuting solutions for any $k$-potent matrix.
+  \end{block}
+\end{frame}
 
 \begin{frame}{Broader Questions: The Geometry of the Solution Space}
   My primary goal is to find new non-commuting solutions. However, finding a non-commuting solution is just the first step. A deeper question is understanding the structure of the solution space it belongs to.
@@ -261,12 +341,11 @@
   \end{alertblock}
 \end{frame}
 
-% \begin{frame}{Open Questions for Discussion}
+% \begin{frame}{Other open Questions for Discussion}
 %   \begin{itemize}
 %     \item What algebraic methods are best suited for the nilpotent case ($A^k=0$)? This has been answer for $k = 2$ and $k = 3$. \cite{nilpotent2}\cite{nilpotent3}
 %     \item How does the geometry of the roots of unity on the complex plane influence the structure of the solution set for $X$?
 %     \item Are there other polynomial constraints on $A$ that yield similarly tractable, structured solutions?
-%     \item How many families of solutions generated with the above method are there? Could we find all solutions?
 %   \end{itemize}
 % \end{frame}
 
