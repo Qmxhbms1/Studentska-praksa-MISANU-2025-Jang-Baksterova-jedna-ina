@@ -16,12 +16,17 @@
 \end{problem}
 
 \begin{solution}
-  Let $u$ and $v$ be nonzero orthogonal vectors, and for a contradiction assume they are linearly dependent.
-  In other words, we know that $u = t v$ for some scalar $t$.
-  Thus we have the following
-  \[0 = \langle u, v \rangle = \langle t v, v \rangle = t \langle v, v \rangle.\]
-  Thus we see that either $t = 0$, contradicting that $u$ and $v$ are non-zero, or $\langle v, v \rangle = 0$.
-  However, we know that $\langle v, v \rangle = 0$ if and only if $v = 0$, so again have a contradiction.
+  Let $u_1, \ldots, u_n$ be nonzero orthogonal vectors.
+  We consider $\sum_{i=1}^{n} \alpha_i u_i = 0$.
+  Taking the inner product of both sides with some $u_k$ we have
+  \[\langle \sum_{i=1}^{n} \alpha_i u_i, u_k \rangle = \langle 0, u_k \rangle = 0.\]
+  By the linearity of the inner product we have
+  \[\sum_{i=1}^{n} \alpha_i \langle u_i, u_k \rangle = 0.\]
+  For any $i \neq k$ it follows that $\langle u_i, u_k \rangle = 0$, since we assume these are orthogonal vectors.
+  Thus our equality simplifies to $\alpha_k \langle u_k, u_k \rangle = 0$.
+  Since $u_k$ is a nonzero vector it follows that $\alpha_k = 0$.
+  However, as our choice of $k$ was arbitrary, this holds for any $k = \{1, \ldots, n\}$.
+  Thus these vectors are linearly independent.
 \end{solution}
 
 \begin{problem}
@@ -39,10 +44,12 @@
   To show that this matrix is unique, suppose that there were two matrice $L_1^*$ and $L_2^*$ which both satisfied $\langle L u, v \rangle = \langle u, L_i^* v \rangle$.
   Then we clearly see that $\langle u, L_1^* v \rangle = \langle u, L_2^* v \rangle$.
   By the linearity of the inner product we then know that $\langle u, (L_1^* - L_2^*) v \rangle = 0$.
-  We thus know that either $u = 0$ or $(L_1^* - L_2^*) v = 0$.
-  Since this equation holds for arbitrary $u$ and $v$, we have that $L_1^* - L_2^* = 0$.
-  Finally, we conclude that $L_1^* = L_2^*$.
-  Thus $L^* = \overline{L^t}$.
+  Let $(L_1^* - L_2^*) v = w$.
+  Since $u$ was arbitrarily chosen, our equality holds for any $u$.
+  Pick $u = w$.
+  Then we have $\langle w, w \rangle = ||w||^2 = 0$, which means $w = 0$.
+  Since $v$ was similarly arbitrary it follows that $L_1^* - L_2^* = 0$.
+  Finally, we have $L_1^* = L_2^*$.
 \end{solution}
 
 \begin{problem}
@@ -54,9 +61,11 @@
   We have
   \[\sigma(L^*) = \sigma(\overline{L^t}) = \sigma(\overline{L}) = \overline{\sigma(L)}.\]
   The first equality holds by the previous exercise and the second holds from the fact that transposing a matrix doesn't change the eigenvalues.
-  The finally equality stems from the fact that taking the complex conjugate of a matrix is the same as a change of basis.
-  Since the eigenvalues do not depend on the basis, it is clear that the equality holds.
-\end{solution}
+  For the final equality we have the following.
+  Consider any eigenvalue of $L$, let $L v = \lambda v$.
+  Then we have $\overline{L v} = \overline{\lambda v}$ which gives us $\bar{L} \bar{v} = \bar{\lambda} \bar{v}$, thus the conjugate of the eigenvalue of $L$ is an eigenvalue of $\overline{L}$.
+  In other words $\sigma(\overline{L}) = \overline{\sigma(L)}$.
+  \end{solution}
 
 \begin{problem}
   Prove that the spectrum of a unitary matrix $U$ is contained on the complex unit sphere:
@@ -84,7 +93,7 @@
   Let $U$ and $V$ be two unitary matrices with inverses $U^*$ and $V^*$.
   We know that the inverse of $UV$ is precisely $V^* U^*$.
   Now we need to show that $V^* U^* = (UV)^*$.
-  From the propetries of transposed matrices we know that $(AB)^t = A^t B^t$, hence $\overline{UV^t} = \overline{V^t U^t}$.
+  From the propetries of transposed matrices we know that $(AB)^t = B^t A^t$, hence $\overline{(UV)^t} = \overline{V^t U^t}$.
   For some matrices $A$ and $B$ we can see that the general element of $\overline{AB}$ is
   \[\overline{(AB)_ij} = \overline{\sum_{k=1}^{n} A_i B_j} = \sum_{k=1}^{n} \bar{A_i} \bar{B_j}.\]
   Hence $\overline{AB} = \bar{A} \bar{B}$.
@@ -107,7 +116,7 @@
   \[\begin{aligned}
     0 &= f(A) A X_0 A f^{-1}(A) - f(A) A X_0 A f^{-1}(A)\\ 
     &= f(A) X_0 A X_0 f^{-1} - f(A) A X_0 A f^{-1}(A)\\
-    &= f(A) X_0 f^{-1}(A) f(A) A X_0 A f^{-1}(A) - A f(A) X_0 f^{-1}(A) A\\
+    &= f(A) X_0 f^{-1}(A) f(A) A X_0 f^{-1}(A) - A f(A) X_0 f^{-1}(A) A\\
     &= f(A) X_0 f^{-1}(A) A f(A) X_0 f^{-1}(A) - A f(A) X_0 f^{-1} A
   \end{aligned}\]
   Hence we have $f(A) X_0 f^{-1}(A) A f(A) X_0 f^{-1}(A) = A f(A) X_0 f^{-1} A$, and $f(A) X_0 f^{-1}(A)$ is a solution to the YBME.
