@@ -1,0 +1,128 @@
+\documentclass{article}
+
+\input{homework-preamble.tex}
+
+\title{Yang-Baxter-like matrix equation}
+\author{Mihailo Đurić}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{problem}
+  Prove that nonzero orthogonal vectors are mutually linearly independent.
+\end{problem}
+
+\begin{solution}
+  Let $u$ and $v$ be nonzero orthogonal vectors, and for a contradiction assume they are linearly dependent.
+  In other words, we know that $u = t v$ for some scalar $t$.
+  Thus we have the following
+  \[0 = \langle u, v \rangle = \langle t v, v \rangle = t \langle v, v \rangle.\]
+  Thus we see that either $t = 0$, contradicting that $u$ and $v$ are non-zero, or $\langle v, v \rangle = 0$.
+  However, we know that $\langle v, v \rangle = 0$ if and only if $v = 0$, so again have a contradiction.
+\end{solution}
+
+\begin{problem}
+  Prove that
+  \[L^* = \overline{L^t}.\]
+\end{problem}
+
+\begin{solution}
+  First we look at
+  \[\langle Lu, v \rangle = \sum_{k=1}^{n} (Lu)_k \overline{v_k} = \sum_{k=1}^{n} \sum_{i=1}^{n} L_{ki} u_i \overline{v_k}.\]
+  On the other hand, we have
+  \[\langle u, \overline{L^t} v \rangle = \sum_{k=1}^{n} u_k (L^t \overline{v})_k = \sum_{k=1}^{n} u_k (\sum_{i=1}^{n} L_{ki}^t \overline{v_i}) = \sum_{k=1}^{n} \sum_{i=1}^{n} u_k L_{ik} \overline{v_i}.\]
+  Notice that these two sums are exactly equal (just swap $k$ and $i$ as variables in the second equation).
+
+  To show that this matrix is unique, suppose that there were two matrice $L_1^*$ and $L_2^*$ which both satisfied $\langle L u, v \rangle = \langle u, L_i^* v \rangle$.
+  Then we clearly see that $\langle u, L_1^* v \rangle = \langle u, L_2^* v \rangle$.
+  By the linearity of the inner product we then know that $\langle u, (L_1^* - L_2^*) v \rangle = 0$.
+  We thus know that either $u = 0$ or $(L_1^* - L_2^*) v = 0$.
+  Since this equation holds for arbitrary $u$ and $v$, we have that $L_1^* - L_2^* = 0$.
+  Finally, we conclude that $L_1^* = L_2^*$.
+  Thus $L^* = \overline{L^t}$.
+\end{solution}
+
+\begin{problem}
+  Prove that
+  \[\sigma (L^*) = \overline{\sigma{L}}.\]
+\end{problem}
+
+\begin{solution}
+  We have
+  \[\sigma(L^*) = \sigma(\overline{L^t}) = \sigma(\overline{L}) = \overline{\sigma(L)}.\]
+  The first equality holds by the previous exercise and the second holds from the fact that transposing a matrix doesn't change the eigenvalues.
+  The finally equality stems from the fact that taking the complex conjugate of a matrix is the same as a change of basis.
+  Since the eigenvalues do not depend on the basis, it is clear that the equality holds.
+\end{solution}
+
+\begin{problem}
+  Prove that the spectrum of a unitary matrix $U$ is contained on the complex unit sphere:
+  \[\sigma(U) \subset \{z \in \C : |z| = 1\}.\]
+\end{problem}
+
+\begin{solution}
+  Let $\lambda$ be any eigenvalue of $U$, so $U x = \lambda x$.
+  By the properties of the conjugate transpose (shown in the next exercise) we know that $(U x)^* = x^* U^*$ and $(U x)^* = (\lambda x)^* = \overline{\lambda} x^*$.
+  Multiplying our equation we have
+  \[\begin{aligned}
+    x^* U^* U x &= \overline{\lambda} x^* \lambda x
+    x^* x &= (\overline{\lambda}) \lambda x^* x
+    ||x||^2 &= |\lambda|^2 ||x||^2
+    1 &= |\lambda|^2
+    1 &= |\lambda|
+  \end{aligned}\]
+\end{solution}
+
+\begin{problem}
+  Prove that a product of two unitary matrices is a unitary matrix.
+\end{problem}
+
+\begin{solution}
+  Let $U$ and $V$ be two unitary matrices with inverses $U^*$ and $V^*$.
+  We know that the inverse of $UV$ is precisely $V^* U^*$.
+  Now we need to show that $V^* U^* = (UV)^*$.
+  From the propetries of transposed matrices we know that $(AB)^t = A^t B^t$, hence $\overline{UV^t} = \overline{V^t U^t}$.
+  For some matrices $A$ and $B$ we can see that the general element of $\overline{AB}$ is
+  \[\overline{(AB)_ij} = \overline{\sum_{k=1}^{n} A_i B_j} = \sum_{k=1}^{n} \bar{A_i} \bar{B_j}.\]
+  Hence $\overline{AB} = \bar{A} \bar{B}$.
+  Thus we have $(UV)^* = \overline{UV^t} = \overline{V^t U^t} = \bar{V^t} \bar{U^t} = V^* U^*$.
+\end{solution}
+
+\begin{problem}
+  Prove the following theorem
+
+  Let $A$ be a square matrix, and let $f$ be a well-defined function in the neighborhood of $\sigma(A)$,
+  such that $f$ has no zeros in $\sigma(A)$.
+  If $X_0$ is a non-commuting solution to YBME, the so is the matrix $f(A) X_0 f(A)^{-1}$.
+\end{problem}
+
+\begin{solution}
+  Let $X_0$ be a non-commuting solution to the YBME, i.e., $A X_0 A = X_0 A X_0$.
+  Since $f$ has no zeros in $\sigma(A)$ it follows that $f(A)$ is invertible.
+  Also, note that $A$ and $f(A)$ commute, hence $A$ and $f^{-1}(A)$ also commute.
+  Then
+  \[\begin{aligned}
+    0 &= f(A) A X_0 A f^{-1}(A) - f(A) A X_0 A f^{-1}(A)\\ 
+    &= f(A) X_0 A X_0 f^{-1} - f(A) A X_0 A f^{-1}(A)\\
+    &= f(A) X_0 f^{-1}(A) f(A) A X_0 A f^{-1}(A) - A f(A) X_0 f^{-1}(A) A\\
+    &= f(A) X_0 f^{-1}(A) A f(A) X_0 f^{-1}(A) - A f(A) X_0 f^{-1} A
+  \end{aligned}\]
+  Hence we have $f(A) X_0 f^{-1}(A) A f(A) X_0 f^{-1}(A) = A f(A) X_0 f^{-1} A$, and $f(A) X_0 f^{-1}(A)$ is a solution to the YBME.
+\end{solution}
+
+\begin{problem}
+  Let $A$ be an arbitrary square matrix, and suppose that $X_0$ is one of its non-commuting solutions.
+  Show that for every scalar $t$, it follows that $e^{At} X_0 e^{-At}$ is also a solution to YBME.
+\end{problem}
+
+\begin{solution}
+  It is clear that $e^{At}$ is a well-defined function for any matrix $A$ and any $t$.
+  We also know that $e^x$ is never equal to zero for any value of $x$.
+  Finally we know that $(e^{At})^{-1} = e^{-At}$.
+  Thus by applying the previous problem we can immediately see that if $X_0$ is a solution to the YBME then $e^{At} X_0 e^{-At}$ must also be a solution.
+\end{solution}
+
+\end{document}
