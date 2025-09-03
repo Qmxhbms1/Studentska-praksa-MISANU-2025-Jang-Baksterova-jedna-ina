@@ -2,7 +2,7 @@
 
 \input{lectures-preamble.tex}
 
-\title{Solutions to the Yang-Baxter-like matrix equations for the case $A^3 = -A$}
+\title{Yang-Baxter-like matrix equations}
 \author{Mihailo Đurić}
 \date{\today}
 
@@ -27,6 +27,38 @@
   Then all solutions of the Yang-Baxter-like matrix equation $A X A = X A X$ have the form
   \[X = S \begin{bmatrix} P & 0 & 0\\ 0 & Q & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} \widehat{\lambda} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & \lambda I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k - r - v} & 0 & 0 & 0 & C_3 \\ \hline G & 0 & 0 & \widehat{\mu} I_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & \mu I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m - k - r - t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 & 0\\ 0 & Q^{-1} & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} S^{-1},\]
   in which, $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, $0 \le r \le \min \{k, m - k\}, 0 \le v \l k - r, 0 \le t \le m - k - r, \widehat{\lambda} = \frac{\mu^2}{\mu - \lambda}, \widehat{\mu} = \frac{\lambda^2}{\lambda - \mu}$, $F$ is an arbitrary $r \times r$ invertible matrix, $G = \frac{- \lambda \mu (\lambda^2 - \lambda \mu + \mu^2)}{(\lambda - \mu)^2} F^{-1}$, $C_3 \in \C^{(k - r - v) \times (n - m)}$, $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, $D_3 \in \C^{(n - m) \times (k - r - v)}$, $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, $\lambda D_3 C_3 = - \mu D_6 C_6$, and $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
+\end{theorem}
+
+\begin{theorem} \label{similarity}
+  If $A = Q^{-1} J Q$ and $Y$ is a solution of the equation $J Y J = Y J Y$, then $X = Q^{-1} Y Q$ is a solution to the equation $A X A = X A X$.
+\end{theorem}
+
+\begin{theorem}[Core-Nilpotent Decomposition] \label{core-nilpotent}
+Let $A$ be a square matrix of size $n \times n$ with entries in the complex numbers. Let $k = \mathrm{ind}(A)$ be the index of $A$, and let $r = \mathrm{rank}(A^k)$. Then there exists a non-singular matrix $Q$ such that
+\[
+Q^{-1}AQ = 
+\begin{bmatrix}
+    L & 0 \\
+    0 & C
+\end{bmatrix}
+\]
+where $C$ is an $r \times r$ invertible matrix, and $L$ is an $(n-r) \times (n-r)$ nilpotent matrix of index $k$.
+\end{theorem}
+
+\begin{theorem} \label{invertible}
+  Let $A$ be a regular matrix then all nonzero commuting solutions to $A X A = X A X$ are provided via the formula
+  \[X_c = \frac{1}{2} \bigl( A + (A^2)^{1/2} \bigl),\]
+  where $(A^2)^{1/2}$ is any square root of the matrix $A^2$.
+\end{theorem}
+
+\begin{theorem} \label{Sylverster-equation}
+  The equation $AX - XB = C$ has a unique solution $X$ if and only if $\sigma (A) \cap \sigma (B) = \emptyset$
+\end{theorem}
+
+\begin{theorem} \label{generating-solutions}
+  For a given matrix $A \in M_n (\C)$, let $X_0 \in S$ and let $f, g$ be well defined functions in $\sigma (A)$ such that
+  \[g(A) A f(A) = A.\]
+  Then $f(A) X_0 g(A) \in S$.
 \end{theorem}
 
 \section{All solutions for $A^3 = -A$}
@@ -56,4 +88,97 @@
   Applying theorem \ref{solutions} we get our result.
 \end{proof}
 
+\begin{remark}
+This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
+\end{remark}
+
+\section{Some solutions for $A^n = A^2$}
+\begin{theorem} \label{singular}
+  If $A$ is both an invertible and a diagonal matrix, then all nontrivial commuting solutions to Yang-Baxter-like matrix equations are singular.
+\end{theorem}
+
+\begin{proof}
+  By theorem \ref{invertible} we can find all of the commuting solutions via the formula
+  \[X_c = \frac{1}{2} \bigl( A + (A^2)^{1/2} \bigl).\]
+  Since $A$ is both invertible and diagonal we know that $A = diag\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$
+  We then now that $A^2 = diag\{\lambda_1^2, \lambda_2^2, \ldots, \lambda_n^2\}$.
+  Taking the square root of that we get to pick a positive or negative branch for each eigenvalue.
+  If we pick all positive branches we will end up with $X_c = A$ which is a trivial solution.
+  Thus, if $X_c$ is nontrivial there must be some entry $A_{ii} = - \lambda_i$.
+  So, $A + (A^2)^{1/2}$ will have a zero on the diagonal.
+  Hence, $A + (A^2)^{1/2}$ is singular, and thus so is $X_c$.
+\end{proof}
+
+\begin{algorithm}
+  Here we present a way of generating families of solutions of the Yang-Baxter-like matrix equations for the case that $A^n = A^2$.
+
+  We begin by decomposing our matrix $A$ into a block diagonal form using theorem \ref{core-nilpotent}.
+  Any solution found for this new matrix will yield a solution for $A$ by theorem \ref{similarity}, thus we will simply refer to our decomposed matrix as $A$.
+  Notice that since the minimal polynomial of $A$ divides $m_A(x) = x^2 (x^{n - 2} - 1)$ our nilpotent matrix, $A_1$ will have a nilpotency index 2, and our invertible matrix $A_2$ will be a diagonalizable matrix.
+  Since $A_4$ is diagonalizable, we can simply use theorem \ref{similarity} and assume that it is diagonal.
+  We put
+  \[X = \begin{bmatrix} X_1 & X_2\\ X_3 & X_4 \end{bmatrix}.\]
+  Then, multiplying out $A X A = X A X$ we get the following system of equations:
+  \[\begin{cases}
+    A_1 X_1 A_1 = X_1 A_1 X_1 + X_2 A_2 X_3\\
+    A_1 X_2 A_2 = X_1 A_1 X_2 + X_2 A_2 X_4\\
+    A_2 X_3 A_1 = X_3 A_1 X_1 + X_4 A_2 X_3\\
+    A_2 X_4 A_2 = X_3 A_1 X_2 + X_4 A_2 X_4
+  \end{cases}\]
+  From here we consider multiple cases.
+
+  \begin{case}[$X_2 = X_3 = 0$]
+    Our system of equation reduces to two Yang-Baxter-like matrix equations, one for the nilpotent matrix $A_1$ and one for the invertible matrix $A_2$.
+    All of the solutions for the nilpotent matrix with a nilpotency index 2 have been found in the paper D. Zhou and J. Ding, \textit{All solutions of the Yang-Baxter-like matrix equation for nilpotent matrices of index two}.
+    Using theorem \ref{invertible} we can find all the commuting solutions for $A_2$.
+    It is easy to check that all solutions for this case will be commutative.
+  \end{case}
+
+  \begin{case}[$X_3 = 0, X_2 \neq 0$]
+    Here our system simplifies to
+    \[\begin{cases}
+      A_1 X_1 A_1 = X_1 A_1 X_1\\
+      A_1 X_2 A_2 = X_1 A_1 X_2 + X_2 A_2 X_4\\
+      A_2 X_4 A_2 = X_4 A_2 X_4
+    \end{cases}\]
+    Again, we can use theorem \ref{invertible} to find all commuting $X_4$.
+    We will choose a singular $X_4$ which we know exists by theorem \ref{singular}.
+    Since $A_1$ is singular, we know that there exist infinitely many matrices such that $X_1 A_1 = 0$, and they all clearly provide a solution to the first equation.
+    If we pick such an $X_1$, the second equation reduces to the following:
+    \[A_1 X_2 - X_2 A_2 X_4 A_2^{-1} = 0.\]
+    This is a Sylverster equation with a trivial solution $X_2 = 0$.
+    Since $X_4$ is singular so is $A_2 X_4 A_2^{-1}$ as eigenvalues are invarient under change of basis.
+    Clearly $A_1$ is singular since it is nilpotent.
+    Thus their spectra have a nonempty intersection, as $0$ is an eigenvalue of both matrices since they are singular.
+    Hence, by theorem \ref{Sylverster-equation} it follows that $X_2 = 0$ is not a unique solution.
+    It is possible to construct all of the solutions for this Sylverster equation, giving us another family of solutions for the Yang-Baxter-like matrix equation.
+    It is easy to check that as long as $X_2 \neq 0$ these solutions are all non commuting.
+  \end{case}
+
+  \begin{case}[$X_2 = 0, X_3 \neq 0$]
+    This case is analogous to the previous one with a few changes.
+  \end{case}
+
+  Since we have found non commuting solutions to the Yang-Baxter-like matrix equation we can use theorem \ref{generating-solutions} to perhaps find more solutions
+  Note that by definition $f(A)$ and $g(A)$ must be block diagonal matrices.
+  Thus we can write
+  \[f(A) = \begin{bmatrix} F_1 (A) & 0\\ 0 & F_2 (A) \end{bmatrix}, g(A) = \begin{bmatrix} G_1 (A) & 0\\ 0 & G_2 (A) \end{bmatrix}.\]
+  Since the solutions we have found are block upper triangular it is easy to see that
+  \[f(A) X g(A) = \begin{bmatrix} F_1 (A) X_1 G_1 (A) & F_1 (A) X_2 G_2 (A)\\ 0 & F_2 (A) X_4 G_2 (A) \end{bmatrix}.\]
+  Thus we certainly cannot generate all solutions starting from this our non commuting solution.
+
+  \begin{case}[$X_2 \neq 0, X_3 \neq 0$]
+    The solution for this would require solving the full system which is currently too difficult.
+    However, such solutions can exist in general, take
+    \[A = \begin{bmatrix} 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & -1 \end{bmatrix}, X = \begin{bmatrix} 0 & 0 & 0 & 2\\ 0 & 0 & 0 & 0\\ 0 & 3 & 0 & 0\\ 0 & 0 & 0 & 0 \end{bmatrix}.\]
+    It is simple to check that $A^4 = A^2$ and that $A X A = X A X$.
+  \end{case}
+\end{algorithm}
+
+\begin{remark}
+  This methodology for generating solutions can be easily generalized to the case for $A^n = t A^m$, for $n > m \ge 1$ and any nonzero scalar $t$.
+  The noncommuting solutions remain the same, while for commuting solutions we become limited to only the zero divisors of $A_1$, since the general nilpotent case is still open.
+
+  We can also somewhat generalize the approach for any non nilpotent, non invertible matrix, however we become unable to guarantee the existence of the non commuting solutions as we cannot guarantee that a singular $X_4$ exists.
+\end{remark}
 \end{document}

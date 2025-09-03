@@ -68,7 +68,7 @@
 
 \section{Theoretical Foundations}
 
-\begin{frame}{The Starting Point: Annihilating Polynomials}
+\begin{frame}{Annihilating Polynomials}
   Our entire strategy begins with finding a polynomial that a matrix satisfies.
   \begin{definition}
     An \textbf{annihilating polynomial} for a matrix $A$ is any non-zero polynomial $p(x)$ such that $p(A) = 0$.
@@ -82,7 +82,7 @@
   So, the characteristic polynomial is always an annihilating polynomial.
 \end{frame}
 
-\begin{frame}{The Superior Tool: The Minimal Polynomial}
+\begin{frame}{The Minimal Polynomial}
   The characteristic polynomial is useful, but it is not always the most efficient tool. We want the annihilating polynomial of the \textit{lowest possible degree}.
   \begin{definition}
     The \textbf{minimal polynomial} $m_A(x)$ of a matrix $A$ is the unique monic polynomial of lowest degree that annihilates $A$.
@@ -94,7 +94,7 @@
   \end{theorem}
 \end{frame}
 
-\begin{frame}{The Goal: Diagonalizability}
+\begin{frame}{Diagonalizability}
   The key structural property we want to establish is diagonalizability, as it simplifies the YBME immensely.
   \begin{definition}
     A matrix $A$ is \textbf{diagonalizable} if it is similar to a diagonal matrix, i.e., there exists an invertible matrix $P$ such that $A = PDP^{-1}$.
@@ -264,9 +264,7 @@
   \end{itemize}
 \end{frame}
 
-\section{Future Research}
-
-\begin{frame}{The Research Frontier: Non-Commuting Solutions}
+\begin{frame}{Non-Commuting Solutions}
   \begin{itemize}
     \item The commuting case for diagonalizable matrices is well-understood. \cite{diagonalizable}
     \item The real challenge is finding \textbf{non-commuting solutions}.
@@ -276,7 +274,7 @@
   \textbf{New Strategy:} Instead of generalizing the proof, let's generalize the \textit{problem setup} using our structural theorem.
 \end{frame}
 
-\begin{frame}{The Research Landscape (1/2): A Proven Method}
+\begin{frame}{A Proven Method}
   The literature provides a clear path forward: classify solutions based on the minimal polynomial of $A$.
   \begin{itemize}
     \item A successful paper on quadrapotent matrices ($A^4=A$) used a powerful block-matrix method \cite{quadrapotent}.
@@ -287,7 +285,7 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{The Research Landscape (2/2): The Limitation}
+\begin{frame}{The Limitation}
   While powerful, the block-matrix method has a critical bottleneck.
   \begin{alertblock}{The Challenge: Exploding Complexity}
   The complexity of the coupled equation system explodes as the number of distinct eigenvalues in the minimal polynomial increases.
@@ -298,56 +296,76 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{My Research Proposal (1/3): The Core Insight}
-  My work on the structure of $A^k=A$ provides a map of these minimal polynomials. The first step is to identify the genuinely new problems.
-  \vfill
-  \textbf{Observation:} The core difficulty is the structure of the minimal polynomial, not just the power $k$.
+\begin{frame}{From Powers to Polynomials}
+  My initial work on $A^k=tA$ led to a crucial insight: the power $k$ is a convenient starting point, but the true object of study is the \textbf{minimal polynomial} of $A$.
   \begin{itemize}
-      \item For example, if a matrix $A$ satisfies $A^3=A$, it automatically satisfies $A^5=A$, since:
-      \[A^5 = A^3 \cdot A^2 = A \cdot A^2 = A^3 = A\]
-      \item This means that simply increasing $k$ can lead to redundant cases we already understand.
+    \item The condition $A^k=tA$ is simply a way to generate matrices whose minimal polynomials have distinct roots and divide $x^k-tx$.
+    \pause
+    \item This reframes the research: our goal is to classify YBME solutions for matrices with increasingly complex minimal polynomials.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{My Research Proposal (2/3): The Guiding Hypothesis}
-  To find novel structures, we must isolate cases that cannot be reduced to simpler ones.
-  \vfill
-  \textbf{Hypothesis:} The first truly novel, unsolved cases appear when $k-1$ is a prime number.
+\begin{frame}{The Problem with Classifying by Powers: Redundancy}
+  Focusing on the power $k$ can be misleading because it introduces redundancies.
   \begin{itemize}
-      \item This is because the new eigenvalues—the primitive $(k-1)$-th roots of unity—introduce a new, irreducible algebraic structure.
-      \item When $k-1$ is prime, these new roots cannot be expressed in terms of roots from lower-order cases. This avoids the "contamination" from problems we have already solved.
+    \item For example, if a matrix $A$ is idempotent ($A^2=A$), it is also tripotent ($A^3=A$), quadrapotent ($A^4=A$), and so on.
+    \[ A^3 = A^2 \cdot A = A \cdot A = A^2 = A \]
+    \item This means the set of solutions for $A^k=A$ contains many solutions from simpler, lower-power cases.
+    \pause
+    \item This "contamination" makes it difficult to identify what is genuinely new about a given power $k$.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{My Research Proposal (3/3): The Concrete Plan}
-  My plan is to apply the proven block-matrix method to the first of these truly novel cases.
-  \vfill
+\begin{frame}{Classifying by Polynomials}
+  Switching our focus to the minimal polynomial removes these redundancies and clarifies the problem's structure.
   \begin{itemize}
-      \item The case $k=4$ ($k-1=3$) is the next frontier after my $A^3=-A$ work.
-      \item The next genuinely new prime case is $k=6$ ($k-1=5$).
+    \item The minimal polynomial is the unique, most efficient descriptor of the matrix's algebraic properties.
+    \item It allows us to study the "pure" structures without the baggage of simpler cases.
   \end{itemize}
-  \begin{block}{Immediate Goal}
-  Tackle some minimal polynomials dividing $p(x) = x(x^5-1)$. From here I am interested in seeing if I could solve a case for a general family of minimal polynomials, resulting in some non-commuting solutions for any $k$-potent matrix.
-  \end{block}
-\end{frame}
-
-\begin{frame}{Broader Questions: The Geometry of the Solution Space}
-  My primary goal is to find new non-commuting solutions. However, finding a non-commuting solution is just the first step. A deeper question is understanding the structure of the solution space it belongs to.
-  \vfill
-  Using the transformation $X' = f(X)Xf(X)^{-1}$ from my advisors' work [\citeauthor{intrinsic-structure}, \citeyear{intrinsic-structure}], we know solutions exist in continuous, path-connected families.
-  \vfill
-  \begin{alertblock}{An Open Question for Discussion}
-  For the \textit{known} non-commuting solutions from the $A^4=A$ paper, can we determine if they all belong to a single solution family, connected by some function $f$? Or do they represent fundamentally distinct, disconnected families of solutions?
+  \begin{alertblock}{The True Measure of Complexity}
+  Each new distinct, non-zero eigenvalue added to the minimal polynomial represents a fundamentally new level of difficulty. The research program is not about increasing $k$, but about increasing the degree of the minimal polynomial.
   \end{alertblock}
 \end{frame}
 
-% \begin{frame}{Other open Questions for Discussion}
-%   \begin{itemize}
-%     \item What algebraic methods are best suited for the nilpotent case ($A^k=0$)? This has been answer for $k = 2$ and $k = 3$. \cite{nilpotent2}\cite{nilpotent3}
-%     \item How does the geometry of the roots of unity on the complex plane influence the structure of the solution set for $X$?
-%     \item Are there other polynomial constraints on $A$ that yield similarly tractable, structured solutions?
-%   \end{itemize}
-% \end{frame}
+\begin{frame}{Classifying by Polynomials}
+  This insight leads to two approachs for future work.
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{First Approach: Systematic Classification}
+        Methodically apply the proven block-matrix technique to classify solutions for minimal polynomials of increasing complexity:
+        \begin{itemize}
+            \item 2 distinct eigenvalues (e.g., $x(x-\lambda)$)
+            \item 3 distinct eigenvalues (e.g., $x(x-\lambda)(x-\mu)$)
+            \item 4 distinct eigenvalues...
+        \end{itemize}
+        The challenge is the known explosion in algebraic complexity.
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{alertblock}{Second Approach: A Constructive Approach}
+        This is a more ambitious, structural question:
+        \vfill
+        Can we use the solutions for simple polynomials as building blocks to construct solutions for more complex ones?
+        \vfill
+        For example, can solutions for $m_1(x)=x(x-\lambda_1)$ and $m_2(x)=x(x-\lambda_2)$ be "stitched together" to form solutions for $m_3(x)=x(x-\lambda_1)(x-\lambda_2)$?
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Breaking Diagonalizability}
+  Finally, this entire discussion has been within the "safe" world of diagonalizable matrices, by insisting on distinct roots in the minimal polynomial.
+  \vfill
+  The most challenging and exciting open questions lie beyond this boundary.
+  \begin{block}{A Fundamental Open Question}
+  What happens when we introduce multiplicity?
+  \vfill
+  For example, what can we say about YBME solutions for a matrix $A$ with a minimal polynomial like:
+  \[ m_A(x) = x^2(x-1) \]
+  Such a matrix is \textbf{not diagonalizable}. This would most likely require completely different techniques.
+  \end{block}
+\end{frame}
+
 
 % --- FINAL SLIDE ---
 \begin{frame}

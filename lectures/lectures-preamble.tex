@@ -41,7 +41,7 @@
 \usepackage{booktabs}      % For creating beautiful, professional-looking tables (\toprule, \midrule, \bottomrule)
 \usepackage{siunitx}       % For typesetting numbers and units consistently
 \usepackage{enumitem}      % Provides more control over list environments (itemize, enumerate)
-
+\usepackage{etoolbox}
 
 % -------------------------------------------------------------------
 % HYPERLINKS & CROSS-REFERENCING
@@ -65,6 +65,11 @@
 \theoremstyle{definition} % Use a style that is less flashy than the default "plain" style
 \newtheorem{definition}{Definition}[section] % Number problems as Problem X.Y (where X is the section number)
 \newtheorem{example}[definition]{Example}
+\newtheorem{algorithm}[section]{Algorithm}
+\newtheorem{case}{Case}
+\AtBeginEnvironment{theorem}{\setcounter{case}{0}}
+\AtBeginEnvironment{proposition}{\setcounter{case}{0}}
+\AtBeginEnvironment{algorithm}{\setcounter{case}{0}}
 
 \theoremstyle{plain}
 \newtheorem{theorem}[definition]{Theorem}     % Share the same counter as 'problem'
