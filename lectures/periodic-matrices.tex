@@ -261,4 +261,88 @@ Let $A = \text{diag}(0, A_2)$ be a block diagonal matrix where the zero block is
 
   Thus, any solution to the system must be constructable via the stated procedure.
 \end{proof}
+%
+% This procedure already allows us to generate some solutions, as the commuting $X_4$ are known.
+% To find all solution, we require the entire set $S_4$.
+% The general case seems too difficult currently, so we try to find all solutions for an invertible, diagonal matrix with three distinct eigenvalues.
+% This means that $A$ is of the form $A = \begin{bmatrix} \lambda_1 I & 0 & 0\\ 0 & \lambda_2 I & 0\\ 0 & 0 & \lambda_3 I \end{bmatrix}$.
+% If we assume that $X = \begin{bmatrix} X_{11} & X_{12} & X_{13}\\ X_{21} & X_{22} & X_{23}\\ X_{31} & X_{32} & X_{33} \end{bmatrix}$ with suitable sized blocks, by multiplying everything out we are left with the system of equations of the form
+% \[\lambda_i \lambda_j X_{ij} = \sum_{k = 1}^{3} \lambda_k X_{ik} X_{kj}\]
+% for some $i, j \in \{1, 2, 3\}$.
+% This is similar to the system we would get in the case for more eigenvalues, except with block matrices instead of scalar entries.
+% All equations with $i \neq j$ are actually Sylverster-equations.
+% For example, consider the equation
+% \[\lambda_1 \lambda_2 X_{12} = \lambda_1 X_{11} X_{12} + \lambda_2 X_{12} X_{22} + \lambda_3 X_{13} X_{32}.\]
+% We can write this as a Sylverster-equation with an unknown $X_{12}$ in the following form
+% \[(\lambda_1 X_{11} - \lambda_1 \lambda_2 I) X_{12} + X_{12} (\lambda_2 X_{22}) = -\lambda_3 X_{13} X_{32}.\]
+% This in conjunction with the cases when $i = j$ still seem to general to solve.
+% The best result I've gotten is placing $X_{12} = X_{13} = X_{32} = 0$.
+% In this case we can find $X_{11}, X_{22}$ and $X_{33}$ from the equations $\lambda_i X_{ii} = X_{ii}^2$.
+% It is clear that the eigenvalues of $X_{ii}$ here are a subset of the set $\{\lambda_i, 0\}$ and that the matrices $X_{ii}$ are diagonalizable (consider the minimal polynomial).
+% We also have the equation $\lambda_2 \lambda_1 X_{21} = \lambda_1 X_{21} X_{11} + \lambda_2 X_{22} X_{21}$.
+% This can be rewritten as a Sylverster-equation of the form $\lambda_2 (X_{22} - \lambda_1 I) X_{21} + X_{21} \lambda_1 X_{11} = 0$.
+% We can find that the eigenvalues of $\lambda_2 (X_{22} - \lambda_1 I)$ are a subset of $\{\lambda_2^2 - \lambda_1 \lambda_2, -\lambda_1 \lambda_2\}$.
+% Similarly, we find that the eigenvalues of $\lambda_1 X_{11}$ are a subset of $\{\lambda_1^2, 0\}$.
+% Since $\lambda_1 \neq \lambda_2$, $\lambda_1 \neq 0$ and $\lambda_2 \neq 0$ it follows that $0$ is not a common eigenvalue.
+% If $X_{21} \neq 0$ then either $\lambda_1 = -\lambda_2$ or $\lambda_1^2 + \lambda_1 \lambda_2 - \lambda_2^2 = 0$.
+% If either of those two holds, the Sylverster-equation has non-trivial solutions and can be solved since it is homogenous.
+% Similarly, we get the equations $\lambda_2 \lambda_3 X_{23} = \lambda_2 X_{22} X_{23} + \lambda_3 X_{23} X_{33}$ and $\lambda_3 \lambda_1 X_{31} = \lambda_1 X_{31} X_{11} + \lambda_3 X_{33} X_{31}$.
+% These are solved in an analogous way to above, having non-trivial solutions if $\lambda_2 = - \lambda_3$ or $\lambda_2^2 + \lambda_2 \lambda_3 - \lambda_3^2 = 0$ and $\lambda_3 = - \lambda_1$ or $\lambda_3^2 + \lambda_3 \lambda_1 - \lambda_1^2 = 0$
+
+This procedure already allows us to generate some solutions, as the commuting solutions for $X_4$ are known. To find all solutions, we require the entire set $\mathcal{S}_4$.
+
+The general case for an arbitrary $A_2$ seems too difficult at present. We therefore restrict our analysis to a specific, illustrative case: an invertible, diagonal matrix $A_2$ with three distinct, non-zero eigenvalues. This means $A_2$ is of the form $A_2 = \text{diag}(\lambda_1 I, \lambda_2 I, \lambda_3 I)$. We partition a potential solution $X_4$ conformally with $A_2$ as 
+\[
+X_4 = 
+\begin{bmatrix}
+    X_{11} & X_{12} & X_{13} \\
+    X_{21} & X_{22} & X_{23} \\
+    X_{31} & X_{32} & X_{33}
+\end{bmatrix}.
+\]
+Multiplying out the equation $A_2 X_4 A_2 = X_4 A_2 X_4$ yields a system of nine block matrix equations of the form:
+\[
+\lambda_i \lambda_j X_{ij} = \sum_{k = 1}^{3} \lambda_k X_{ik} X_{kj} \quad \text{for } i, j \in \{1, 2, 3\}.
+\]
+
+The equations where $i \neq j$ can be framed as Sylvester equations, but the full system remains coupled and difficult to solve. To make progress, we investigate a special family of solutions by imposing a structural constraint on $X_4$.
+
+\subsection*{A Family of Solutions with a Specific Block Structure}
+
+Let us search for solutions where $X_{12} = X_{13} = X_{32} = 0$. This simplifying assumption decouples the system considerably.
+
+The equations for the diagonal blocks reduce to $\lambda_i^2 X_{ii} = \lambda_i X_{ii}^2$, which implies $\lambda_i X_{ii} = X_{ii}^2$ (since $\lambda_i \neq 0$). The minimal polynomial of $X_{ii}$ must divide $x(x-\lambda_i)$, which means each $X_{ii}$ must be diagonalizable with $\sigma(X_{ii}) \subseteq \{0, \lambda_i\}$.
+
+The equations for the remaining off-diagonal blocks become three independent, homogeneous Sylvester equations:
+\begin{enumerate}
+    \item For $X_{21}$: $\lambda_2 \lambda_1 X_{21} = \lambda_1 X_{21} X_{11} + \lambda_2 X_{22} X_{21}$
+    \item For $X_{23}$: $\lambda_2 \lambda_3 X_{23} = \lambda_2 X_{22} X_{23} + \lambda_3 X_{23} X_{33}$
+    \item For $X_{31}$: $\lambda_3 \lambda_1 X_{31} = \lambda_1 X_{31} X_{11} + \lambda_3 X_{33} X_{31}$
+\end{enumerate}
+
+Let us analyze the condition for a non-trivial solution for $X_{21}$. The equation can be rewritten as:
+\[
+(\lambda_2 X_{22} - \lambda_1 \lambda_2 I) X_{21} + \lambda_1 X_{21} X_{11} = 0.
+\]
+This is a homogeneous Sylvester equation of the form $AX - XB = 0$. A non-trivial solution for $X_{21}$ exists if and only if the spectra of the coefficient matrices, $\sigma(\lambda_2 X_{22} - \lambda_1 \lambda_2 I)$ and $\sigma(-\lambda_1 X_{11})$, have a common element.
+
+The spectra are determined by the spectra of $X_{11}$ and $X_{22}$:
+\begin{itemize}
+    \item $\sigma(-\lambda_1 X_{11}) \subseteq \{0, -\lambda_1^2\}$
+    \item $\sigma(\lambda_2 X_{22} - \lambda_1 \lambda_2 I) \subseteq \{-\lambda_1 \lambda_2, \lambda_2^2 - \lambda_1 \lambda_2\}$
+\end{itemize}
+
+Given that the eigenvalues $\lambda_1, \lambda_2$ are distinct and non-zero, an intersection can only occur if $\lambda_2^2 - \lambda_1 \lambda_2 = - \lambda_1^2$. This simplifies to the condition:
+\[
+\lambda_1^2 - \lambda_1 \lambda_2 + \lambda_2^2 = 0.
+\]
+
+If this condition on the eigenvalues holds, the corresponding Sylvester equation admits non-trivial solutions for $X_{21}$, which can then be fully characterized.
+
+The analysis for $X_{23}$ and $X_{31}$ is perfectly analogous. Non-trivial solutions for these blocks exist if and only if the corresponding pairs of eigenvalues satisfy similar algebraic constraints:
+\begin{itemize}
+    \item For $X_{23}$: $\lambda_2^2 - \lambda_2 \lambda_3 + \lambda_3^2 = 0$.
+    \item For $X_{31}$: $\lambda_3^2 - \lambda_3 \lambda_1 + \lambda_1^2 = 0$.
+\end{itemize}
+
 \end{document}
