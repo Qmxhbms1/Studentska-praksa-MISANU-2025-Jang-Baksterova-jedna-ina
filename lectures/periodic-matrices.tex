@@ -26,7 +26,20 @@
   Suppose that $A$ is an $n \times n$ complex diagonalizable matrix with three distinct eigenvalues $0, \lambda$ and $\mu$ with $\lambda \mu \neq 0$ and $\lambda^2 - \lambda \mu + \mu^2 \neq 0$.
   Then all solutions of the Yang-Baxter-like matrix equation $A X A = X A X$ have the form
   \[X = S \begin{bmatrix} P & 0 & 0\\ 0 & Q & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} \widehat{\lambda} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & \lambda I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k - r - v} & 0 & 0 & 0 & C_3 \\ \hline G & 0 & 0 & \widehat{\mu} I_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & \mu I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m - k - r - t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 & 0\\ 0 & Q^{-1} & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} S^{-1},\]
-  in which, $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, $0 \le r \le \min \{k, m - k\}, 0 \le v \l k - r, 0 \le t \le m - k - r, \widehat{\lambda} = \frac{\mu^2}{\mu - \lambda}, \widehat{\mu} = \frac{\lambda^2}{\lambda - \mu}$, $F$ is an arbitrary $r \times r$ invertible matrix, $G = \frac{- \lambda \mu (\lambda^2 - \lambda \mu + \mu^2)}{(\lambda - \mu)^2} F^{-1}$, $C_3 \in \C^{(k - r - v) \times (n - m)}$, $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, $D_3 \in \C^{(n - m) \times (k - r - v)}$, $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, $\lambda D_3 C_3 = - \mu D_6 C_6$, and $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
+  in which,
+  \begin{itemize}
+    \item $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, 
+    \item $0 \le r \le \min \{k, m - k\}$, $0 \le v \le k - r$, $0 \le t \le m - k - r$, 
+    \item $\widehat{\lambda} = \frac{\mu^2}{\mu - \lambda}, \widehat{\mu} = \frac{\lambda^2}{\lambda - \mu}$,
+    \item $F$ is an arbitrary $r \times r$ invertible matrix, 
+    \item $G = \frac{- \lambda \mu (\lambda^2 - \lambda \mu + \mu^2)}{(\lambda - \mu)^2} F^{-1}$, 
+    \item $C_3 \in \C^{(k - r - v) \times (n - m)}$, 
+    \item $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, 
+    \item $D_3 \in \C^{(n - m) \times (k - r - v)}$, 
+    \item $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, 
+    \item $\lambda D_3 C_3 = - \mu D_6 C_6$, 
+    \item $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
+  \end{itemize}
 \end{theorem}
 
 \begin{theorem} \label{similarity}
@@ -34,7 +47,7 @@
 \end{theorem}
 
 \begin{theorem}[Core-Nilpotent Decomposition] \label{core-nilpotent}
-Let $A$ be a square matrix of size $n \times n$ with entries in the complex numbers. Let $k = \mathrm{ind}(A)$ be the index of $A$, and let $r = \mathrm{rank}(A^k)$. Then there exists a non-singular matrix $Q$ such that
+Let $A$ be a square matrix of size $n \times n$ with complex entires. Let $k = \mathrm{ind}(A)$ be the index of $A$, and let $r = \mathrm{rank}(A^k)$. Then there exists a non-singular matrix $Q$ such that
 \[
 Q^{-1}AQ = 
 \begin{bmatrix}
@@ -59,6 +72,7 @@ where $C$ is an $r \times r$ invertible matrix, and $L$ is an $(n-r) \times (n-r
   For a given matrix $A \in M_n (\C)$, let $X_0 \in S$ and let $f, g$ be well defined functions in $\sigma (A)$ such that
   \[g(A) A f(A) = A.\]
   Then $f(A) X_0 g(A) \in S$.
+  A function is well defined if the values $f^{(j)} (\lambda_i), j = 0, 1 \ldots n_i - 1, i = 1, 2 \ldots s$, where $n_i$ is the size of the largest Jordan block in which $\lambda_i$ appears and $s$ is the number of distinct eigenvalues.
 \end{theorem}
 
 \section{All solutions for $A^3 = -A$}
@@ -70,13 +84,13 @@ where $C$ is an $r \times r$ invertible matrix, and $L$ is an $(n-r) \times (n-r
 \begin{proof}
   Consider the polynomial $p(x) = x^n - t x$.
   It is clear that any $A$ such that $A^n = t A$ annihilates this polynomial, thus by Theorem \ref{minimalpoly}, it is a multiple of the minimal polynomial.
-  Our polynomial has $n$ distinct roots, $x = 0$ and $x^{n - 1} = t$.
-  Thus the roots of the minimal polynomial must also be distinct, i.e., have multiplicity 1.
+  The polynomial has $n$ distinct roots, $x = 0$ and $x^{n - 1} = t$.
+  Thus the roots of the minimal polynomial must also be distinct, i.e., have the multiplicity equal to 1.
   Applying Theorem \ref{diagonalizable} we get that $A$ is diagonalizable.
 \end{proof}
 
 \begin{theorem}
-  If $A^3 = -A$, assume that the rank of $A$ is $m$ and the multiplicity of eigenvalue $i$ is $k$.
+  If $A^3 = -A$, assume that the rank of $A$ is $m$ and the multiplicity of eigenvalue $\lambda_i$ is $k$.
   Then all solutions of the Yang-Baxter-like matrix equation $A X A = X A X$ have the form
   \[X = S \begin{bmatrix} P & 0 & 0\\ 0 & Q & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} \left[ \begin{array}{ccc|ccc|c} - \frac{i}{2} I_r & 0 & 0 & F & 0 & 0 & 0 \\ 0 & i I_v & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0_{k - r - v} & 0 & 0 & 0 & C_3 \\ \hline - \frac{3}{4} F^{-1} & 0 & 0 & \frac{i}{2} I_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & - i I_t & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0_{m - k - r - t} & C_6 \\ \hline 0 & 0 & D_3 & 0 & 0 & D_6 & W \\ \end{array} \right] \begin{bmatrix} P^{-1} & 0 & 0\\ 0 & Q^{-1} & 0\\ 0 & 0 & I_{n - m} \end{bmatrix} S^{-1},\]
   in which, $P \in \C^{k \times k}, Q \in \C^{(m - k) \times (m - k)}$ are any invertible matrices, $0 \le r \le \min \{k, m - k\}, 0 \le v \l k - r, 0 \le t \le m - k - r$, $F$ is an arbitrary $r \times r$ invertible matrix, $C_3 \in \C^{(k - r - v) \times (n - m)}$, $C_6 \in \C^{(m - k - r - t) \times (n - m)}$, $D_3 \in \C^{(n - m) \times (k - r - v)}$, $D_6 \in \C^{(n - m) \times (m - k - r - t)}$, $i D_3 C_3 = i D_6 C_6$, and $W$ is an arbitrary $(n - m) \times (n - m)$ matrix.
@@ -100,7 +114,7 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
 \begin{proof}
   It is easy to show that if we assume $X$ to be a commuting solution, the the Yang-Baxter-like matrix equation is equivalent to the equation $AX = X^2 = XA$.
   If $X$ is invertible, it follows that $AX = X^2$ implies $A = X$.
-  By the contrapositive we know that if $X \neq A$ is a commuting solution to the Yang-Baxter-like matrix equation, then $X$ must be singular.
+  Therefore we know that if $X \neq A$ is a commuting solution to the Yang-Baxter-like matrix equation, then $X$ must be singular.
 \end{proof}
 
 \begin{algorithm}
@@ -109,7 +123,7 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
   We begin by decomposing our matrix $A$ into a block diagonal form using Theorem \ref{core-nilpotent}.
   Any solution found for this new matrix will yield a solution for $A$ by Theorem \ref{similarity}, thus we will simply refer to our decomposed matrix as $A$.
   Notice that since the minimal polynomial of $A$ divides $m_A(x) = x^2 (x^{n - 2} - 1)$ our nilpotent matrix, $A_1$ will have a nilpotency index 2, and our invertible matrix $A_2$ will be a diagonalizable matrix.
-  Since $A_4$ is diagonalizable, we can simply use Theorem \ref{similarity} and assume that it is diagonal.
+  Since $A_2$ is diagonalizable, we can simply use Theorem \ref{similarity} and assume that it is diagonal.
   We put
   \[X = \begin{bmatrix} X_1 & X_2\\ X_3 & X_4 \end{bmatrix}.\]
   Then, multiplying out $A X A = X A X$ we get the following system of equations:
@@ -125,7 +139,7 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
     Our system of equation reduces to two Yang-Baxter-like matrix equations, one for the nilpotent matrix $A_1$ and one for the invertible matrix $A_2$.
     All of the solutions for the nilpotent matrix with a nilpotency index 2 have been found in the paper D. Zhou and J. Ding, \textit{All solutions of the Yang-Baxter-like matrix equation for nilpotent matrices of index two}.
     Using Theorem \ref{invertible} we can find all the commuting solutions for $A_2$.
-    It is easy to check that all solutions for this case will be commutative.
+    It is easy to check that all solutions for this case will be commuting.
   \end{case}
 
   \begin{case}[$X_3 = 0, X_2 \neq 0$]
@@ -138,7 +152,7 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
     Again, we can use Theorem \ref{invertible} to find all commuting $X_4$.
     We will choose a singular $X_4$ which we know exists by Theorem \ref{singular}.
     Since $A_1$ is singular, we know that there exist infinitely many matrices such that $X_1 A_1 = 0$, and they all clearly provide a solution to the first equation.
-    If we pick such an $X_1$, the second equation reduces to the following:
+    If we fix such an $X_1$, the second equation reduces to the following:
     \[A_1 X_2 - X_2 A_2 X_4 A_2^{-1} = 0.\]
     This is a Sylverster equation with a trivial solution $X_2 = 0$.
     Since $X_4$ is singular so is $A_2 X_4 A_2^{-1}$ as eigenvalues are invariant under change of basis.
@@ -153,14 +167,6 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
     This case is analogous to the previous one with a few changes.
   \end{case}
 
-  Since we have found non commuting solutions to the Yang-Baxter-like matrix equation we can use Theorem \ref{generating-solutions} to perhaps find more solutions
-  Note that by definition $f(A)$ and $g(A)$ must be block diagonal matrices.
-  Thus we can write
-  \[f(A) = \begin{bmatrix} F_1 (A) & 0\\ 0 & F_2 (A) \end{bmatrix}, g(A) = \begin{bmatrix} G_1 (A) & 0\\ 0 & G_2 (A) \end{bmatrix}.\]
-  Since the solutions we have found are block upper triangular it is easy to see that
-  \[f(A) X g(A) = \begin{bmatrix} F_1 (A) X_1 G_1 (A) & F_1 (A) X_2 G_2 (A)\\ 0 & F_2 (A) X_4 G_2 (A) \end{bmatrix}.\]
-  Thus we certainly cannot generate all solutions starting from this our non commuting solution.
-
   \begin{case}[$X_2 \neq 0, X_3 \neq 0$]
     The solution for this would require solving the full system which is currently too difficult.
     However, such solutions can exist in general, take
@@ -169,152 +175,20 @@ This trivially generalizes for the case of $A^3 = t A$ for any $t \in \C$.
   \end{case}
 \end{algorithm}
 
+  Since we have found non commuting solutions to the Yang-Baxter-like matrix equation we can use Theorem \ref{generating-solutions} to perhaps find more solutions.
+  Note that $f(A)$ and $g(A)$ must be block diagonal matrices.
+  Just take $A$ in its Jordan Normal Form and apply the core-nilpotent decomposition.
+  This leaves us with a matrix block of Jordan zero blocks and a matrix block of Jordan blocks for non-zero eigenvalues.
+  Then, $f(A)$ consists precisely of matrices $f(A_1)$ and $f(A_2)$ on its diagonal.
+  Thus we can write
+  \[f(A) = \begin{bmatrix} F (A_1) & 0\\ 0 & F (A_2) \end{bmatrix}, g(A) = \begin{bmatrix} G (A_1) & 0\\ 0 & G (A_2) \end{bmatrix}.\]
+    Since the solutions we have found are block upper (or lower) triangular it is easy to see that
+  \[f(A) X g(A) = \begin{bmatrix} F (A_1) X_1 G (A_1) & F (A_1) X_2 G (A_2)\\ 0 & F (A_2) X_4 G (A_2) \end{bmatrix}.\]
+  Thus we certainly cannot generate all solutions starting from this as our non commuting solution.
+
 \begin{remark}
   This methodology for generating solutions can be easily generalized to the arbitrary case of a singular non-nilpotent matrix.
   The noncommuting solutions remain the same, while for commuting solutions we become limited to only the zero divisors of $A_1$, since the general nilpotent case is still open.
 \end{remark}
-
-\section{Diagonal Matrices}
-If we have a diagonal matrix $A$, it makes sense to build on our previous work by using the core-nilpotent decomposition.
-Here the matrix $A$ decomposes into a $0$ matrix and an invertible, diagonal matrix $A_2$.
-Considering $X$ as a $2 \times 2$ block matrix, our previous system of equation simplifies to
-\[\begin{cases}
-  X_2 A_2 X_3 = 0\\
-  X_2 A_2 X_4 = 0\\
-  X_4 A_2 X_3 = 0\\
-  A_2 X_4 A_2 = X_4 A_2 X_4
-\end{cases}\]
-For the solutions to be commuting we can again find the following system
-\[\begin{cases}
-  X_2 A_2 = 0\\
-  A_2 X_3 = 0\\
-  A_2 X_4 = X_4 A_2
-\end{cases}\]
-Since $A_2$ is invertible, it follows that it is not a zero-divisor, thus we know that $X_2 = X_3 = 0$.
-All commuting solutions for $X_4$ can be given by the Theorem \ref{invertible}.
-Thus all commuting solutions for a diagonal matrix are given by an arbitrary $X_1$, $X_2 = X_3 = 0$ and a commuting solution to $A_2 X_4 A_2 = X_4 A_2 X_4$.
-
-The commuting solution were already known, so we are interested in any solution not satisfying the previous equations.
-These solutions either have a non-commuting solution for $X_4$ or a non-zero $X_2$ or $X_3$.
-
-We now present a procedure to construct the complete set of solutions to this system.
-We proceed under the assumption that the solution set for the fourth equation, the Yang-Baxter-like equation $A_2 X_4 A_2 = X_4 A_2 X_4$, is known.
-This set, which is the focus of other parts of this research, will be denoted by $S_4$.
-The following proposition provides a constructive algorithm that generates all solutions for the full block matrix $X$.
-
-\begin{theorem} \label{prop:constructive_solution}
-Let $A = \text{diag}(0, A_2)$ be a block diagonal matrix where the zero block is of size $(n - m) \times (n - m)$ and $A_2$ is an $m \times m$ invertible, diagonal matrix.
-  Let $X = \begin{bmatrix} X_1 & X_2\\ X_3 & X_4 \end{bmatrix}$ be a block matrix of compatible dimensions.
-  The matrix $X$ is a solution to $AXA = XAX$ if and only if its constituent blocks are determined by the following procedure:
-  \begin{enumerate}
-    \item Choose an arbitrary matrix $X_4^* \in S_4$.
-    \item Let $N(X_4^*)$ denote the null space of the chosen $X_4^*$.
-      Construct the matrix $X_3$ such that its column space, $C(X_3)$, is a subspace of $A_2^{-1}(N(X_4^*))$.
-    \item Based on the chosen $X_3$ and $X_4^*$, define the subspace $S = \text{span}(C(A_2 X_3) \cup C(A_2 X_4^*))$.
-      Construct the matrix $X_2$ such that its null space, $N(X_2)$, contains the subspace $S$.
-    \item Choose $X_1$ to be any arbitrary $(n - m) \times (n - m)$ matrix.
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-  The equation $AXA = XAX$ for the given block matrices simplifies to the system:
-  \begin{align}
-    X_2 A_2 X_3 &= 0 \label{eq:sys1}\\
-    X_2 A_2 X_4 &= 0 \label{eq:sys2}\\
-    X_4 A_2 X_3 &= 0 \label{eq:sys3}\\
-    A_2 X_4 A_2 &= X_4 A_2 X_4 \label{eq:sys4}
-  \end{align}
-  We prove that the procedure in Theorem \ref{prop:constructive_solution} is both necessary and sufficient to define the complete solution set for this system.
-
-  \textbf{(Sufficiency)}
-  Assume a matrix $X$ is constructed according to the procedure.
-  By Step 1, $X_4^*$ is in $S_4$, so equation \eqref{eq:sys4} is satisfied by definition.
-
-  By Step 2, $C(X_3) \subset A_2^{-1} (N(X_4^*))$.
-  This implies $C(A_2 X_3) \subset N(X_4^*)$, which is equivalent to the statement $X_4^* A_2 X_3 = 0$.
-  Thus, equation \eqref{eq:sys3} is satisfied.
-
-  By Step 3, $N(X_2)$ contains the subspace $S = \text{span}(C(A_2 X_3) \cup C(A_2 X_4^*))$.
-  Since $C(A_2 X_3) \subset S \subset N(X_2)$, it follows that $X_2 A_2 X_3 = 0$.
-  Thus, equation \eqref{eq:sys1} is satisfied.
-  Similarly, since $C(A_2 X_4^*) \subset S \subset N(X_2)$, it follows that \eqref{eq:sys2} is satisfied.
-
-  The matrix $X_1$ does not appear in any of the four equation, so its choice is unconstrained.
-
-  Therefore, any matrix $X$ constructed via this procedure is a valid solution.
-
-  \textbf{(Necessity)}
-  Assume $(X_1, X_2, X_3, X_4)$ is a valid solution to the system \eqref{eq:sys1}-\eqref{eq:sys4}.
-  We show that it must conform to the procedure.
-  \begin{enumerate}
-    \item Equation \eqref{eq:sys4} requires that $X_4$ must be a solution to the Yang-Baxter-like matrix equation for $A_2$.
-      Therefore $X_4 \in S_4$, satisfying Step 1.
-    \item From equation \eqref{eq:sys3}, $X_4 A_2 X_3 = 0$, we deduce that $C(A_2 X_3) \subset N(X_4)$.
-      Since $A_2$ is invertible, this implies $C(X_3) \subset A_2^{-1} (N(X_4))$, satisfying the condition of Step 2.
-    \item Equations \eqref{eq:sys1} and \eqref{eq:sys2} require that $X_2 A_2 X_3 = 0$ and $X_2 A_2 X_4 = 0$.
-      This means the null space of $X_2$ must contain every column of $A_2 X_3$ and every column of $A_2 X_4$.
-      Therefore, $N(X_2)$ must contain the span of their union, $S = \text{span} (C(A_2 X_3) \cup C(A_2 X_4)$.
-      This is precisely the condition of Step 3.
-    \item Since the matrix $X_1$ is not involved in any of the four equations, it is completely unconstrained and can be chosen arbitrarily.
-      This conforms with Step 4.
-  \end{enumerate}
-
-  Thus, any solution to the system must be constructable via the stated procedure.
-\end{proof}
-
-This procedure already allows us to generate some solutions, as the commuting solutions for $X_4$ are known. To find all solutions, we require the entire set $\mathcal{S}_4$.
-
-The general case for an arbitrary $A_2$ seems too difficult at present. We therefore restrict our analysis to a specific, illustrative case: an invertible, diagonal matrix $A_2$ with three distinct, non-zero eigenvalues. This means $A_2$ is of the form $A_2 = \text{diag}(\lambda_1 I, \lambda_2 I, \lambda_3 I)$. We partition a potential solution $X_4$ conformally with $A_2$ as 
-\[
-X_4 = 
-\begin{bmatrix}
-    X_{11} & X_{12} & X_{13} \\
-    X_{21} & X_{22} & X_{23} \\
-    X_{31} & X_{32} & X_{33}
-\end{bmatrix}.
-\]
-Multiplying out the equation $A_2 X_4 A_2 = X_4 A_2 X_4$ yields a system of nine block matrix equations of the form:
-\[
-\lambda_i \lambda_j X_{ij} = \sum_{k = 1}^{3} \lambda_k X_{ik} X_{kj} \quad \text{for } i, j \in \{1, 2, 3\}.
-\]
-
-The equations where $i \neq j$ can be framed as Sylvester equations, but the full system remains coupled and difficult to solve. To make progress, we investigate a special family of solutions by imposing a structural constraint on $X_4$.
-
-
-Let us search for solutions where $X_{12} = X_{13} = X_{32} = 0$. This simplifying assumption decouples the system considerably.
-
-The equations for the diagonal blocks reduce to $\lambda_i^2 X_{ii} = \lambda_i X_{ii}^2$, which implies $\lambda_i X_{ii} = X_{ii}^2$ (since $\lambda_i \neq 0$). The minimal polynomial of $X_{ii}$ must divide $x(x-\lambda_i)$, which means each $X_{ii}$ must be diagonalizable with $\sigma(X_{ii}) \subseteq \{0, \lambda_i\}$.
-
-The equations for the remaining off-diagonal blocks become three independent, homogeneous Sylvester equations:
-\begin{enumerate}
-    \item For $X_{21}$: $\lambda_2 \lambda_1 X_{21} = \lambda_1 X_{21} X_{11} + \lambda_2 X_{22} X_{21}$
-    \item For $X_{23}$: $\lambda_2 \lambda_3 X_{23} = \lambda_2 X_{22} X_{23} + \lambda_3 X_{23} X_{33}$
-    \item For $X_{31}$: $\lambda_3 \lambda_1 X_{31} = \lambda_1 X_{31} X_{11} + \lambda_3 X_{33} X_{31}$
-\end{enumerate}
-
-Let us analyze the condition for a non-trivial solution for $X_{21}$. The equation can be rewritten as:
-\[
-(\lambda_2 X_{22} - \lambda_1 \lambda_2 I) X_{21} + \lambda_1 X_{21} X_{11} = 0.
-\]
-This is a homogeneous Sylvester equation of the form $AX - XB = 0$. A non-trivial solution for $X_{21}$ exists if and only if the spectra of the coefficient matrices, $\sigma(\lambda_2 X_{22} - \lambda_1 \lambda_2 I)$ and $\sigma(-\lambda_1 X_{11})$, have a common element.
-
-The spectra are determined by the spectra of $X_{11}$ and $X_{22}$:
-\begin{itemize}
-    \item $\sigma(-\lambda_1 X_{11}) \subseteq \{0, -\lambda_1^2\}$
-    \item $\sigma(\lambda_2 X_{22} - \lambda_1 \lambda_2 I) \subseteq \{-\lambda_1 \lambda_2, \lambda_2^2 - \lambda_1 \lambda_2\}$
-\end{itemize}
-
-Given that the eigenvalues $\lambda_1, \lambda_2$ are distinct and non-zero, an intersection can only occur if $\lambda_2^2 - \lambda_1 \lambda_2 = - \lambda_1^2$. This simplifies to the condition:
-\[
-\lambda_1^2 - \lambda_1 \lambda_2 + \lambda_2^2 = 0.
-\]
-
-If this condition on the eigenvalues holds, the corresponding Sylvester equation admits non-trivial solutions for $X_{21}$, which can then be fully characterized.
-
-The analysis for $X_{23}$ and $X_{31}$ is perfectly analogous. Non-trivial solutions for these blocks exist if and only if the corresponding pairs of eigenvalues satisfy similar algebraic constraints:
-\begin{itemize}
-    \item For $X_{23}$: $\lambda_2^2 - \lambda_2 \lambda_3 + \lambda_3^2 = 0$.
-    \item For $X_{31}$: $\lambda_3^2 - \lambda_3 \lambda_1 + \lambda_1^2 = 0$.
-\end{itemize}
 
 \end{document}
